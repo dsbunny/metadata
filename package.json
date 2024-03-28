@@ -1,0 +1,19 @@
+{
+  "name": "@dsbunny/metadata",
+  "version": "1.0.0",
+  "description": "ZOD metadata for media stored in the DSBunny DAM",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steve-o <fnjordy@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  }
+}
