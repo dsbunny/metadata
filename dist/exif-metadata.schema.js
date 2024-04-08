@@ -256,15 +256,15 @@ const ImageTags = zod_1.z.object({
         .describe('Contains four ASCII characters representing the TIFF/EP standard version of a TIFF/EP file, eg \'1\', \'0\', \'0\', \'0\'.'),
     SensingMethod: zod_1.z.number()
         .describe('Type of image sensor.'),
-    XPTitle: zod_1.z.array(zod_1.z.number()).or(zod_1.z.number())
+    XPTitle: zod_1.z.string()
         .describe('Title tag used by Windows, encoded in UCS2.'),
-    XPComment: zod_1.z.array(zod_1.z.number()).or(zod_1.z.number())
+    XPComment: zod_1.z.string()
         .describe('Comment tag used by Windows, encoded in UCS2.'),
-    XPAuthor: zod_1.z.array(zod_1.z.number()).or(zod_1.z.number())
+    XPAuthor: zod_1.z.string()
         .describe('Author tag used by Windows, encoded in UCS2.'),
-    XPKeywords: zod_1.z.array(zod_1.z.number()).or(zod_1.z.number())
+    XPKeywords: zod_1.z.string()
         .describe('Keywords tag used by Windows, encoded in UCS2.'),
-    XPSubject: zod_1.z.array(zod_1.z.number()).or(zod_1.z.number())
+    XPSubject: zod_1.z.string()
         .describe('Subject tag used by Windows, encoded in UCS2.'),
     //PrintImageMatching: z.buffer()
     //	.describe('Print Image Matching, description needed.'),
