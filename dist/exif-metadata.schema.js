@@ -75,7 +75,7 @@ const ImageTags = zod_1.z.object({
         .describe('A transfer function for the image, described in tabular style. Normally this tag is not necessary, since color space is specified in the color space information tag (ColorSpace).'),
     Software: zod_1.z.string()
         .describe('This tag records the name and version of the software or firmware of the camera or image input device used to generate the image. The detailed format is not specified, but it is recommended that the example shown below be followed.'),
-    DateTime: zod_1.z.date()
+    DateTime: zod_1.z.string().datetime()
         .describe('The date and time of image creation. In Exif standard, it is the date and time the file was changed.'),
     Artist: zod_1.z.string()
         .describe('This tag records the name of the camera owner, photographer or image creator. The detailed format is not specified, but it is recommended that the information be written as in the example below for ease of Interoperability. When the field is left blank, it is treated as unknown. Ex.) "Camera owner, John Smith; Photographer, Michael Brown; Image creator, Ken James".'),
@@ -494,9 +494,9 @@ const PhotoTags = zod_1.z.object({
         .describe('This tag indicates the ISO speed latitude zzz value of a camera or input device that is defined in ISO 12232. However, this tag shall not be recorded without ISOSpeed and ISOSpeedLatitudeyyy.'),
     //ExifVersion: z.buffer()  // Four byte ASCII buffer.
     //	.describe('The version of this standard supported. Nonexistence of this field is taken to mean nonconformance to the standard.'),
-    DateTimeOriginal: zod_1.z.date()
+    DateTimeOriginal: zod_1.z.string().datetime()
         .describe('The date and time when the original image data was generated. For a digital still camera the date and time the picture was taken are recorded.'),
-    DateTimeDigitized: zod_1.z.date()
+    DateTimeDigitized: zod_1.z.string().datetime()
         .describe('The date and time when the image was stored as digital data.'),
     OffsetTime: zod_1.z.string(),
     OffsetTimeOriginal: zod_1.z.string(),

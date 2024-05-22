@@ -36,7 +36,7 @@ export declare const ExifMetadata: z.ZodObject<{
         PageNumber: z.ZodOptional<z.ZodNumber>;
         TransferFunction: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
         Software: z.ZodOptional<z.ZodString>;
-        DateTime: z.ZodOptional<z.ZodDate>;
+        DateTime: z.ZodOptional<z.ZodString>;
         Artist: z.ZodOptional<z.ZodString>;
         HostComputer: z.ZodOptional<z.ZodString>;
         Predictor: z.ZodOptional<z.ZodNumber>;
@@ -258,7 +258,7 @@ export declare const ExifMetadata: z.ZodObject<{
         PageNumber?: number | undefined;
         TransferFunction?: number[] | undefined;
         Software?: string | undefined;
-        DateTime?: Date | undefined;
+        DateTime?: string | undefined;
         Artist?: string | undefined;
         HostComputer?: string | undefined;
         Predictor?: number | undefined;
@@ -480,7 +480,7 @@ export declare const ExifMetadata: z.ZodObject<{
         PageNumber?: number | undefined;
         TransferFunction?: number[] | undefined;
         Software?: string | undefined;
-        DateTime?: Date | undefined;
+        DateTime?: string | undefined;
         Artist?: string | undefined;
         HostComputer?: string | undefined;
         Predictor?: number | undefined;
@@ -679,8 +679,8 @@ export declare const ExifMetadata: z.ZodObject<{
         ISOSpeed: z.ZodOptional<z.ZodNumber>;
         ISOSpeedLatitudeyyy: z.ZodOptional<z.ZodNumber>;
         ISOSpeedLatitudezzz: z.ZodOptional<z.ZodNumber>;
-        DateTimeOriginal: z.ZodOptional<z.ZodDate>;
-        DateTimeDigitized: z.ZodOptional<z.ZodDate>;
+        DateTimeOriginal: z.ZodOptional<z.ZodString>;
+        DateTimeDigitized: z.ZodOptional<z.ZodString>;
         OffsetTime: z.ZodOptional<z.ZodString>;
         OffsetTimeOriginal: z.ZodOptional<z.ZodString>;
         OffsetTimeDigitized: z.ZodOptional<z.ZodString>;
@@ -750,8 +750,8 @@ export declare const ExifMetadata: z.ZodObject<{
         ISOSpeed?: number | undefined;
         ISOSpeedLatitudeyyy?: number | undefined;
         ISOSpeedLatitudezzz?: number | undefined;
-        DateTimeOriginal?: Date | undefined;
-        DateTimeDigitized?: Date | undefined;
+        DateTimeOriginal?: string | undefined;
+        DateTimeDigitized?: string | undefined;
         OffsetTime?: string | undefined;
         OffsetTimeOriginal?: string | undefined;
         OffsetTimeDigitized?: string | undefined;
@@ -821,8 +821,8 @@ export declare const ExifMetadata: z.ZodObject<{
         ISOSpeed?: number | undefined;
         ISOSpeedLatitudeyyy?: number | undefined;
         ISOSpeedLatitudezzz?: number | undefined;
-        DateTimeOriginal?: Date | undefined;
-        DateTimeDigitized?: Date | undefined;
+        DateTimeOriginal?: string | undefined;
+        DateTimeDigitized?: string | undefined;
         OffsetTime?: string | undefined;
         OffsetTimeOriginal?: string | undefined;
         OffsetTimeDigitized?: string | undefined;
@@ -1028,7 +1028,7 @@ export declare const ExifMetadata: z.ZodObject<{
         PageNumber?: number | undefined;
         TransferFunction?: number[] | undefined;
         Software?: string | undefined;
-        DateTime?: Date | undefined;
+        DateTime?: string | undefined;
         Artist?: string | undefined;
         HostComputer?: string | undefined;
         Predictor?: number | undefined;
@@ -1227,8 +1227,8 @@ export declare const ExifMetadata: z.ZodObject<{
         ISOSpeed?: number | undefined;
         ISOSpeedLatitudeyyy?: number | undefined;
         ISOSpeedLatitudezzz?: number | undefined;
-        DateTimeOriginal?: Date | undefined;
-        DateTimeDigitized?: Date | undefined;
+        DateTimeOriginal?: string | undefined;
+        DateTimeDigitized?: string | undefined;
         OffsetTime?: string | undefined;
         OffsetTimeOriginal?: string | undefined;
         OffsetTimeDigitized?: string | undefined;
@@ -1362,7 +1362,7 @@ export declare const ExifMetadata: z.ZodObject<{
         PageNumber?: number | undefined;
         TransferFunction?: number[] | undefined;
         Software?: string | undefined;
-        DateTime?: Date | undefined;
+        DateTime?: string | undefined;
         Artist?: string | undefined;
         HostComputer?: string | undefined;
         Predictor?: number | undefined;
@@ -1561,8 +1561,8 @@ export declare const ExifMetadata: z.ZodObject<{
         ISOSpeed?: number | undefined;
         ISOSpeedLatitudeyyy?: number | undefined;
         ISOSpeedLatitudezzz?: number | undefined;
-        DateTimeOriginal?: Date | undefined;
-        DateTimeDigitized?: Date | undefined;
+        DateTimeOriginal?: string | undefined;
+        DateTimeDigitized?: string | undefined;
         OffsetTime?: string | undefined;
         OffsetTimeOriginal?: string | undefined;
         OffsetTimeDigitized?: string | undefined;
