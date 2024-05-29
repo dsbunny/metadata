@@ -19,9 +19,9 @@ export const FileTimings = z.object({
 export type FileTimings = z.infer<typeof FileTimings>;
 
 export const ImageTimings = z.object({
-	image_http_duration: z.number()
+	file_http_duration: z.number()
 		.describe('Time taken to download the image from the HTTP server.'),
-	image_ck_duration: z.number()
+	file_ck_duration: z.number()
 		.describe('Time taken to calculate the checksum of the image.'),
 	thumbnail_sharp_duration: z.number()
 		.describe('Time taken to generate the thumbnail using sharp.'),
@@ -34,9 +34,9 @@ export const ImageTimings = z.object({
 export type ImageTimings = z.infer<typeof ImageTimings>;
 
 export const VideoTimings = z.object({
-	video_http_duration: z.number()
+	file_http_duration: z.number()
 		.describe('Time taken to download the video from the HTTP server.'),
-	video_ck_duration: z.number()
+	file_ck_duration: z.number()
 		.describe('Time taken to calculate the checksum of the video.'),
 	preview_ffmpeg_duration: z.number()
 		.describe('Time taken to generate the preview using ffmpeg.'),
@@ -92,6 +92,13 @@ export const FileMetadata = BaseMetadata.merge(z.object({
 export type FileMetadata = z.infer<typeof FileMetadata>;
 
 // Metadata for an image file.
+export const ImagePreviewMetadata = BaseMetadata.merge(z.object({
+	width: z.number().int().positive(),
+	height: z.number().int().positive(),
+}))
+	.describe('Metadata for an image preview.');
+export type ImagePreviewMetadata = z.infer<typeof ImagePreviewMetadata>;
+
 export const ImageMetadata = BaseMetadata.merge(z.object({
 	sharp: SharpMetadata,
 	exif: ExifMetadata.optional(),
@@ -99,18 +106,25 @@ export const ImageMetadata = BaseMetadata.merge(z.object({
 	iptc: IptcProfile.optional(),
 	xmp: XmpProfile.optional(),
 	ffprobe: FfprobeData,
-	preview: FileStatAndChecksums,
+	preview: ImagePreviewMetadata,
 	timings: ImageTimings,
 }))
 	.describe('Metadata for an image file.');
 export type ImageMetadata = z.infer<typeof ImageMetadata>;
 
 // Metadata for a video file.
+export const VideoPreviewMetadata = BaseMetadata.merge(z.object({
+	width: z.number().int().positive(),
+	height: z.number().int().positive(),
+}))
+	.describe('Metadata for a video preview.');
+export type VideoPreviewMetadata = z.infer<typeof VideoPreviewMetadata>;
+
 export const VideoMetadata = BaseMetadata.merge(z.object({
 	ffprobe: FfprobeData
 		.describe('Metadata from the ffprobe tool.'),
-	previews: z.array(FileStatAndChecksums)
-		.describe('The preview images.'),
+	previews: z.array(VideoPreviewMetadata)
+		.describe('Video preview images.'),
 	timings: VideoTimings,
 }))
 	.describe('Metadata for a video file.');

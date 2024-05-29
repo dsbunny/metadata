@@ -1,7 +1,7 @@
 "use strict";
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Metadata = exports.VideoMetadata = exports.ImageMetadata = exports.FileMetadata = exports.BaseMetadata = exports.FileStatAndChecksums = exports.VideoTimings = exports.ImageTimings = exports.FileTimings = void 0;
+exports.Metadata = exports.VideoMetadata = exports.VideoPreviewMetadata = exports.ImageMetadata = exports.ImagePreviewMetadata = exports.FileMetadata = exports.BaseMetadata = exports.FileStatAndChecksums = exports.VideoTimings = exports.ImageTimings = exports.FileTimings = void 0;
 const zod_1 = require("zod");
 const sharp_metadata_schema_js_1 = require("./sharp-metadata.schema.js");
 const exif_metadata_schema_js_1 = require("./exif-metadata.schema.js");
@@ -18,9 +18,9 @@ exports.FileTimings = zod_1.z.object({
 })
     .describe('Performance timings for the file.');
 exports.ImageTimings = zod_1.z.object({
-    image_http_duration: zod_1.z.number()
+    file_http_duration: zod_1.z.number()
         .describe('Time taken to download the image from the HTTP server.'),
-    image_ck_duration: zod_1.z.number()
+    file_ck_duration: zod_1.z.number()
         .describe('Time taken to calculate the checksum of the image.'),
     thumbnail_sharp_duration: zod_1.z.number()
         .describe('Time taken to generate the thumbnail using sharp.'),
@@ -31,9 +31,9 @@ exports.ImageTimings = zod_1.z.object({
 })
     .describe('Performance timings for the image.');
 exports.VideoTimings = zod_1.z.object({
-    video_http_duration: zod_1.z.number()
+    file_http_duration: zod_1.z.number()
         .describe('Time taken to download the video from the HTTP server.'),
-    video_ck_duration: zod_1.z.number()
+    file_ck_duration: zod_1.z.number()
         .describe('Time taken to calculate the checksum of the video.'),
     preview_ffmpeg_duration: zod_1.z.number()
         .describe('Time taken to generate the preview using ffmpeg.'),
@@ -81,6 +81,11 @@ exports.FileMetadata = exports.BaseMetadata.merge(zod_1.z.object({
 }))
     .describe('Metadata for a generic file.');
 // Metadata for an image file.
+exports.ImagePreviewMetadata = exports.BaseMetadata.merge(zod_1.z.object({
+    width: zod_1.z.number().int().positive(),
+    height: zod_1.z.number().int().positive(),
+}))
+    .describe('Metadata for an image preview.');
 exports.ImageMetadata = exports.BaseMetadata.merge(zod_1.z.object({
     sharp: sharp_metadata_schema_js_1.SharpMetadata,
     exif: exif_metadata_schema_js_1.ExifMetadata.optional(),
@@ -88,16 +93,21 @@ exports.ImageMetadata = exports.BaseMetadata.merge(zod_1.z.object({
     iptc: iptc_profile_schema_js_1.IptcProfile.optional(),
     xmp: xmp_profile_schema_js_1.XmpProfile.optional(),
     ffprobe: ffprobe_data_schema_js_1.FfprobeData,
-    preview: exports.FileStatAndChecksums,
+    preview: exports.ImagePreviewMetadata,
     timings: exports.ImageTimings,
 }))
     .describe('Metadata for an image file.');
 // Metadata for a video file.
+exports.VideoPreviewMetadata = exports.BaseMetadata.merge(zod_1.z.object({
+    width: zod_1.z.number().int().positive(),
+    height: zod_1.z.number().int().positive(),
+}))
+    .describe('Metadata for a video preview.');
 exports.VideoMetadata = exports.BaseMetadata.merge(zod_1.z.object({
     ffprobe: ffprobe_data_schema_js_1.FfprobeData
         .describe('Metadata from the ffprobe tool.'),
-    previews: zod_1.z.array(exports.FileStatAndChecksums)
-        .describe('The preview images.'),
+    previews: zod_1.z.array(exports.VideoPreviewMetadata)
+        .describe('Video preview images.'),
     timings: exports.VideoTimings,
 }))
     .describe('Metadata for a video file.');

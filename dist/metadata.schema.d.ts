@@ -11,28 +11,28 @@ export declare const FileTimings: z.ZodObject<{
 }>;
 export type FileTimings = z.infer<typeof FileTimings>;
 export declare const ImageTimings: z.ZodObject<{
-    image_http_duration: z.ZodNumber;
-    image_ck_duration: z.ZodNumber;
+    file_http_duration: z.ZodNumber;
+    file_ck_duration: z.ZodNumber;
     thumbnail_sharp_duration: z.ZodNumber;
     thumbnail_ck_duration: z.ZodNumber;
     thumbnail_http_duration: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    image_http_duration: number;
-    image_ck_duration: number;
+    file_http_duration: number;
+    file_ck_duration: number;
     thumbnail_sharp_duration: number;
     thumbnail_ck_duration: number;
     thumbnail_http_duration: number;
 }, {
-    image_http_duration: number;
-    image_ck_duration: number;
+    file_http_duration: number;
+    file_ck_duration: number;
     thumbnail_sharp_duration: number;
     thumbnail_ck_duration: number;
     thumbnail_http_duration: number;
 }>;
 export type ImageTimings = z.infer<typeof ImageTimings>;
 export declare const VideoTimings: z.ZodObject<{
-    video_http_duration: z.ZodNumber;
-    video_ck_duration: z.ZodNumber;
+    file_http_duration: z.ZodNumber;
+    file_ck_duration: z.ZodNumber;
     preview_ffmpeg_duration: z.ZodNumber;
     preview_ck_duration: z.ZodNumber;
     preview_http_duration: z.ZodNumber;
@@ -41,21 +41,21 @@ export declare const VideoTimings: z.ZodObject<{
     thumbnail_ck_duration: z.ZodArray<z.ZodNumber, "many">;
     thumbnail_http_duration: z.ZodArray<z.ZodNumber, "many">;
 }, "strip", z.ZodTypeAny, {
+    file_http_duration: number;
+    file_ck_duration: number;
     thumbnail_sharp_duration: number[];
     thumbnail_ck_duration: number[];
     thumbnail_http_duration: number[];
-    video_http_duration: number;
-    video_ck_duration: number;
     preview_ffmpeg_duration: number;
     preview_ck_duration: number;
     preview_http_duration: number;
     thumbnail_ffmpeg_duration: number;
 }, {
+    file_http_duration: number;
+    file_ck_duration: number;
     thumbnail_sharp_duration: number[];
     thumbnail_ck_duration: number[];
     thumbnail_http_duration: number[];
-    video_http_duration: number;
-    video_ck_duration: number;
     preview_ffmpeg_duration: number;
     preview_ck_duration: number;
     preview_http_duration: number;
@@ -215,6 +215,65 @@ export declare const FileMetadata: z.ZodObject<{
     };
 }>;
 export type FileMetadata = z.infer<typeof FileMetadata>;
+export declare const ImagePreviewMetadata: z.ZodObject<{
+    file: z.ZodObject<{
+        name: z.ZodString;
+        content_type: z.ZodString;
+        size: z.ZodNumber;
+        mtime: z.ZodString;
+        md5: z.ZodString;
+        sha256: z.ZodString;
+        s3_version_id: z.ZodString;
+        s3_etag: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    }, {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    }>;
+    width: z.ZodNumber;
+    height: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    width: number;
+    height: number;
+    file: {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    };
+}, {
+    width: number;
+    height: number;
+    file: {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    };
+}>;
+export type ImagePreviewMetadata = z.infer<typeof ImagePreviewMetadata>;
 export declare const ImageMetadata: z.ZodObject<{
     file: z.ZodObject<{
         name: z.ZodString;
@@ -2522,48 +2581,78 @@ export declare const ImageMetadata: z.ZodObject<{
         };
     }>;
     preview: z.ZodObject<{
-        name: z.ZodString;
-        content_type: z.ZodString;
-        size: z.ZodNumber;
-        mtime: z.ZodString;
-        md5: z.ZodString;
-        sha256: z.ZodString;
-        s3_version_id: z.ZodString;
-        s3_etag: z.ZodString;
+        file: z.ZodObject<{
+            name: z.ZodString;
+            content_type: z.ZodString;
+            size: z.ZodNumber;
+            mtime: z.ZodString;
+            md5: z.ZodString;
+            sha256: z.ZodString;
+            s3_version_id: z.ZodString;
+            s3_etag: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }>;
+        width: z.ZodNumber;
+        height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }>;
     timings: z.ZodObject<{
-        image_http_duration: z.ZodNumber;
-        image_ck_duration: z.ZodNumber;
+        file_http_duration: z.ZodNumber;
+        file_ck_duration: z.ZodNumber;
         thumbnail_sharp_duration: z.ZodNumber;
         thumbnail_ck_duration: z.ZodNumber;
         thumbnail_http_duration: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
     }, {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
@@ -2580,8 +2669,8 @@ export declare const ImageMetadata: z.ZodObject<{
         s3_etag: string;
     };
     timings: {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
@@ -2695,14 +2784,18 @@ export declare const ImageMetadata: z.ZodObject<{
         };
     };
     preview: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     };
     exif?: {
         Image?: {
@@ -3091,8 +3184,8 @@ export declare const ImageMetadata: z.ZodObject<{
         s3_etag: string;
     };
     timings: {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
@@ -3206,14 +3299,18 @@ export declare const ImageMetadata: z.ZodObject<{
         };
     };
     preview: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     };
     exif?: {
         Image?: {
@@ -3592,6 +3689,65 @@ export declare const ImageMetadata: z.ZodObject<{
     } | undefined;
 }>;
 export type ImageMetadata = z.infer<typeof ImageMetadata>;
+export declare const VideoPreviewMetadata: z.ZodObject<{
+    file: z.ZodObject<{
+        name: z.ZodString;
+        content_type: z.ZodString;
+        size: z.ZodNumber;
+        mtime: z.ZodString;
+        md5: z.ZodString;
+        sha256: z.ZodString;
+        s3_version_id: z.ZodString;
+        s3_etag: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    }, {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    }>;
+    width: z.ZodNumber;
+    height: z.ZodNumber;
+}, "strip", z.ZodTypeAny, {
+    width: number;
+    height: number;
+    file: {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    };
+}, {
+    width: number;
+    height: number;
+    file: {
+        size: number;
+        name: string;
+        content_type: string;
+        mtime: string;
+        md5: string;
+        sha256: string;
+        s3_version_id: string;
+        s3_etag: string;
+    };
+}>;
+export type VideoPreviewMetadata = z.infer<typeof VideoPreviewMetadata>;
 export declare const VideoMetadata: z.ZodObject<{
     file: z.ZodObject<{
         name: z.ZodString;
@@ -4013,36 +4169,66 @@ export declare const VideoMetadata: z.ZodObject<{
         };
     }>;
     previews: z.ZodArray<z.ZodObject<{
-        name: z.ZodString;
-        content_type: z.ZodString;
-        size: z.ZodNumber;
-        mtime: z.ZodString;
-        md5: z.ZodString;
-        sha256: z.ZodString;
-        s3_version_id: z.ZodString;
-        s3_etag: z.ZodString;
+        file: z.ZodObject<{
+            name: z.ZodString;
+            content_type: z.ZodString;
+            size: z.ZodNumber;
+            mtime: z.ZodString;
+            md5: z.ZodString;
+            sha256: z.ZodString;
+            s3_version_id: z.ZodString;
+            s3_etag: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }>;
+        width: z.ZodNumber;
+        height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }>, "many">;
     timings: z.ZodObject<{
-        video_http_duration: z.ZodNumber;
-        video_ck_duration: z.ZodNumber;
+        file_http_duration: z.ZodNumber;
+        file_ck_duration: z.ZodNumber;
         preview_ffmpeg_duration: z.ZodNumber;
         preview_ck_duration: z.ZodNumber;
         preview_http_duration: z.ZodNumber;
@@ -4051,21 +4237,21 @@ export declare const VideoMetadata: z.ZodObject<{
         thumbnail_ck_duration: z.ZodArray<z.ZodNumber, "many">;
         thumbnail_http_duration: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
         thumbnail_ffmpeg_duration: number;
     }, {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
@@ -4083,11 +4269,11 @@ export declare const VideoMetadata: z.ZodObject<{
         s3_etag: string;
     };
     timings: {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
@@ -4169,14 +4355,18 @@ export declare const VideoMetadata: z.ZodObject<{
         };
     };
     previews: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }[];
 }, {
     file: {
@@ -4190,11 +4380,11 @@ export declare const VideoMetadata: z.ZodObject<{
         s3_etag: string;
     };
     timings: {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
@@ -4276,14 +4466,18 @@ export declare const VideoMetadata: z.ZodObject<{
         };
     };
     previews: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }[];
 }>;
 export type VideoMetadata = z.infer<typeof VideoMetadata>;
@@ -6594,48 +6788,78 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         };
     }>;
     preview: z.ZodObject<{
-        name: z.ZodString;
-        content_type: z.ZodString;
-        size: z.ZodNumber;
-        mtime: z.ZodString;
-        md5: z.ZodString;
-        sha256: z.ZodString;
-        s3_version_id: z.ZodString;
-        s3_etag: z.ZodString;
+        file: z.ZodObject<{
+            name: z.ZodString;
+            content_type: z.ZodString;
+            size: z.ZodNumber;
+            mtime: z.ZodString;
+            md5: z.ZodString;
+            sha256: z.ZodString;
+            s3_version_id: z.ZodString;
+            s3_etag: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }>;
+        width: z.ZodNumber;
+        height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }>;
     timings: z.ZodObject<{
-        image_http_duration: z.ZodNumber;
-        image_ck_duration: z.ZodNumber;
+        file_http_duration: z.ZodNumber;
+        file_ck_duration: z.ZodNumber;
         thumbnail_sharp_duration: z.ZodNumber;
         thumbnail_ck_duration: z.ZodNumber;
         thumbnail_http_duration: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
     }, {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
@@ -6652,8 +6876,8 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         s3_etag: string;
     };
     timings: {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
@@ -6767,14 +6991,18 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         };
     };
     preview: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     };
     exif?: {
         Image?: {
@@ -7163,8 +7391,8 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         s3_etag: string;
     };
     timings: {
-        image_http_duration: number;
-        image_ck_duration: number;
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number;
         thumbnail_ck_duration: number;
         thumbnail_http_duration: number;
@@ -7278,14 +7506,18 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         };
     };
     preview: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     };
     exif?: {
         Image?: {
@@ -8083,36 +8315,66 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         };
     }>;
     previews: z.ZodArray<z.ZodObject<{
-        name: z.ZodString;
-        content_type: z.ZodString;
-        size: z.ZodNumber;
-        mtime: z.ZodString;
-        md5: z.ZodString;
-        sha256: z.ZodString;
-        s3_version_id: z.ZodString;
-        s3_etag: z.ZodString;
+        file: z.ZodObject<{
+            name: z.ZodString;
+            content_type: z.ZodString;
+            size: z.ZodNumber;
+            mtime: z.ZodString;
+            md5: z.ZodString;
+            sha256: z.ZodString;
+            s3_version_id: z.ZodString;
+            s3_etag: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }, {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        }>;
+        width: z.ZodNumber;
+        height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }, {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }>, "many">;
     timings: z.ZodObject<{
-        video_http_duration: z.ZodNumber;
-        video_ck_duration: z.ZodNumber;
+        file_http_duration: z.ZodNumber;
+        file_ck_duration: z.ZodNumber;
         preview_ffmpeg_duration: z.ZodNumber;
         preview_ck_duration: z.ZodNumber;
         preview_http_duration: z.ZodNumber;
@@ -8121,21 +8383,21 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         thumbnail_ck_duration: z.ZodArray<z.ZodNumber, "many">;
         thumbnail_http_duration: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
         thumbnail_ffmpeg_duration: number;
     }, {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
@@ -8153,11 +8415,11 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         s3_etag: string;
     };
     timings: {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
@@ -8239,14 +8501,18 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         };
     };
     previews: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }[];
 }, {
     file: {
@@ -8260,11 +8526,11 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         s3_etag: string;
     };
     timings: {
+        file_http_duration: number;
+        file_ck_duration: number;
         thumbnail_sharp_duration: number[];
         thumbnail_ck_duration: number[];
         thumbnail_http_duration: number[];
-        video_http_duration: number;
-        video_ck_duration: number;
         preview_ffmpeg_duration: number;
         preview_ck_duration: number;
         preview_http_duration: number;
@@ -8346,14 +8612,18 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         };
     };
     previews: {
-        size: number;
-        name: string;
-        content_type: string;
-        mtime: string;
-        md5: string;
-        sha256: string;
-        s3_version_id: string;
-        s3_etag: string;
+        width: number;
+        height: number;
+        file: {
+            size: number;
+            name: string;
+            content_type: string;
+            mtime: string;
+            md5: string;
+            sha256: string;
+            s3_version_id: string;
+            s3_etag: string;
+        };
     }[];
 }>, z.ZodObject<{
     file: z.ZodObject<{
