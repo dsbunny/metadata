@@ -1,4 +1,7 @@
 # Changelog
+## v2.1.4
+- Extend preview metadata to include s3 part sizes, enabling re-processing.
+
 ## v2.0.3
 - Extend preview metadata to include basic image dimensions.
 - Rename image and video duration metadata to `file_` prefix to match `FileTimings`.

@@ -71,6 +71,7 @@ export declare const FileStatAndChecksums: z.ZodObject<{
     sha256: z.ZodString;
     s3_version_id: z.ZodString;
     s3_etag: z.ZodString;
+    s3_parts: z.ZodArray<z.ZodNumber, "many">;
 }, "strip", z.ZodTypeAny, {
     size: number;
     name: string;
@@ -80,6 +81,7 @@ export declare const FileStatAndChecksums: z.ZodObject<{
     sha256: string;
     s3_version_id: string;
     s3_etag: string;
+    s3_parts: number[];
 }, {
     size: number;
     name: string;
@@ -89,6 +91,7 @@ export declare const FileStatAndChecksums: z.ZodObject<{
     sha256: string;
     s3_version_id: string;
     s3_etag: string;
+    s3_parts: number[];
 }>;
 export type FileStatAndChecksums = z.infer<typeof FileStatAndChecksums>;
 export declare const BaseMetadata: z.ZodObject<{
@@ -101,6 +104,7 @@ export declare const BaseMetadata: z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -110,6 +114,7 @@ export declare const BaseMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -119,6 +124,7 @@ export declare const BaseMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
 }, "strip", z.ZodTypeAny, {
     file: {
@@ -130,6 +136,7 @@ export declare const BaseMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
 }, {
     file: {
@@ -141,6 +148,7 @@ export declare const BaseMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
 }>;
 export type BaseMetadata = z.infer<typeof BaseMetadata>;
@@ -154,6 +162,7 @@ export declare const FileMetadata: z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -163,6 +172,7 @@ export declare const FileMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -172,6 +182,7 @@ export declare const FileMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
@@ -193,6 +204,7 @@ export declare const FileMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -208,6 +220,7 @@ export declare const FileMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -225,6 +238,7 @@ export declare const ImagePreviewMetadata: z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -234,6 +248,7 @@ export declare const ImagePreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -243,6 +258,7 @@ export declare const ImagePreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     width: z.ZodNumber;
     height: z.ZodNumber;
@@ -258,6 +274,7 @@ export declare const ImagePreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
 }, {
     width: number;
@@ -271,6 +288,7 @@ export declare const ImagePreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
 }>;
 export type ImagePreviewMetadata = z.infer<typeof ImagePreviewMetadata>;
@@ -284,6 +302,7 @@ export declare const ImageMetadata: z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -293,6 +312,7 @@ export declare const ImageMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -302,6 +322,7 @@ export declare const ImageMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     sharp: z.ZodObject<{
         orientation: z.ZodOptional<z.ZodNumber>;
@@ -2590,6 +2611,7 @@ export declare const ImageMetadata: z.ZodObject<{
             sha256: z.ZodString;
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
+            s3_parts: z.ZodArray<z.ZodNumber, "many">;
         }, "strip", z.ZodTypeAny, {
             size: number;
             name: string;
@@ -2599,6 +2621,7 @@ export declare const ImageMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }, {
             size: number;
             name: string;
@@ -2608,6 +2631,7 @@ export declare const ImageMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }>;
         width: z.ZodNumber;
         height: z.ZodNumber;
@@ -2623,6 +2647,7 @@ export declare const ImageMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }, {
         width: number;
@@ -2636,6 +2661,7 @@ export declare const ImageMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }>;
     timings: z.ZodObject<{
@@ -2667,6 +2693,7 @@ export declare const ImageMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -2795,6 +2822,7 @@ export declare const ImageMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     };
     exif?: {
@@ -3182,6 +3210,7 @@ export declare const ImageMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -3310,6 +3339,7 @@ export declare const ImageMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     };
     exif?: {
@@ -3699,6 +3729,7 @@ export declare const VideoPreviewMetadata: z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -3708,6 +3739,7 @@ export declare const VideoPreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -3717,6 +3749,7 @@ export declare const VideoPreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     width: z.ZodNumber;
     height: z.ZodNumber;
@@ -3732,6 +3765,7 @@ export declare const VideoPreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
 }, {
     width: number;
@@ -3745,6 +3779,7 @@ export declare const VideoPreviewMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
 }>;
 export type VideoPreviewMetadata = z.infer<typeof VideoPreviewMetadata>;
@@ -3758,6 +3793,7 @@ export declare const VideoMetadata: z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -3767,6 +3803,7 @@ export declare const VideoMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -3776,6 +3813,7 @@ export declare const VideoMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     ffprobe: z.ZodObject<{
         streams: z.ZodArray<z.ZodObject<{
@@ -4178,6 +4216,7 @@ export declare const VideoMetadata: z.ZodObject<{
             sha256: z.ZodString;
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
+            s3_parts: z.ZodArray<z.ZodNumber, "many">;
         }, "strip", z.ZodTypeAny, {
             size: number;
             name: string;
@@ -4187,6 +4226,7 @@ export declare const VideoMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }, {
             size: number;
             name: string;
@@ -4196,6 +4236,7 @@ export declare const VideoMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }>;
         width: z.ZodNumber;
         height: z.ZodNumber;
@@ -4211,6 +4252,7 @@ export declare const VideoMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }, {
         width: number;
@@ -4224,6 +4266,7 @@ export declare const VideoMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }>, "many">;
     timings: z.ZodObject<{
@@ -4267,6 +4310,7 @@ export declare const VideoMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -4366,6 +4410,7 @@ export declare const VideoMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }[];
 }, {
@@ -4378,6 +4423,7 @@ export declare const VideoMetadata: z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -4477,6 +4523,7 @@ export declare const VideoMetadata: z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }[];
 }>;
@@ -4491,6 +4538,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -4500,6 +4548,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -4509,6 +4558,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     sharp: z.ZodObject<{
         orientation: z.ZodOptional<z.ZodNumber>;
@@ -6797,6 +6847,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: z.ZodString;
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
+            s3_parts: z.ZodArray<z.ZodNumber, "many">;
         }, "strip", z.ZodTypeAny, {
             size: number;
             name: string;
@@ -6806,6 +6857,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }, {
             size: number;
             name: string;
@@ -6815,6 +6867,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }>;
         width: z.ZodNumber;
         height: z.ZodNumber;
@@ -6830,6 +6883,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }, {
         width: number;
@@ -6843,6 +6897,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }>;
     timings: z.ZodObject<{
@@ -6874,6 +6929,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -7002,6 +7058,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     };
     exif?: {
@@ -7389,6 +7446,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -7517,6 +7575,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     };
     exif?: {
@@ -7904,6 +7963,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -7913,6 +7973,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -7922,6 +7983,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     ffprobe: z.ZodObject<{
         streams: z.ZodArray<z.ZodObject<{
@@ -8324,6 +8386,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: z.ZodString;
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
+            s3_parts: z.ZodArray<z.ZodNumber, "many">;
         }, "strip", z.ZodTypeAny, {
             size: number;
             name: string;
@@ -8333,6 +8396,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }, {
             size: number;
             name: string;
@@ -8342,6 +8406,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         }>;
         width: z.ZodNumber;
         height: z.ZodNumber;
@@ -8357,6 +8422,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }, {
         width: number;
@@ -8370,6 +8436,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }>, "many">;
     timings: z.ZodObject<{
@@ -8413,6 +8480,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -8512,6 +8580,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }[];
 }, {
@@ -8524,6 +8593,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -8623,6 +8693,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
             sha256: string;
             s3_version_id: string;
             s3_etag: string;
+            s3_parts: number[];
         };
     }[];
 }>, z.ZodObject<{
@@ -8635,6 +8706,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: z.ZodString;
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber, "many">;
     }, "strip", z.ZodTypeAny, {
         size: number;
         name: string;
@@ -8644,6 +8716,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }, {
         size: number;
         name: string;
@@ -8653,6 +8726,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     }>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
@@ -8674,6 +8748,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;
@@ -8689,6 +8764,7 @@ export declare const Metadata: z.ZodUnion<[z.ZodObject<{
         sha256: string;
         s3_version_id: string;
         s3_etag: string;
+        s3_parts: number[];
     };
     timings: {
         file_http_duration: number;

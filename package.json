@@ -1,6 +1,6 @@
 {
   "name": "@dsbunny/metadata",
-  "version": "2.0.3",
+  "version": "2.1.4",
   "description": "ZOD metadata for media stored in the DSBunny DAM",
   "main": "dist/index.js",
   "scripts": {

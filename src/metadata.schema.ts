@@ -74,6 +74,8 @@ export const FileStatAndChecksums = z.object({
 		.describe('The version ID of the file in S3.'),
 	s3_etag: z.string().min(2).max(2048)
 		.describe('The ETag of the file in S3.'),
+	s3_parts: z.array(z.number().min(20).max(5497558138880)).min(1).max(10000)
+		.describe('The size of each part of the file in S3.'),
 })
 	.describe('The file metadata.');
 export type FileStatAndChecksums = z.infer<typeof FileStatAndChecksums>;
