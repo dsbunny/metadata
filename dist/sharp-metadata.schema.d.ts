@@ -63,13 +63,13 @@ export declare const SharpMetadata: z.ZodObject<{
     resolutionUnit: z.ZodOptional<z.ZodEnum<["inch", "cm"]>>;
     formatMagick: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    orientation?: number | undefined;
-    format?: "avif" | "dz" | "fits" | "gif" | "heif" | "input" | "jpeg" | "jpg" | "jp2" | "jxl" | "magick" | "openslide" | "pdf" | "png" | "ppm" | "raw" | "svg" | "tiff" | "tif" | "v" | "webp" | undefined;
-    size?: number | undefined;
     width?: number | undefined;
     height?: number | undefined;
-    space?: "multiband" | "b-w" | "bw" | "cmyk" | "srgb" | undefined;
     channels?: number | undefined;
+    size?: number | undefined;
+    format?: "avif" | "dz" | "fits" | "gif" | "heif" | "input" | "jpeg" | "jpg" | "jp2" | "jxl" | "magick" | "openslide" | "pdf" | "png" | "ppm" | "raw" | "svg" | "tiff" | "tif" | "v" | "webp" | undefined;
+    orientation?: number | undefined;
+    space?: "multiband" | "b-w" | "bw" | "cmyk" | "srgb" | undefined;
     depth?: string | undefined;
     density?: number | undefined;
     chromaSubsampling?: string | undefined;
@@ -95,13 +95,13 @@ export declare const SharpMetadata: z.ZodObject<{
     resolutionUnit?: "inch" | "cm" | undefined;
     formatMagick?: string | undefined;
 }, {
-    orientation?: number | undefined;
-    format?: "avif" | "dz" | "fits" | "gif" | "heif" | "input" | "jpeg" | "jpg" | "jp2" | "jxl" | "magick" | "openslide" | "pdf" | "png" | "ppm" | "raw" | "svg" | "tiff" | "tif" | "v" | "webp" | undefined;
-    size?: number | undefined;
     width?: number | undefined;
     height?: number | undefined;
-    space?: "multiband" | "b-w" | "bw" | "cmyk" | "srgb" | undefined;
     channels?: number | undefined;
+    size?: number | undefined;
+    format?: "avif" | "dz" | "fits" | "gif" | "heif" | "input" | "jpeg" | "jpg" | "jp2" | "jxl" | "magick" | "openslide" | "pdf" | "png" | "ppm" | "raw" | "svg" | "tiff" | "tif" | "v" | "webp" | undefined;
+    orientation?: number | undefined;
+    space?: "multiband" | "b-w" | "bw" | "cmyk" | "srgb" | undefined;
     depth?: string | undefined;
     density?: number | undefined;
     chromaSubsampling?: string | undefined;

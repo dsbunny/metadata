@@ -205,7 +205,7 @@ const ImageTags = z.object({
 		.describe('This optional tag encodes the time zone of the camera clock (relative to Greenwich Mean Time) used to create the DataTimeOriginal tag-value when the picture was taken. It may also contain the time zone offset of the clock used to create the DateTime tag-value when the image was modified.'),
 	SelfTimerMode: z.number()
 		.describe('Number of seconds image capture was delayed from button press.'),
-	DateTimeOriginal: z.string()
+	DateTimeOriginal: z.string().datetime()
 		.describe('The date and time when the original image data was generated.'),
 	CompressedBitsPerPixel: z.number()
 		.describe('Specific to compressed data; states the compressed bits per pixel.'),
@@ -402,7 +402,7 @@ const ImageTags = z.object({
 		.describe('A unique ID of the conversion settings (for example, MD5 digest) used to render the preview stored in the IFD.'),
 	PreviewColorSpace: z.number()
 		.describe('This tag specifies the color space in which the rendered preview in this IFD is stored. The default value for this tag is sRGB for color previews and Gray Gamma 2.2 for monochrome previews.'),
-	PreviewDateTime: z.string()
+	PreviewDateTime: z.string().datetime()
 		.describe('This tag is an ASCII string containing the name of the date/time at which the preview stored in the IFD was rendered. The date/time is encoded using ISO 8601 format.'),
 	//RawImageDigest: z.buffer()
 	//	.describe('This tag is an MD5 digest of the raw image data. All pixels in the image are processed in row-scan order. Each pixel is zero padded to 16 or 32 bits deep (16-bit for data less than or equal to 16 bits deep, 32-bit otherwise). The data for each pixel is processed in little-endian byte order.'),

@@ -12,6 +12,7 @@ export declare const IptcProfile: z.ZodObject<{
     copyright: z.ZodOptional<z.ZodString>;
     category: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
+    copyright?: string | undefined;
     title?: string | undefined;
     caption?: string | undefined;
     credit?: string | undefined;
@@ -21,9 +22,9 @@ export declare const IptcProfile: z.ZodObject<{
     bylineTitle?: string | undefined;
     captionWriter?: string | undefined;
     headline?: string | undefined;
-    copyright?: string | undefined;
     category?: string | undefined;
 }, {
+    copyright?: string | undefined;
     title?: string | undefined;
     caption?: string | undefined;
     credit?: string | undefined;
@@ -33,7 +34,6 @@ export declare const IptcProfile: z.ZodObject<{
     bylineTitle?: string | undefined;
     captionWriter?: string | undefined;
     headline?: string | undefined;
-    copyright?: string | undefined;
     category?: string | undefined;
 }>;
 export type IptcProfile = z.infer<typeof IptcProfile>;

@@ -47,6 +47,7 @@ export declare const FfprobeStream: z.ZodObject<{
     profile: z.ZodOptional<z.ZodString>;
     codec_type: z.ZodOptional<z.ZodString>;
     codec_time_base: z.ZodOptional<z.ZodString>;
+    codec_tag_string: z.ZodOptional<z.ZodString>;
     codec_tag: z.ZodOptional<z.ZodString>;
     width: z.ZodOptional<z.ZodNumber>;
     height: z.ZodOptional<z.ZodNumber>;
@@ -132,6 +133,7 @@ export declare const FfprobeStream: z.ZodObject<{
     profile?: string | undefined;
     codec_type?: string | undefined;
     codec_time_base?: string | undefined;
+    codec_tag_string?: string | undefined;
     codec_tag?: string | undefined;
     width?: number | undefined;
     height?: number | undefined;
@@ -191,6 +193,7 @@ export declare const FfprobeStream: z.ZodObject<{
     profile?: string | undefined;
     codec_type?: string | undefined;
     codec_time_base?: string | undefined;
+    codec_tag_string?: string | undefined;
     codec_tag?: string | undefined;
     width?: number | undefined;
     height?: number | undefined;
@@ -258,27 +261,27 @@ export declare const FfprobeFormat: z.ZodObject<{
     probe_score: z.ZodOptional<z.ZodNumber>;
     tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodNumber]>>>;
 }, "strip", z.ZodTypeAny, {
+    start_time?: number | undefined;
+    duration?: number | undefined;
+    bit_rate?: number | undefined;
     filename?: string | undefined;
     nb_streams?: number | undefined;
     nb_programs?: number | undefined;
     format_name?: string | undefined;
     format_long_name?: string | undefined;
-    start_time?: number | undefined;
-    duration?: number | undefined;
     size?: number | undefined;
-    bit_rate?: number | undefined;
     probe_score?: number | undefined;
     tags?: Record<string, string | number> | undefined;
 }, {
+    start_time?: number | undefined;
+    duration?: number | undefined;
+    bit_rate?: number | undefined;
     filename?: string | undefined;
     nb_streams?: number | undefined;
     nb_programs?: number | undefined;
     format_name?: string | undefined;
     format_long_name?: string | undefined;
-    start_time?: number | undefined;
-    duration?: number | undefined;
     size?: number | undefined;
-    bit_rate?: number | undefined;
     probe_score?: number | undefined;
     tags?: Record<string, string | number> | undefined;
 }>;
@@ -291,6 +294,7 @@ export declare const FfprobeData: z.ZodObject<{
         profile: z.ZodOptional<z.ZodString>;
         codec_type: z.ZodOptional<z.ZodString>;
         codec_time_base: z.ZodOptional<z.ZodString>;
+        codec_tag_string: z.ZodOptional<z.ZodString>;
         codec_tag: z.ZodOptional<z.ZodString>;
         width: z.ZodOptional<z.ZodNumber>;
         height: z.ZodOptional<z.ZodNumber>;
@@ -376,6 +380,7 @@ export declare const FfprobeData: z.ZodObject<{
         profile?: string | undefined;
         codec_type?: string | undefined;
         codec_time_base?: string | undefined;
+        codec_tag_string?: string | undefined;
         codec_tag?: string | undefined;
         width?: number | undefined;
         height?: number | undefined;
@@ -435,6 +440,7 @@ export declare const FfprobeData: z.ZodObject<{
         profile?: string | undefined;
         codec_type?: string | undefined;
         codec_time_base?: string | undefined;
+        codec_tag_string?: string | undefined;
         codec_tag?: string | undefined;
         width?: number | undefined;
         height?: number | undefined;
@@ -501,27 +507,27 @@ export declare const FfprobeData: z.ZodObject<{
         probe_score: z.ZodOptional<z.ZodNumber>;
         tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[z.ZodString, z.ZodNumber]>>>;
     }, "strip", z.ZodTypeAny, {
+        start_time?: number | undefined;
+        duration?: number | undefined;
+        bit_rate?: number | undefined;
         filename?: string | undefined;
         nb_streams?: number | undefined;
         nb_programs?: number | undefined;
         format_name?: string | undefined;
         format_long_name?: string | undefined;
-        start_time?: number | undefined;
-        duration?: number | undefined;
         size?: number | undefined;
-        bit_rate?: number | undefined;
         probe_score?: number | undefined;
         tags?: Record<string, string | number> | undefined;
     }, {
+        start_time?: number | undefined;
+        duration?: number | undefined;
+        bit_rate?: number | undefined;
         filename?: string | undefined;
         nb_streams?: number | undefined;
         nb_programs?: number | undefined;
         format_name?: string | undefined;
         format_long_name?: string | undefined;
-        start_time?: number | undefined;
-        duration?: number | undefined;
         size?: number | undefined;
-        bit_rate?: number | undefined;
         probe_score?: number | undefined;
         tags?: Record<string, string | number> | undefined;
     }>;
@@ -533,6 +539,7 @@ export declare const FfprobeData: z.ZodObject<{
         profile?: string | undefined;
         codec_type?: string | undefined;
         codec_time_base?: string | undefined;
+        codec_tag_string?: string | undefined;
         codec_tag?: string | undefined;
         width?: number | undefined;
         height?: number | undefined;
@@ -587,15 +594,15 @@ export declare const FfprobeData: z.ZodObject<{
         rotation?: string | number | undefined;
     }[];
     format: {
+        start_time?: number | undefined;
+        duration?: number | undefined;
+        bit_rate?: number | undefined;
         filename?: string | undefined;
         nb_streams?: number | undefined;
         nb_programs?: number | undefined;
         format_name?: string | undefined;
         format_long_name?: string | undefined;
-        start_time?: number | undefined;
-        duration?: number | undefined;
         size?: number | undefined;
-        bit_rate?: number | undefined;
         probe_score?: number | undefined;
         tags?: Record<string, string | number> | undefined;
     };
@@ -607,6 +614,7 @@ export declare const FfprobeData: z.ZodObject<{
         profile?: string | undefined;
         codec_type?: string | undefined;
         codec_time_base?: string | undefined;
+        codec_tag_string?: string | undefined;
         codec_tag?: string | undefined;
         width?: number | undefined;
         height?: number | undefined;
@@ -661,15 +669,15 @@ export declare const FfprobeData: z.ZodObject<{
         rotation?: string | number | undefined;
     }[];
     format: {
+        start_time?: number | undefined;
+        duration?: number | undefined;
+        bit_rate?: number | undefined;
         filename?: string | undefined;
         nb_streams?: number | undefined;
         nb_programs?: number | undefined;
         format_name?: string | undefined;
         format_long_name?: string | undefined;
-        start_time?: number | undefined;
-        duration?: number | undefined;
         size?: number | undefined;
-        bit_rate?: number | undefined;
         probe_score?: number | undefined;
         tags?: Record<string, string | number> | undefined;
     };

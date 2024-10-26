@@ -45,8 +45,8 @@ export const FfprobeStream = z.object({
 		.describe('The type of the codec.'),
 	codec_time_base: z.string().optional()
 		.describe('The time base of the codec.'),
-	//codec_tag_string: z.string().optional().  // "[0][0][0][0]", use "codec_tag" instead.
-	//	.describe('The tag string of the codec.'),
+	codec_tag_string: z.string().optional()
+		.describe('The tag string of the codec.'),
 	codec_tag: z.string().optional()
 		.describe('The tag of the codec.'),
 	width: z.number().optional()

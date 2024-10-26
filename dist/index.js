@@ -1,25 +1,11 @@
-"use strict";
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./exif-metadata.schema.js"), exports);
-__exportStar(require("./ffprobe-data.schema.js"), exports);
-__exportStar(require("./icc-profile.schema.js"), exports);
-__exportStar(require("./iptc-profile.schema.js"), exports);
-__exportStar(require("./metadata.schema.js"), exports);
-__exportStar(require("./sharp-metadata.schema.js"), exports);
-__exportStar(require("./xmp-profile.schema.js"), exports);
+export * from './exif-metadata.schema.js';
+export * from './ffprobe-data.schema.js';
+export * from './file.js';
+export * from './icc-profile.schema.js';
+export * from './iptc-profile.schema.js';
+export * from './metadata.schema.js';
+export * from './timings.schema.js';
+export * from './sharp-metadata.schema.js';
+export * from './xmp-profile.schema.js';
 //# sourceMappingURL=index.js.map

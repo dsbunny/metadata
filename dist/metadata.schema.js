@@ -1,123 +1,149 @@
-"use strict";
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Metadata = exports.VideoMetadata = exports.VideoPreviewMetadata = exports.ImageMetadata = exports.ImagePreviewMetadata = exports.FileMetadata = exports.BaseMetadata = exports.FileStatAndChecksums = exports.VideoTimings = exports.ImageTimings = exports.FileTimings = void 0;
-const zod_1 = require("zod");
-const sharp_metadata_schema_js_1 = require("./sharp-metadata.schema.js");
-const exif_metadata_schema_js_1 = require("./exif-metadata.schema.js");
-const icc_profile_schema_js_1 = require("./icc-profile.schema.js");
-const iptc_profile_schema_js_1 = require("./iptc-profile.schema.js");
-const xmp_profile_schema_js_1 = require("./xmp-profile.schema.js");
-const ffprobe_data_schema_js_1 = require("./ffprobe-data.schema.js");
-// Internal performance timings
-exports.FileTimings = zod_1.z.object({
-    file_http_duration: zod_1.z.number()
-        .describe('Time taken to download the file from the HTTP server.'),
-    file_ck_duration: zod_1.z.number()
-        .describe('Time taken to calculate the checksum of the file.'),
-})
-    .describe('Performance timings for the file.');
-exports.ImageTimings = zod_1.z.object({
-    file_http_duration: zod_1.z.number()
-        .describe('Time taken to download the image from the HTTP server.'),
-    file_ck_duration: zod_1.z.number()
-        .describe('Time taken to calculate the checksum of the image.'),
-    thumbnail_sharp_duration: zod_1.z.number()
-        .describe('Time taken to generate the thumbnail using sharp.'),
-    thumbnail_ck_duration: zod_1.z.number()
-        .describe('Time taken to calculate the checksum of the thumbnail.'),
-    thumbnail_http_duration: zod_1.z.number()
-        .describe('Time taken to upload the thumbnail to the HTTP server.'),
-})
-    .describe('Performance timings for the image.');
-exports.VideoTimings = zod_1.z.object({
-    file_http_duration: zod_1.z.number()
-        .describe('Time taken to download the video from the HTTP server.'),
-    file_ck_duration: zod_1.z.number()
-        .describe('Time taken to calculate the checksum of the video.'),
-    preview_ffmpeg_duration: zod_1.z.number()
-        .describe('Time taken to generate the preview using ffmpeg.'),
-    preview_ck_duration: zod_1.z.number()
-        .describe('Time taken to calculate the checksum of the preview.'),
-    preview_http_duration: zod_1.z.number()
-        .describe('Time taken to upload the preview to the HTTP server.'),
-    thumbnail_ffmpeg_duration: zod_1.z.number()
-        .describe('Time taken to generate the thumbnail using ffmpeg.'),
-    thumbnail_sharp_duration: zod_1.z.array(zod_1.z.number())
-        .describe('Time taken to generate the thumbnail using sharp.'),
-    thumbnail_ck_duration: zod_1.z.array(zod_1.z.number())
-        .describe('Time taken to calculate the checksum of the thumbnail.'),
-    thumbnail_http_duration: zod_1.z.array(zod_1.z.number())
-        .describe('Time taken to upload the thumbnail to the HTTP server.'),
-})
-    .describe('Performance timings for the video.');
-// File metadata
-exports.FileStatAndChecksums = zod_1.z.object({
-    name: zod_1.z.string().min(1).max(255) // Matching Google Drive.
-        .describe('The name of the file.'),
-    content_type: zod_1.z.string().min(5).max(255)
-        .describe('The MIME type of the file.'),
-    size: zod_1.z.number().min(20).max(5497558138880) // 5TB
-        .describe('The size of the file in bytes.'),
-    mtime: zod_1.z.string().datetime()
-        .describe('The last modified time of the file.'),
-    md5: zod_1.z.string().length(24) // Base64 encoded 16 bytes.
-        .describe('The MD5 checksum of the file.'),
-    sha256: zod_1.z.string().length(44)
-        .describe('The SHA-256 checksum of the file.'),
-    s3_version_id: zod_1.z.string().min(2).max(255)
-        .describe('The version ID of the file in S3.'),
-    s3_etag: zod_1.z.string().min(2).max(2048)
-        .describe('The ETag of the file in S3.'),
-    s3_parts: zod_1.z.array(zod_1.z.number().min(20).max(5497558138880)).min(1).max(10000)
-        .describe('The size of each part of the file in S3.'),
-})
-    .describe('The file metadata.');
+import { z } from 'zod';
+import { SharpMetadata } from './sharp-metadata.schema.js';
+import { ExifMetadata } from './exif-metadata.schema.js';
+import { IccProfile } from './icc-profile.schema.js';
+import { IptcProfile } from './iptc-profile.schema.js';
+import { XmpProfile } from './xmp-profile.schema.js';
+import { FfprobeData } from './ffprobe-data.schema.js';
+import { AnimatedPosterTimings, FileTimings, ImageTimings, MetadataTimings, PosterSeriesTimings, PosterTimings, PrevueTimings, TileSeriesTimings, VideoTimings, } from './timings.schema.js';
+import { FileStatAndChecksums } from './file.js';
+// #region Metadata
 // Base metadata for all files.
-exports.BaseMetadata = zod_1.z.object({
-    file: exports.FileStatAndChecksums,
+export const BaseMetadata = z.object({
+    type: z.literal('base'),
+    file: FileStatAndChecksums,
+    timings: FileTimings,
 });
-// Metadata for a generic file.
-exports.FileMetadata = exports.BaseMetadata.merge(zod_1.z.object({
-    timings: exports.FileTimings,
-}))
-    .describe('Metadata for a generic file.');
-// Metadata for an image file.
-exports.ImagePreviewMetadata = exports.BaseMetadata.merge(zod_1.z.object({
-    width: zod_1.z.number().int().positive(),
-    height: zod_1.z.number().int().positive(),
-}))
-    .describe('Metadata for an image preview.');
-exports.ImageMetadata = exports.BaseMetadata.merge(zod_1.z.object({
-    sharp: sharp_metadata_schema_js_1.SharpMetadata,
-    exif: exif_metadata_schema_js_1.ExifMetadata.optional(),
-    icc: icc_profile_schema_js_1.IccProfile.optional(),
-    iptc: iptc_profile_schema_js_1.IptcProfile.optional(),
-    xmp: xmp_profile_schema_js_1.XmpProfile.optional(),
-    ffprobe: ffprobe_data_schema_js_1.FfprobeData,
-    preview: exports.ImagePreviewMetadata,
-    timings: exports.ImageTimings,
+export const HintData = z.object({
+    type: z.literal('hint'),
+    poster: z.array(z.object({
+        quality: z.enum(['medium', 'high']),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+    })),
+})
+    .describe('Hint data for assets.');
+export const FileMetadata = BaseMetadata.merge(z.object({
+    type: z.literal('file'),
+    hint: HintData.optional(),
+}));
+export const ImageMetadata = BaseMetadata.merge(z.object({
+    type: z.literal('image'),
+    sharp: SharpMetadata,
+    exif: ExifMetadata.optional(),
+    icc: IccProfile.optional(),
+    iptc: IptcProfile.optional(),
+    xmp: XmpProfile.optional(),
+    ffprobe: FfprobeData,
+    hint: HintData.optional(),
+    timings: ImageTimings,
 }))
     .describe('Metadata for an image file.');
-// Metadata for a video file.
-exports.VideoPreviewMetadata = exports.BaseMetadata.merge(zod_1.z.object({
-    width: zod_1.z.number().int().positive(),
-    height: zod_1.z.number().int().positive(),
-}))
-    .describe('Metadata for a video preview.');
-exports.VideoMetadata = exports.BaseMetadata.merge(zod_1.z.object({
-    ffprobe: ffprobe_data_schema_js_1.FfprobeData
+export const VideoMetadata = BaseMetadata.merge(z.object({
+    type: z.literal('video'),
+    ffprobe: FfprobeData
         .describe('Metadata from the ffprobe tool.'),
-    previews: zod_1.z.array(exports.VideoPreviewMetadata)
-        .describe('Video preview images.'),
-    timings: exports.VideoTimings,
+    hint: HintData.optional(),
+    timings: VideoTimings,
 }))
     .describe('Metadata for a video file.');
+// Media types that are not supported, primarily due to technical limitations.
+// Media can be rejected due to check rules.
+export const RejectedMetadata = BaseMetadata.merge(z.object({
+    type: z.literal('rejected'),
+    error_text: z.string(),
+}))
+    .describe('Metadata for an rejected file.');
 // Union of all metadata types.
-exports.Metadata = zod_1.z.union([
-    exports.ImageMetadata,
-    exports.VideoMetadata,
-    exports.FileMetadata,
+export const Metadata = z.discriminatedUnion('type', [
+    FileMetadata,
+    ImageMetadata,
+    VideoMetadata,
+    RejectedMetadata,
 ])
     .describe('Union of all metadata types.');
+// Encapsulation of metadata in a S3 object.
+export const MetadataMetadata = BaseMetadata.merge(z.object({
+    type: z.literal('metadata'),
+    timings: MetadataTimings,
+}))
+    .describe('Metadata for a metadata object.');
+// #endregion
+// #region Preview
+export const PosterMetadata = z.object({
+    type: z.literal('poster'),
+    poster: z.array(BaseMetadata.merge(z.object({
+        type: z.literal('poster-image'),
+        quality: z.enum(['medium', 'high']),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        blurhash: z.string().optional(),
+        timings: PosterTimings,
+    }))),
+})
+    .describe('Metadata for an image poster.');
+export const AnimatedPosterMetadata = z.object({
+    type: z.literal('animated-poster'),
+    poster: BaseMetadata.merge(z.object({
+        type: z.literal('animated-poster-image'),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        timings: AnimatedPosterTimings,
+    })),
+})
+    .describe('Metadata for an animated poster.');
+export const PosterSeriesMetadata = z.object({
+    type: z.literal('poster-series'),
+    series: z.array(BaseMetadata.merge(z.object({
+        type: z.literal('poster-series-image'),
+        index: z.number().int().min(1).max(3),
+        quality: z.enum(['medium', 'high']),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        blurhash: z.string().optional(),
+        timings: PosterSeriesTimings,
+    }))),
+})
+    .describe('Metadata for an image poster series.');
+export const TileSeriesMetadata = z.object({
+    type: z.literal('tile-series'),
+    series: z.array(BaseMetadata.merge(z.object({
+        type: z.literal('tile-series-image'),
+        index: z.number().int().min(1).max(9999),
+        count: z.number().int().min(1).max(9),
+        quality: z.enum(['low']),
+        start_time: z.number().int().min(0),
+        end_time: z.number().int().min(1),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        timings: TileSeriesTimings,
+    }))),
+})
+    .describe('Metadata for an image tile series.');
+export const PrevueMetadata = z.object({
+    type: z.literal('prevue'),
+    prevue: BaseMetadata.merge(z.object({
+        type: z.literal('prevue-video'),
+        width: z.number().int().positive(),
+        height: z.number().int().positive(),
+        timings: PrevueTimings,
+    })),
+})
+    .describe('Metadata for a video prevue.');
+// Union of all preview metadata types.
+export const PreviewMetadata = z.discriminatedUnion('type', [
+    PosterMetadata,
+    AnimatedPosterMetadata,
+    PosterSeriesMetadata,
+    TileSeriesMetadata,
+    PrevueMetadata,
+])
+    .describe('Union of all preview metadata types.');
+export const AllMetadata = z.discriminatedUnion('type', [
+    MetadataMetadata,
+    ...PreviewMetadata.options,
+])
+    .describe('Union of all metadata types.');
+// #endregion
 //# sourceMappingURL=metadata.schema.js.map

@@ -9,21 +9,21 @@ export declare const XmpProfile: z.ZodObject<{
     attribution: z.ZodOptional<z.ZodString>;
     terms: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    keywords?: string[] | undefined;
-    title?: string | undefined;
+    creator?: string | undefined;
     description?: string | undefined;
+    title?: string | undefined;
+    keywords?: string[] | undefined;
     rating?: number | undefined;
     location?: string | undefined;
-    creator?: string | undefined;
     attribution?: string | undefined;
     terms?: string | undefined;
 }, {
-    keywords?: string[] | undefined;
-    title?: string | undefined;
+    creator?: string | undefined;
     description?: string | undefined;
+    title?: string | undefined;
+    keywords?: string[] | undefined;
     rating?: number | undefined;
     location?: string | undefined;
-    creator?: string | undefined;
     attribution?: string | undefined;
     terms?: string | undefined;
 }>;
