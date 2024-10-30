@@ -1,4 +1,7 @@
 # Changelog
+## v5.1.13
+- Add `codecs` field to `VideoMetadata` for RFC 6381 support.
+
 ## v5.0.12
 - Add `hint` data field for including target poster resolution to reduce UI layout shifting.
 - Promote `PreviewMetadata` to discriminated union and thus embedded array data to enable.

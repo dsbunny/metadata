@@ -44,6 +44,8 @@ export const VideoMetadata = BaseMetadata.merge(z.object({
     type: z.literal('video'),
     ffprobe: FfprobeData
         .describe('Metadata from the ffprobe tool.'),
+    codecs: z.string().max(255).optional()
+        .describe('The codecs used in the video file, per RFC 6381.'),
     hint: HintData.optional(),
     timings: VideoTimings,
 }))

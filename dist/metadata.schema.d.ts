@@ -4093,6 +4093,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
             tags?: Record<string, string | number> | undefined;
         };
     }>;
+    codecs: z.ZodOptional<z.ZodString>;
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
@@ -4240,6 +4241,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
             quality: "medium" | "high";
         }[];
     } | undefined;
+    codecs?: string | undefined;
 }, {
     type: "video";
     file: {
@@ -4343,6 +4345,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
             quality: "medium" | "high";
         }[];
     } | undefined;
+    codecs?: string | undefined;
 }>;
 export type VideoMetadata = z.infer<typeof VideoMetadata>;
 export declare const RejectedMetadata: z.ZodObject<z.objectUtil.extendShape<{
@@ -8409,6 +8412,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
             tags?: Record<string, string | number> | undefined;
         };
     }>;
+    codecs: z.ZodOptional<z.ZodString>;
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
@@ -8556,6 +8560,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
             quality: "medium" | "high";
         }[];
     } | undefined;
+    codecs?: string | undefined;
 }, {
     type: "video";
     file: {
@@ -8659,6 +8664,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
             quality: "medium" | "high";
         }[];
     } | undefined;
+    codecs?: string | undefined;
 }>, z.ZodObject<z.objectUtil.extendShape<{
     type: z.ZodLiteral<"base">;
     file: z.ZodObject<{
