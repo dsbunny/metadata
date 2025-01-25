@@ -1,4 +1,9 @@
 # Changelog
+## v6.0.14
+- Extract out `TileSeriesMetadata` into a separate storage object and replace with `TileSeriesMetadataMetadata`.
+- Split apart _tile-series_ timing parameters into those for the entire set, and those per tile.
+- Add new timing parameters for storing the new _tile-series_ metadata.
+
 ## v5.1.13
 - Add `codecs` field to `VideoMetadata` for RFC 6381 support.
 

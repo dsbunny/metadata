@@ -16,6 +16,7 @@ import {
 	PosterTimings,
 	PrevueTimings,
 	TileSeriesTimings,
+	TileSeriesImageTimings,
 	VideoTimings,
 } from './timings.schema.js';
 import { FileStatAndChecksums } from './file.js';
@@ -64,7 +65,7 @@ export const VideoMetadata = BaseMetadata.merge(z.object({
 	type: z.literal('video'),
 	ffprobe: FfprobeData
 		.describe('Metadata from the ffprobe tool.'),
-	codecs: z.string().max(255).optional()
+	codecs: z.array(z.string().max(255)).optional()
 		.describe('The codecs used in the video file, per RFC 6381.'),
 	hint: HintData.optional(),
 	timings: VideoTimings,
@@ -153,11 +154,19 @@ export const TileSeriesMetadata = z.object({
 		end_time: z.number().int().min(1),
 		width: z.number().int().positive(),
 		height: z.number().int().positive(),
-		timings: TileSeriesTimings,
+		timings: TileSeriesImageTimings,
 	}))),
+	timings: TileSeriesTimings,
 })
 	.describe('Metadata for an image tile series.');
 export type TileSeriesMetadata = z.infer<typeof TileSeriesMetadata>;
+
+export const TileSeriesMetadataMetadata = BaseMetadata.merge(z.object({
+	type: z.literal('tile-series-metadata'),
+	timings: MetadataTimings,
+}))
+	.describe('Metadata for an image tile series metadata.');
+export type TileSeriesMetadataMetadata = z.infer<typeof TileSeriesMetadataMetadata>;
 
 export const PrevueMetadata = z.object({
 	type: z.literal('prevue'),
@@ -176,7 +185,7 @@ export const PreviewMetadata = z.discriminatedUnion('type', [
 	PosterMetadata,
 	AnimatedPosterMetadata,
 	PosterSeriesMetadata,
-	TileSeriesMetadata,
+	TileSeriesMetadataMetadata,
 	PrevueMetadata,
 ])
 	.describe('Union of all preview metadata types.');

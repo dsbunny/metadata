@@ -81,19 +81,26 @@ export const PosterSeriesTimings = z.object({
 	.describe('Performance timings for the poster series.');
 export type PosterSeriesTimings = z.infer<typeof PosterSeriesTimings>;
 
-export const TileSeriesTimings = z.object({
-	tile_series_ffmpeg_duration: z.number()
-		.describe('Time taken to generate the tile series using ffmpeg.'),
-	tile_series_avifenc_duration: z.number().optional()
-		.describe('Time taken to convert the tile series using avifenc.'),
-	tile_series_sharp_duration: z.number().optional()
-		.describe('Time taken to convert the tile series using sharp.'),
+export const TileSeriesImageTimings = z.object({
 	tile_series_ck_duration: z.number()
 		.describe('Time taken to calculate the checksum of the tile series.'),
 	tile_series_http_duration: z.number()
 		.describe('Time taken to upload the tile series to the HTTP server.'),
 })
 	.describe('Performance timings for the tile series.');
+export type TileSeriesImageTimings = z.infer<typeof TileSeriesImageTimings>;
+
+export const TileSeriesTimings = z.object({
+	tile_series_ffprobe_duration: z.number()
+		.describe('Time taken to probe the video using ffprobe.'),
+	tile_series_ffmpeg_duration: z.number()
+		.describe('Time taken to generate the tile series using ffmpeg.'),
+	tile_series_avifenc_duration: z.number().optional()
+		.describe('Time taken to convert the tile series using avifenc.'),
+	tile_series_sharp_duration: z.number().optional()
+		.describe('Time taken to convert the tile series using sharp.'),
+})
+	.describe('Performance timings for the tile series set.');
 export type TileSeriesTimings = z.infer<typeof TileSeriesTimings>;
 
 export const PrevueTimings = z.object({
