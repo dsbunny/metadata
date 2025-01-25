@@ -108,22 +108,30 @@ export declare const PosterSeriesTimings: z.ZodObject<{
     poster_series_sharp_duration?: number | undefined;
 }>;
 export type PosterSeriesTimings = z.infer<typeof PosterSeriesTimings>;
-export declare const TileSeriesTimings: z.ZodObject<{
-    tile_series_ffmpeg_duration: z.ZodNumber;
-    tile_series_avifenc_duration: z.ZodOptional<z.ZodNumber>;
-    tile_series_sharp_duration: z.ZodOptional<z.ZodNumber>;
+export declare const TileSeriesImageTimings: z.ZodObject<{
     tile_series_ck_duration: z.ZodNumber;
     tile_series_http_duration: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
-    tile_series_ffmpeg_duration: number;
     tile_series_ck_duration: number;
     tile_series_http_duration: number;
+}, {
+    tile_series_ck_duration: number;
+    tile_series_http_duration: number;
+}>;
+export type TileSeriesImageTimings = z.infer<typeof TileSeriesImageTimings>;
+export declare const TileSeriesTimings: z.ZodObject<{
+    tile_series_ffprobe_duration: z.ZodNumber;
+    tile_series_ffmpeg_duration: z.ZodNumber;
+    tile_series_avifenc_duration: z.ZodOptional<z.ZodNumber>;
+    tile_series_sharp_duration: z.ZodOptional<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    tile_series_ffprobe_duration: number;
+    tile_series_ffmpeg_duration: number;
     tile_series_avifenc_duration?: number | undefined;
     tile_series_sharp_duration?: number | undefined;
 }, {
+    tile_series_ffprobe_duration: number;
     tile_series_ffmpeg_duration: number;
-    tile_series_ck_duration: number;
-    tile_series_http_duration: number;
     tile_series_avifenc_duration?: number | undefined;
     tile_series_sharp_duration?: number | undefined;
 }>;
