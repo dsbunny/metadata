@@ -1,4 +1,7 @@
 # Changelog
+## v7.0.15
+- Add `tags` to `BaseMetadata` for transcoder generated tags.
+
 ## v6.0.14
 - Extract out `TileSeriesMetadata` into a separate storage object and replace with `TileSeriesMetadataMetadata`.
 - Split apart _tile-series_ timing parameters into those for the entire set, and those per tile.

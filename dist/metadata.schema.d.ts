@@ -45,8 +45,10 @@ export declare const BaseMetadata: z.ZodObject<{
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, "strip", z.ZodTypeAny, {
     type: "base";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -65,6 +67,7 @@ export declare const BaseMetadata: z.ZodObject<{
     };
 }, {
     type: "base";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -160,6 +163,7 @@ export declare const FileMetadata: z.ZodObject<z.objectUtil.extendShape<{
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"file">;
     hint: z.ZodOptional<z.ZodObject<{
@@ -194,6 +198,7 @@ export declare const FileMetadata: z.ZodObject<z.objectUtil.extendShape<{
     }>>;
 }>, "strip", z.ZodTypeAny, {
     type: "file";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -220,6 +225,7 @@ export declare const FileMetadata: z.ZodObject<z.objectUtil.extendShape<{
     } | undefined;
 }, {
     type: "file";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -292,6 +298,7 @@ export declare const ImageMetadata: z.ZodObject<z.objectUtil.extendShape<{
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"image">;
     sharp: z.ZodObject<{
@@ -2625,6 +2632,7 @@ export declare const ImageMetadata: z.ZodObject<z.objectUtil.extendShape<{
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "image";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -3137,6 +3145,7 @@ export declare const ImageMetadata: z.ZodObject<z.objectUtil.extendShape<{
     } | undefined;
 }, {
     type: "image";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -3695,6 +3704,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"video">;
     ffprobe: z.ZodObject<{
@@ -4140,6 +4150,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "video";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -4244,6 +4255,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
     codecs?: string[] | undefined;
 }, {
     type: "video";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -4394,11 +4406,13 @@ export declare const RejectedMetadata: z.ZodObject<z.objectUtil.extendShape<{
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"rejected">;
     error_text: z.ZodString;
 }>, "strip", z.ZodTypeAny, {
     type: "rejected";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -4418,6 +4432,7 @@ export declare const RejectedMetadata: z.ZodObject<z.objectUtil.extendShape<{
     error_text: string;
 }, {
     type: "rejected";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -4483,6 +4498,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"file">;
     hint: z.ZodOptional<z.ZodObject<{
@@ -4517,6 +4533,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     }>>;
 }>, "strip", z.ZodTypeAny, {
     type: "file";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -4543,6 +4560,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     } | undefined;
 }, {
     type: "file";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -4613,6 +4631,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"image">;
     sharp: z.ZodObject<{
@@ -6946,6 +6965,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "image";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -7458,6 +7478,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     } | undefined;
 }, {
     type: "image";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -8014,6 +8035,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"video">;
     ffprobe: z.ZodObject<{
@@ -8459,6 +8481,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "video";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -8563,6 +8586,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     codecs?: string[] | undefined;
 }, {
     type: "video";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -8711,11 +8735,13 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"rejected">;
     error_text: z.ZodString;
 }>, "strip", z.ZodTypeAny, {
     type: "rejected";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -8735,6 +8761,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     error_text: string;
 }, {
     type: "rejected";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -8800,6 +8827,7 @@ export declare const MetadataMetadata: z.ZodObject<z.objectUtil.extendShape<{
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"metadata">;
     timings: z.ZodObject<{
@@ -8811,6 +8839,7 @@ export declare const MetadataMetadata: z.ZodObject<z.objectUtil.extendShape<{
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -8828,6 +8857,7 @@ export declare const MetadataMetadata: z.ZodObject<z.objectUtil.extendShape<{
     };
 }, {
     type: "metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -8893,6 +8923,7 @@ export declare const PosterMetadata: z.ZodObject<{
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"poster-image">;
         quality: z.ZodEnum<["medium", "high"]>;
@@ -8925,6 +8956,7 @@ export declare const PosterMetadata: z.ZodObject<{
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -8951,6 +8983,7 @@ export declare const PosterMetadata: z.ZodObject<{
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -8980,6 +9013,7 @@ export declare const PosterMetadata: z.ZodObject<{
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9009,6 +9043,7 @@ export declare const PosterMetadata: z.ZodObject<{
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9082,6 +9117,7 @@ export declare const AnimatedPosterMetadata: z.ZodObject<{
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"animated-poster-image">;
         width: z.ZodNumber;
@@ -9103,6 +9139,7 @@ export declare const AnimatedPosterMetadata: z.ZodObject<{
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9124,6 +9161,7 @@ export declare const AnimatedPosterMetadata: z.ZodObject<{
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9148,6 +9186,7 @@ export declare const AnimatedPosterMetadata: z.ZodObject<{
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9172,6 +9211,7 @@ export declare const AnimatedPosterMetadata: z.ZodObject<{
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9240,6 +9280,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
@@ -9271,6 +9312,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9297,6 +9339,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9326,6 +9369,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9355,6 +9399,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9427,6 +9472,7 @@ export declare const TileSeriesMetadata: z.ZodObject<{
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"tile-series-image">;
         index: z.ZodNumber;
@@ -9452,6 +9498,7 @@ export declare const TileSeriesMetadata: z.ZodObject<{
         width: number;
         height: number;
         start_time: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9477,6 +9524,7 @@ export declare const TileSeriesMetadata: z.ZodObject<{
         width: number;
         height: number;
         start_time: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9527,6 +9575,7 @@ export declare const TileSeriesMetadata: z.ZodObject<{
         width: number;
         height: number;
         start_time: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9561,6 +9610,7 @@ export declare const TileSeriesMetadata: z.ZodObject<{
         width: number;
         height: number;
         start_time: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9629,6 +9679,7 @@ export declare const TileSeriesMetadataMetadata: z.ZodObject<z.objectUtil.extend
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"tile-series-metadata">;
     timings: z.ZodObject<{
@@ -9640,6 +9691,7 @@ export declare const TileSeriesMetadataMetadata: z.ZodObject<z.objectUtil.extend
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "tile-series-metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -9657,6 +9709,7 @@ export declare const TileSeriesMetadataMetadata: z.ZodObject<z.objectUtil.extend
     };
 }, {
     type: "tile-series-metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -9722,6 +9775,7 @@ export declare const PrevueMetadata: z.ZodObject<{
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"prevue-video">;
         width: z.ZodNumber;
@@ -9743,6 +9797,7 @@ export declare const PrevueMetadata: z.ZodObject<{
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9764,6 +9819,7 @@ export declare const PrevueMetadata: z.ZodObject<{
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9788,6 +9844,7 @@ export declare const PrevueMetadata: z.ZodObject<{
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9812,6 +9869,7 @@ export declare const PrevueMetadata: z.ZodObject<{
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9880,6 +9938,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"poster-image">;
         quality: z.ZodEnum<["medium", "high"]>;
@@ -9912,6 +9971,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9938,6 +9998,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9967,6 +10028,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -9996,6 +10058,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10067,6 +10130,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"animated-poster-image">;
         width: z.ZodNumber;
@@ -10088,6 +10152,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10109,6 +10174,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10133,6 +10199,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10157,6 +10224,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10223,6 +10291,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
@@ -10254,6 +10323,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10280,6 +10350,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10309,6 +10380,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10338,6 +10410,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10406,6 +10479,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"tile-series-metadata">;
     timings: z.ZodObject<{
@@ -10417,6 +10491,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "tile-series-metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -10434,6 +10509,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
     };
 }, {
     type: "tile-series-metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -10497,6 +10573,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"prevue-video">;
         width: z.ZodNumber;
@@ -10518,6 +10595,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10539,6 +10617,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10563,6 +10642,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10587,6 +10667,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10653,6 +10734,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"metadata">;
     timings: z.ZodObject<{
@@ -10664,6 +10746,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -10681,6 +10764,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
     };
 }, {
     type: "metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -10744,6 +10828,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"poster-image">;
         quality: z.ZodEnum<["medium", "high"]>;
@@ -10776,6 +10861,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10802,6 +10888,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10831,6 +10918,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10860,6 +10948,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10931,6 +11020,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"animated-poster-image">;
         width: z.ZodNumber;
@@ -10952,6 +11042,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10973,6 +11064,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -10997,6 +11089,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11021,6 +11114,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "animated-poster-image";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11087,6 +11181,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
@@ -11118,6 +11213,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11144,6 +11240,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11173,6 +11270,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11202,6 +11300,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         index: number;
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11270,6 +11369,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         file_http_duration: number;
         file_ck_duration: number;
     }>;
+    tags: z.ZodArray<z.ZodString, "many">;
 }, {
     type: z.ZodLiteral<"tile-series-metadata">;
     timings: z.ZodObject<{
@@ -11281,6 +11381,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
     }>;
 }>, "strip", z.ZodTypeAny, {
     type: "tile-series-metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -11298,6 +11399,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
     };
 }, {
     type: "tile-series-metadata";
+    tags: string[];
     file: {
         size: number;
         s3_filename: string;
@@ -11361,6 +11463,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             file_http_duration: number;
             file_ck_duration: number;
         }>;
+        tags: z.ZodArray<z.ZodString, "many">;
     }, {
         type: z.ZodLiteral<"prevue-video">;
         width: z.ZodNumber;
@@ -11382,6 +11485,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11403,6 +11507,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11427,6 +11532,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;
@@ -11451,6 +11557,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         type: "prevue-video";
         width: number;
         height: number;
+        tags: string[];
         file: {
             size: number;
             s3_filename: string;

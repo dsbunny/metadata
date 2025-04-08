@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 
-import { boolean, z } from 'zod';
+import { z } from 'zod';
 import { SharpMetadata } from './sharp-metadata.schema.js';
 import { ExifMetadata } from './exif-metadata.schema.js';
 import { IccProfile } from './icc-profile.schema.js';
@@ -27,6 +27,7 @@ export const BaseMetadata = z.object({
 	type: z.literal('base'),
 	file: FileStatAndChecksums,
 	timings: FileTimings,
+	tags: z.array(z.string().max(64)).max(100),
 });
 export type BaseMetadata = z.infer<typeof BaseMetadata>;
 
