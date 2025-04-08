@@ -27,7 +27,7 @@ export const BaseMetadata = z.object({
 	type: z.literal('base'),
 	file: FileStatAndChecksums,
 	timings: FileTimings,
-	tags: z.array(z.string().max(64)).max(100),
+	tags: z.array(z.string().max(64)).max(100).optional(),
 });
 export type BaseMetadata = z.infer<typeof BaseMetadata>;
 
