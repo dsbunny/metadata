@@ -89,31 +89,31 @@ export type BaseMetadata = z.infer<typeof BaseMetadata>;
 export declare const HintData: z.ZodObject<{
     type: z.ZodLiteral<"hint">;
     poster: z.ZodArray<z.ZodObject<{
-        quality: z.ZodEnum<["medium", "high"]>;
+        quality: z.ZodEnum<["medium", "high", "sample"]>;
         width: z.ZodNumber;
         height: z.ZodNumber;
     }, "strip", z.ZodTypeAny, {
         width: number;
         height: number;
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
     }, {
         width: number;
         height: number;
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     type: "hint";
     poster: {
         width: number;
         height: number;
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
     }[];
 }, {
     type: "hint";
     poster: {
         width: number;
         height: number;
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
     }[];
 }>;
 export type HintData = z.infer<typeof HintData>;
@@ -169,31 +169,31 @@ export declare const FileMetadata: z.ZodObject<z.objectUtil.extendShape<{
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
-            quality: z.ZodEnum<["medium", "high"]>;
+            quality: z.ZodEnum<["medium", "high", "sample"]>;
             width: z.ZodNumber;
             height: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }>>;
 }>, "strip", z.ZodTypeAny, {
@@ -220,7 +220,7 @@ export declare const FileMetadata: z.ZodObject<z.objectUtil.extendShape<{
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
 }, {
@@ -247,7 +247,7 @@ export declare const FileMetadata: z.ZodObject<z.objectUtil.extendShape<{
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
 }>;
@@ -2586,31 +2586,31 @@ export declare const ImageMetadata: z.ZodObject<z.objectUtil.extendShape<{
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
-            quality: z.ZodEnum<["medium", "high"]>;
+            quality: z.ZodEnum<["medium", "high", "sample"]>;
             width: z.ZodNumber;
             height: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }>>;
     timings: z.ZodObject<z.objectUtil.extendShape<{
@@ -2765,7 +2765,7 @@ export declare const ImageMetadata: z.ZodObject<z.objectUtil.extendShape<{
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     exif?: {
@@ -3278,7 +3278,7 @@ export declare const ImageMetadata: z.ZodObject<z.objectUtil.extendShape<{
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     exif?: {
@@ -4107,31 +4107,31 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
-            quality: z.ZodEnum<["medium", "high"]>;
+            quality: z.ZodEnum<["medium", "high", "sample"]>;
             width: z.ZodNumber;
             height: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }>>;
     timings: z.ZodObject<z.objectUtil.extendShape<{
@@ -4249,7 +4249,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     codecs?: string[] | undefined;
@@ -4354,7 +4354,7 @@ export declare const VideoMetadata: z.ZodObject<z.objectUtil.extendShape<{
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     codecs?: string[] | undefined;
@@ -4504,31 +4504,31 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
-            quality: z.ZodEnum<["medium", "high"]>;
+            quality: z.ZodEnum<["medium", "high", "sample"]>;
             width: z.ZodNumber;
             height: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }>>;
 }>, "strip", z.ZodTypeAny, {
@@ -4555,7 +4555,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
 }, {
@@ -4582,7 +4582,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
 }>, z.ZodObject<z.objectUtil.extendShape<{
@@ -6919,31 +6919,31 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
-            quality: z.ZodEnum<["medium", "high"]>;
+            quality: z.ZodEnum<["medium", "high", "sample"]>;
             width: z.ZodNumber;
             height: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }>>;
     timings: z.ZodObject<z.objectUtil.extendShape<{
@@ -7098,7 +7098,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     exif?: {
@@ -7611,7 +7611,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     exif?: {
@@ -8438,31 +8438,31 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
-            quality: z.ZodEnum<["medium", "high"]>;
+            quality: z.ZodEnum<["medium", "high", "sample"]>;
             width: z.ZodNumber;
             height: z.ZodNumber;
         }, "strip", z.ZodTypeAny, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }, {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }, {
         type: "hint";
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     }>>;
     timings: z.ZodObject<z.objectUtil.extendShape<{
@@ -8580,7 +8580,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     codecs?: string[] | undefined;
@@ -8685,7 +8685,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z.ob
         poster: {
             width: number;
             height: number;
-            quality: "medium" | "high";
+            quality: "medium" | "high" | "sample";
         }[];
     } | undefined;
     codecs?: string[] | undefined;
@@ -8926,7 +8926,7 @@ export declare const PosterMetadata: z.ZodObject<{
         tags: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     }, {
         type: z.ZodLiteral<"poster-image">;
-        quality: z.ZodEnum<["medium", "high"]>;
+        quality: z.ZodEnum<["medium", "high", "sample"]>;
         width: z.ZodNumber;
         height: z.ZodNumber;
         blurhash: z.ZodOptional<z.ZodString>;
@@ -8976,7 +8976,7 @@ export declare const PosterMetadata: z.ZodObject<{
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }, {
@@ -9003,7 +9003,7 @@ export declare const PosterMetadata: z.ZodObject<{
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }>, "many">;
@@ -9033,7 +9033,7 @@ export declare const PosterMetadata: z.ZodObject<{
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -9063,7 +9063,7 @@ export declare const PosterMetadata: z.ZodObject<{
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -9284,7 +9284,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
     }, {
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
-        quality: z.ZodEnum<["medium", "high"]>;
+        quality: z.ZodEnum<["medium", "high", "sample"]>;
         width: z.ZodNumber;
         height: z.ZodNumber;
         blurhash: z.ZodOptional<z.ZodString>;
@@ -9331,7 +9331,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }, {
@@ -9358,7 +9358,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }>, "many">;
@@ -9388,7 +9388,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -9418,7 +9418,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -9941,7 +9941,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
         tags: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     }, {
         type: z.ZodLiteral<"poster-image">;
-        quality: z.ZodEnum<["medium", "high"]>;
+        quality: z.ZodEnum<["medium", "high", "sample"]>;
         width: z.ZodNumber;
         height: z.ZodNumber;
         blurhash: z.ZodOptional<z.ZodString>;
@@ -9991,7 +9991,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }, {
@@ -10018,7 +10018,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }>, "many">;
@@ -10048,7 +10048,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -10078,7 +10078,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -10295,7 +10295,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
     }, {
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
-        quality: z.ZodEnum<["medium", "high"]>;
+        quality: z.ZodEnum<["medium", "high", "sample"]>;
         width: z.ZodNumber;
         height: z.ZodNumber;
         blurhash: z.ZodOptional<z.ZodString>;
@@ -10342,7 +10342,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }, {
@@ -10369,7 +10369,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }>, "many">;
@@ -10399,7 +10399,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -10429,7 +10429,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObje
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -10831,7 +10831,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
         tags: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     }, {
         type: z.ZodLiteral<"poster-image">;
-        quality: z.ZodEnum<["medium", "high"]>;
+        quality: z.ZodEnum<["medium", "high", "sample"]>;
         width: z.ZodNumber;
         height: z.ZodNumber;
         blurhash: z.ZodOptional<z.ZodString>;
@@ -10881,7 +10881,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }, {
@@ -10908,7 +10908,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }>, "many">;
@@ -10938,7 +10938,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -10968,7 +10968,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_avifenc_duration?: number | undefined;
             poster_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -11185,7 +11185,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
     }, {
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
-        quality: z.ZodEnum<["medium", "high"]>;
+        quality: z.ZodEnum<["medium", "high", "sample"]>;
         width: z.ZodNumber;
         height: z.ZodNumber;
         blurhash: z.ZodOptional<z.ZodString>;
@@ -11232,7 +11232,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }, {
@@ -11259,7 +11259,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }>, "many">;
@@ -11289,7 +11289,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];
@@ -11319,7 +11319,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<"type", [z.ZodObject<z
             poster_series_avifenc_duration?: number | undefined;
             poster_series_sharp_duration?: number | undefined;
         };
-        quality: "medium" | "high";
+        quality: "medium" | "high" | "sample";
         tags?: string[] | undefined;
         blurhash?: string | undefined;
     }[];

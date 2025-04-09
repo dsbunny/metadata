@@ -1,4 +1,7 @@
 # Changelog
+## v7.1.16
+- Extend _quality_ values to include `sample` for fixed dimension and quality.
+
 ## v7.0.15
 - Add `tags` to `BaseMetadata` for transcoder generated tags.
 

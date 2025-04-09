@@ -19,7 +19,7 @@ export const BaseMetadata = z.object({
 export const HintData = z.object({
     type: z.literal('hint'),
     poster: z.array(z.object({
-        quality: z.enum(['medium', 'high']),
+        quality: z.enum(['medium', 'high', 'sample']),
         width: z.number().int().positive(),
         height: z.number().int().positive(),
     })),
@@ -78,7 +78,7 @@ export const PosterMetadata = z.object({
     type: z.literal('poster'),
     poster: z.array(BaseMetadata.merge(z.object({
         type: z.literal('poster-image'),
-        quality: z.enum(['medium', 'high']),
+        quality: z.enum(['medium', 'high', 'sample']),
         width: z.number().int().positive(),
         height: z.number().int().positive(),
         blurhash: z.string().optional(),
@@ -101,7 +101,7 @@ export const PosterSeriesMetadata = z.object({
     series: z.array(BaseMetadata.merge(z.object({
         type: z.literal('poster-series-image'),
         index: z.number().int().min(1).max(3),
-        quality: z.enum(['medium', 'high']),
+        quality: z.enum(['medium', 'high', 'sample']),
         width: z.number().int().positive(),
         height: z.number().int().positive(),
         blurhash: z.string().optional(),
