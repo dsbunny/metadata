@@ -1,4 +1,7 @@
 # Changelog
+## v8.0.17
+- Bump to `zod@4.0.0-beta`.
+
 ## v7.1.16
 - Extend _quality_ values to include `sample` for fixed dimension and quality.
 

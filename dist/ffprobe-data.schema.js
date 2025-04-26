@@ -144,7 +144,7 @@ export const FfprobeFormat = z.object({
         .describe('The bit rate of the file.'),
     probe_score: z.number().optional()
         .describe('The probe score of the file.'),
-    tags: z.record(z.union([z.string(), z.number()])).optional()
+    tags: z.record(z.string(), z.union([z.string(), z.number()])).optional()
         .describe('The tags of the file.'),
 })
     .describe('Format metadata from the ffprobe tool.');

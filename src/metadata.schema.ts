@@ -42,13 +42,13 @@ export const HintData = z.object({
 	.describe('Hint data for assets.');
 export type HintData = z.infer<typeof HintData>;
 
-export const FileMetadata = BaseMetadata.merge(z.object({
+export const FileMetadata = BaseMetadata.extend(z.object({
 	type: z.literal('file'),
 	hint: HintData.optional(),
 }))
 export type FileMetadata = z.infer<typeof FileMetadata>;
 
-export const ImageMetadata = BaseMetadata.merge(z.object({
+export const ImageMetadata = BaseMetadata.extend(z.object({
 	type: z.literal('image'),
 	sharp: SharpMetadata,
 	exif: ExifMetadata.optional(),
@@ -62,7 +62,7 @@ export const ImageMetadata = BaseMetadata.merge(z.object({
 	.describe('Metadata for an image file.');
 export type ImageMetadata = z.infer<typeof ImageMetadata>;
 
-export const VideoMetadata = BaseMetadata.merge(z.object({
+export const VideoMetadata = BaseMetadata.extend(z.object({
 	type: z.literal('video'),
 	ffprobe: FfprobeData
 		.describe('Metadata from the ffprobe tool.'),
@@ -76,7 +76,7 @@ export type VideoMetadata = z.infer<typeof VideoMetadata>;
 
 // Media types that are not supported, primarily due to technical limitations.
 // Media can be rejected due to check rules.
-export const RejectedMetadata = BaseMetadata.merge(z.object({
+export const RejectedMetadata = BaseMetadata.extend(z.object({
 	type: z.literal('rejected'),
 	error_text: z.string(),
 }))
@@ -94,7 +94,7 @@ export const Metadata = z.discriminatedUnion('type', [
 export type Metadata = z.infer<typeof Metadata>;
 
 // Encapsulation of metadata in a S3 object.
-export const MetadataMetadata = BaseMetadata.merge(z.object({
+export const MetadataMetadata = BaseMetadata.extend(z.object({
 	type: z.literal('metadata'),
 	timings: MetadataTimings,
 }))
@@ -105,7 +105,7 @@ export type MetadataMetadata = z.infer<typeof MetadataMetadata>;
 // #region Preview
 export const PosterMetadata = z.object({
 	type: z.literal('poster'),
-	poster: z.array(BaseMetadata.merge(z.object({
+	poster: z.array(BaseMetadata.extend(z.object({
 		type: z.literal('poster-image'),
 		quality: z.enum(['medium', 'high', 'sample']),
 		width: z.number().int().positive(),
@@ -119,7 +119,7 @@ export type PosterMetadata = z.infer<typeof PosterMetadata>;
 
 export const AnimatedPosterMetadata = z.object({
 	type: z.literal('animated-poster'),
-	poster: BaseMetadata.merge(z.object({
+	poster: BaseMetadata.extend(z.object({
 		type: z.literal('animated-poster-image'),
 		width: z.number().int().positive(),
 		height: z.number().int().positive(),
@@ -131,7 +131,7 @@ export type AnimatedPosterMetadata = z.infer<typeof AnimatedPosterMetadata>;
 
 export const PosterSeriesMetadata = z.object({
 	type: z.literal('poster-series'),
-	series: z.array(BaseMetadata.merge(z.object({
+	series: z.array(BaseMetadata.extend(z.object({
 		type: z.literal('poster-series-image'),
 		index: z.number().int().min(1).max(3),
 		quality: z.enum(['medium', 'high', 'sample']),
@@ -146,7 +146,7 @@ export type PosterSeriesMetadata = z.infer<typeof PosterSeriesMetadata>;
 
 export const TileSeriesMetadata = z.object({
 	type: z.literal('tile-series'),
-	series: z.array(BaseMetadata.merge(z.object({
+	series: z.array(BaseMetadata.extend(z.object({
 		type: z.literal('tile-series-image'),
 		index: z.number().int().min(1).max(9999),
 		count: z.number().int().min(1).max(9),
@@ -162,7 +162,7 @@ export const TileSeriesMetadata = z.object({
 	.describe('Metadata for an image tile series.');
 export type TileSeriesMetadata = z.infer<typeof TileSeriesMetadata>;
 
-export const TileSeriesMetadataMetadata = BaseMetadata.merge(z.object({
+export const TileSeriesMetadataMetadata = BaseMetadata.extend(z.object({
 	type: z.literal('tile-series-metadata'),
 	timings: MetadataTimings,
 }))
@@ -171,7 +171,7 @@ export type TileSeriesMetadataMetadata = z.infer<typeof TileSeriesMetadataMetada
 
 export const PrevueMetadata = z.object({
 	type: z.literal('prevue'),
-	prevue: BaseMetadata.merge(z.object({
+	prevue: BaseMetadata.extend(z.object({
 		type: z.literal('prevue-video'),
 		width: z.number().int().positive(),
 		height: z.number().int().positive(),
@@ -182,7 +182,7 @@ export const PrevueMetadata = z.object({
 export type PrevueMetadata = z.infer<typeof PrevueMetadata>;
 
 // Union of all preview metadata types.
-export const PreviewMetadata = z.discriminatedUnion('type', [
+export const PreviewMetadata = z.discriminatedUnion([
 	PosterMetadata,
 	AnimatedPosterMetadata,
 	PosterSeriesMetadata,
@@ -192,9 +192,9 @@ export const PreviewMetadata = z.discriminatedUnion('type', [
 	.describe('Union of all preview metadata types.');
 export type PreviewMetadata = z.infer<typeof PreviewMetadata>;
 
-export const AllMetadata = z.discriminatedUnion('type', [
+export const AllMetadata = z.discriminatedUnion([
 	MetadataMetadata,
-	...PreviewMetadata.options,
+	PreviewMetadata,
 ])
 	.describe('Union of all metadata types.');
 export type AllMetadata = z.infer<typeof AllMetadata>;
