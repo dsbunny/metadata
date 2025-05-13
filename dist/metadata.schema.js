@@ -8,7 +8,7 @@ import { IptcProfile } from './iptc-profile.schema.js';
 import { XmpProfile } from './xmp-profile.schema.js';
 import { FfprobeData } from './ffprobe-data.schema.js';
 import { AnimatedPosterTimings, FileTimings, ImageTimings, MetadataTimings, PosterSeriesTimings, PosterTimings, PrevueTimings, TextureTimings, TileSeriesTimings, TileSeriesImageTimings, VideoTimings, } from './timings.schema.js';
-import { FileStatAndChecksums } from './file.js';
+import { FileStatAndChecksums } from './file.schema.js';
 // #region Metadata
 // Base metadata for all files.
 export const BaseMetadata = z.object({

@@ -12,4 +12,4 @@ export declare const FileStatAndChecksums: z.ZodObject<{
     s3_parts: z.ZodArray<z.ZodNumber>;
 }, {}, {}>;
 export type FileStatAndChecksums = z.infer<typeof FileStatAndChecksums>;
-//# sourceMappingURL=file.d.ts.map
+//# sourceMappingURL=file.schema.d.ts.map

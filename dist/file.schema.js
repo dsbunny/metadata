@@ -1,6 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 // File metadata
 import { z } from "zod";
+import { S3URI } from "./uri.schema.js";
 export const FileStatAndChecksums = z.object({
     s3_filename: z.string().min(1).max(255) // Matching Google Drive.
         .describe('The name of the file.'),
@@ -14,7 +15,7 @@ export const FileStatAndChecksums = z.object({
         .describe('The MD5 checksum of the file.'),
     sha256: z.string().length(44)
         .describe('The SHA-256 checksum of the file.'),
-    s3_uri: z.string().min(2).max(2048)
+    s3_uri: S3URI.min(2).max(2048)
         .describe('The URI of the file in S3.'),
     s3_version_id: z.string().min(2).max(255)
         .describe('The version ID of the file in S3.'),
@@ -24,4 +25,4 @@ export const FileStatAndChecksums = z.object({
         .describe('The size of each part of the file in S3.'),
 })
     .describe('The file metadata.');
-//# sourceMappingURL=file.js.map
+//# sourceMappingURL=file.schema.js.map
