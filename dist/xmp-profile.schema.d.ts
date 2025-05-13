@@ -8,6 +8,6 @@ export declare const XmpProfile: z.ZodObject<{
     creator: z.ZodOptional<z.ZodString>;
     attribution: z.ZodOptional<z.ZodString>;
     terms: z.ZodOptional<z.ZodString>;
-}, {}>;
+}, {}, {}>;
 export type XmpProfile = z.infer<typeof XmpProfile>;
 //# sourceMappingURL=xmp-profile.schema.d.ts.map

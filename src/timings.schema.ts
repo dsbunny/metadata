@@ -13,19 +13,26 @@ export const FileTimings = z.object({
 	.describe('Performance timings for the file.');
 export type FileTimings = z.infer<typeof FileTimings>;
 
-export const ImageTimings = FileTimings.extend(z.object({
+export const ImageTimings = FileTimings.extend({
 	image_sharp_duration: z.number()
 		.describe('Time taken to probe the image using sharp.'),
 	image_ffprobe_duration: z.number()
 		.describe('Time taken to probe the image using ffprobe.'),
-}))
+})
 	.describe('Performance timings for the image.');
 export type ImageTimings = z.infer<typeof ImageTimings>;
 
-export const VideoTimings = FileTimings.extend(z.object({
+export const TextureTimings = FileTimings.extend({
+	texture_ktxinfo_duration: z.number()
+		.describe('Time taken to probe the KTX texture information.'),
+})
+	.describe('Performance timings for the texture.');
+export type TextureTimings = z.infer<typeof TextureTimings>;
+
+export const VideoTimings = FileTimings.extend({
 	video_ffprobe_duration: z.number()
 		.describe('Time taken to probe the image using ffprobe.'),
-}))
+})
 	.describe('Performance timings for the image.');
 export type VideoTimings = z.infer<typeof VideoTimings>;
 

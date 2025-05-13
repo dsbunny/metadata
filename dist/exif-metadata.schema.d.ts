@@ -222,7 +222,7 @@ export declare const ExifMetadata: z.ZodObject<{
         ForwardMatrix3: z.ZodOptional<z.ZodNumber>;
         MaskSubArea: z.ZodOptional<z.ZodNumber>;
         ReductionMatrix3: z.ZodOptional<z.ZodNumber>;
-    }, {}>>;
+    }, {}, {}>>;
     Photo: z.ZodOptional<z.ZodObject<{
         ExposureTime: z.ZodOptional<z.ZodNumber>;
         FNumber: z.ZodOptional<z.ZodNumber>;
@@ -294,13 +294,13 @@ export declare const ExifMetadata: z.ZodObject<{
         CompositeImage: z.ZodOptional<z.ZodNumber>;
         SourceImageNumberOfCompositeImage: z.ZodOptional<z.ZodNumber>;
         Gamma: z.ZodOptional<z.ZodNumber>;
-    }, {}>>;
+    }, {}, {}>>;
     Iop: z.ZodOptional<z.ZodObject<{
         InteroperabilityIndex: z.ZodOptional<z.ZodString>;
         RelatedImageFileFormat: z.ZodOptional<z.ZodString>;
         RelatedImageWidth: z.ZodOptional<z.ZodNumber>;
         RelatedImageLength: z.ZodOptional<z.ZodNumber>;
-    }, {}>>;
+    }, {}, {}>>;
     GPSInfo: z.ZodOptional<z.ZodObject<{
         GPSVersionID: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
         GPSLatitudeRef: z.ZodOptional<z.ZodString>;
@@ -332,7 +332,7 @@ export declare const ExifMetadata: z.ZodObject<{
         GPSDateStamp: z.ZodOptional<z.ZodString>;
         GPSDifferential: z.ZodOptional<z.ZodNumber>;
         GPSHPositioningError: z.ZodOptional<z.ZodNumber>;
-    }, {}>>;
-}, {}>;
+    }, {}, {}>>;
+}, {}, {}>;
 export type ExifMetadata = z.infer<typeof ExifMetadata>;
 //# sourceMappingURL=exif-metadata.schema.d.ts.map

@@ -12,7 +12,7 @@ export declare const FfprobeStreamDisposition: z.ZodObject<{
     clean_effects: z.ZodOptional<z.ZodNumber>;
     attached_pic: z.ZodOptional<z.ZodNumber>;
     timed_thumbnails: z.ZodOptional<z.ZodNumber>;
-}, {}>;
+}, {}, {}>;
 export type FfprobeStreamDisposition = z.infer<typeof FfprobeStreamDisposition>;
 export declare const FfprobeStream: z.ZodObject<{
     index: z.ZodNumber;
@@ -72,9 +72,9 @@ export declare const FfprobeStream: z.ZodObject<{
         clean_effects: z.ZodOptional<z.ZodNumber>;
         attached_pic: z.ZodOptional<z.ZodNumber>;
         timed_thumbnails: z.ZodOptional<z.ZodNumber>;
-    }, {}>>;
+    }, {}, {}>>;
     rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>;
-}, {}>;
+}, {}, {}>;
 export type FfprobeStream = z.infer<typeof FfprobeStream>;
 export declare const FfprobeFormat: z.ZodObject<{
     filename: z.ZodOptional<z.ZodString>;
@@ -88,7 +88,7 @@ export declare const FfprobeFormat: z.ZodObject<{
     bit_rate: z.ZodOptional<z.ZodNumber>;
     probe_score: z.ZodOptional<z.ZodNumber>;
     tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>>;
-}, {}>;
+}, {}, {}>;
 export type FfprobeFormat = z.infer<typeof FfprobeFormat>;
 export declare const FfprobeData: z.ZodObject<{
     streams: z.ZodArray<z.ZodObject<{
@@ -149,9 +149,9 @@ export declare const FfprobeData: z.ZodObject<{
             clean_effects: z.ZodOptional<z.ZodNumber>;
             attached_pic: z.ZodOptional<z.ZodNumber>;
             timed_thumbnails: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
+        }, {}, {}>>;
         rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>;
-    }, {}>>;
+    }, {}, {}>>;
     format: z.ZodObject<{
         filename: z.ZodOptional<z.ZodString>;
         nb_streams: z.ZodOptional<z.ZodNumber>;
@@ -164,7 +164,7 @@ export declare const FfprobeData: z.ZodObject<{
         bit_rate: z.ZodOptional<z.ZodNumber>;
         probe_score: z.ZodOptional<z.ZodNumber>;
         tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>>;
-    }, {}>;
-}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type FfprobeData = z.infer<typeof FfprobeData>;
 //# sourceMappingURL=ffprobe-data.schema.d.ts.map

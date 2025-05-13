@@ -11,6 +11,6 @@ export declare const IptcProfile: z.ZodObject<{
     headline: z.ZodOptional<z.ZodString>;
     copyright: z.ZodOptional<z.ZodString>;
     category: z.ZodOptional<z.ZodString>;
-}, {}>;
+}, {}, {}>;
 export type IptcProfile = z.infer<typeof IptcProfile>;
 //# sourceMappingURL=iptc-profile.schema.d.ts.map

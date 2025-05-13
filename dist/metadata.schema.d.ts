@@ -12,13 +12,13 @@ export declare const BaseMetadata: z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
-}, {}>;
+}, {}, {}>;
 export type BaseMetadata = z.infer<typeof BaseMetadata>;
 export declare const HintData: z.ZodObject<{
     type: z.ZodLiteral<"hint">;
@@ -30,8 +30,8 @@ export declare const HintData: z.ZodObject<{
         }>;
         width: z.ZodNumber;
         height: z.ZodNumber;
-    }, {}>>;
-}, {}>;
+    }, {}, {}>>;
+}, {}, {}>;
 export type HintData = z.infer<typeof HintData>;
 export declare const FileMetadata: z.ZodObject<{
     file: z.ZodObject<{
@@ -45,11 +45,11 @@ export declare const FileMetadata: z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"file">;
     hint: z.ZodOptional<z.ZodObject<{
@@ -62,9 +62,9 @@ export declare const FileMetadata: z.ZodObject<{
             }>;
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>;
-    }, {}>>;
-}, {}>;
+        }, {}, {}>>;
+    }, {}, {}>>;
+}, {}, {}>;
 export type FileMetadata = z.infer<typeof FileMetadata>;
 export declare const ImageMetadata: z.ZodObject<{
     file: z.ZodObject<{
@@ -78,7 +78,7 @@ export declare const ImageMetadata: z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"image">;
     sharp: z.ZodObject<{
@@ -136,18 +136,18 @@ export declare const ImageMetadata: z.ZodObject<{
             r: z.ZodNumber;
             g: z.ZodNumber;
             b: z.ZodNumber;
-        }, {}>, z.ZodNumber]>>;
+        }, {}, {}>, z.ZodNumber]>>;
         levels: z.ZodOptional<z.ZodArray<z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>>;
+        }, {}, {}>>>;
         subifds: z.ZodOptional<z.ZodNumber>;
         resolutionUnit: z.ZodOptional<z.ZodEnum<{
             inch: "inch";
             cm: "cm";
         }>>;
         formatMagick: z.ZodOptional<z.ZodString>;
-    }, {}>;
+    }, {}, {}>;
     exif: z.ZodOptional<z.ZodObject<{
         Image: z.ZodOptional<z.ZodObject<{
             ProcessingSoftware: z.ZodOptional<z.ZodString>;
@@ -371,7 +371,7 @@ export declare const ImageMetadata: z.ZodObject<{
             ForwardMatrix3: z.ZodOptional<z.ZodNumber>;
             MaskSubArea: z.ZodOptional<z.ZodNumber>;
             ReductionMatrix3: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
+        }, {}, {}>>;
         Photo: z.ZodOptional<z.ZodObject<{
             ExposureTime: z.ZodOptional<z.ZodNumber>;
             FNumber: z.ZodOptional<z.ZodNumber>;
@@ -443,13 +443,13 @@ export declare const ImageMetadata: z.ZodObject<{
             CompositeImage: z.ZodOptional<z.ZodNumber>;
             SourceImageNumberOfCompositeImage: z.ZodOptional<z.ZodNumber>;
             Gamma: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
+        }, {}, {}>>;
         Iop: z.ZodOptional<z.ZodObject<{
             InteroperabilityIndex: z.ZodOptional<z.ZodString>;
             RelatedImageFileFormat: z.ZodOptional<z.ZodString>;
             RelatedImageWidth: z.ZodOptional<z.ZodNumber>;
             RelatedImageLength: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
+        }, {}, {}>>;
         GPSInfo: z.ZodOptional<z.ZodObject<{
             GPSVersionID: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
             GPSLatitudeRef: z.ZodOptional<z.ZodString>;
@@ -481,8 +481,8 @@ export declare const ImageMetadata: z.ZodObject<{
             GPSDateStamp: z.ZodOptional<z.ZodString>;
             GPSDifferential: z.ZodOptional<z.ZodNumber>;
             GPSHPositioningError: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
-    }, {}>>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     icc: z.ZodOptional<z.ZodObject<{
         version: z.ZodEnum<{
             "2.0": "2.0";
@@ -527,7 +527,7 @@ export declare const ImageMetadata: z.ZodObject<{
         }>>;
         viewingConditionsDescription: z.ZodOptional<z.ZodString>;
         whitepoint: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber], null>>;
-    }, {}>>;
+    }, {}, {}>>;
     iptc: z.ZodOptional<z.ZodObject<{
         title: z.ZodOptional<z.ZodString>;
         caption: z.ZodOptional<z.ZodString>;
@@ -540,7 +540,7 @@ export declare const ImageMetadata: z.ZodObject<{
         headline: z.ZodOptional<z.ZodString>;
         copyright: z.ZodOptional<z.ZodString>;
         category: z.ZodOptional<z.ZodString>;
-    }, {}>>;
+    }, {}, {}>>;
     xmp: z.ZodOptional<z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString>>;
         title: z.ZodOptional<z.ZodString>;
@@ -550,7 +550,7 @@ export declare const ImageMetadata: z.ZodObject<{
         creator: z.ZodOptional<z.ZodString>;
         attribution: z.ZodOptional<z.ZodString>;
         terms: z.ZodOptional<z.ZodString>;
-    }, {}>>;
+    }, {}, {}>>;
     ffprobe: z.ZodObject<{
         streams: z.ZodArray<z.ZodObject<{
             index: z.ZodNumber;
@@ -610,9 +610,9 @@ export declare const ImageMetadata: z.ZodObject<{
                 clean_effects: z.ZodOptional<z.ZodNumber>;
                 attached_pic: z.ZodOptional<z.ZodNumber>;
                 timed_thumbnails: z.ZodOptional<z.ZodNumber>;
-            }, {}>>;
+            }, {}, {}>>;
             rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>;
-        }, {}>>;
+        }, {}, {}>>;
         format: z.ZodObject<{
             filename: z.ZodOptional<z.ZodString>;
             nb_streams: z.ZodOptional<z.ZodNumber>;
@@ -625,8 +625,8 @@ export declare const ImageMetadata: z.ZodObject<{
             bit_rate: z.ZodOptional<z.ZodNumber>;
             probe_score: z.ZodOptional<z.ZodNumber>;
             tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>>;
-        }, {}>;
-    }, {}>;
+        }, {}, {}>;
+    }, {}, {}>;
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
@@ -637,16 +637,598 @@ export declare const ImageMetadata: z.ZodObject<{
             }>;
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>;
-    }, {}>>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
         image_sharp_duration: z.ZodNumber;
         image_ffprobe_duration: z.ZodNumber;
-    }, {}>;
-}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type ImageMetadata = z.infer<typeof ImageMetadata>;
+export declare const TextureMetadata: z.ZodObject<{
+    file: z.ZodObject<{
+        s3_filename: z.ZodString;
+        content_type: z.ZodString;
+        size: z.ZodNumber;
+        mtime: z.ZodString;
+        md5: z.ZodString;
+        sha256: z.ZodString;
+        s3_uri: z.ZodString;
+        s3_version_id: z.ZodString;
+        s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber>;
+    }, {}, {}>;
+    tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
+    type: z.ZodLiteral<"texture">;
+    ktx: z.ZodOptional<z.ZodObject<{
+        $schema: z.ZodOptional<z.ZodString>;
+        valid: z.ZodBoolean;
+        messages: z.ZodArray<z.ZodString>;
+        header: z.ZodObject<{
+            identifier: z.ZodString;
+            vkFormat: z.ZodEnum<{
+                VK_FORMAT_UNDEFINED: "VK_FORMAT_UNDEFINED";
+                VK_FORMAT_R4G4_UNORM_PACK8: "VK_FORMAT_R4G4_UNORM_PACK8";
+                VK_FORMAT_R4G4B4A4_UNORM_PACK16: "VK_FORMAT_R4G4B4A4_UNORM_PACK16";
+                VK_FORMAT_B4G4R4A4_UNORM_PACK16: "VK_FORMAT_B4G4R4A4_UNORM_PACK16";
+                VK_FORMAT_R5G6B5_UNORM_PACK16: "VK_FORMAT_R5G6B5_UNORM_PACK16";
+                VK_FORMAT_B5G6R5_UNORM_PACK16: "VK_FORMAT_B5G6R5_UNORM_PACK16";
+                VK_FORMAT_R5G5B5A1_UNORM_PACK16: "VK_FORMAT_R5G5B5A1_UNORM_PACK16";
+                VK_FORMAT_B5G5R5A1_UNORM_PACK16: "VK_FORMAT_B5G5R5A1_UNORM_PACK16";
+                VK_FORMAT_A1R5G5B5_UNORM_PACK16: "VK_FORMAT_A1R5G5B5_UNORM_PACK16";
+                VK_FORMAT_R8_UNORM: "VK_FORMAT_R8_UNORM";
+                VK_FORMAT_R8_SNORM: "VK_FORMAT_R8_SNORM";
+                VK_FORMAT_R8_USCALED: "VK_FORMAT_R8_USCALED";
+                VK_FORMAT_R8_SSCALED: "VK_FORMAT_R8_SSCALED";
+                VK_FORMAT_R8_UINT: "VK_FORMAT_R8_UINT";
+                VK_FORMAT_R8_SINT: "VK_FORMAT_R8_SINT";
+                VK_FORMAT_R8_SRGB: "VK_FORMAT_R8_SRGB";
+                VK_FORMAT_R8G8_UNORM: "VK_FORMAT_R8G8_UNORM";
+                VK_FORMAT_R8G8_SNORM: "VK_FORMAT_R8G8_SNORM";
+                VK_FORMAT_R8G8_USCALED: "VK_FORMAT_R8G8_USCALED";
+                VK_FORMAT_R8G8_SSCALED: "VK_FORMAT_R8G8_SSCALED";
+                VK_FORMAT_R8G8_UINT: "VK_FORMAT_R8G8_UINT";
+                VK_FORMAT_R8G8_SINT: "VK_FORMAT_R8G8_SINT";
+                VK_FORMAT_R8G8_SRGB: "VK_FORMAT_R8G8_SRGB";
+                VK_FORMAT_R8G8B8_UNORM: "VK_FORMAT_R8G8B8_UNORM";
+                VK_FORMAT_R8G8B8_SNORM: "VK_FORMAT_R8G8B8_SNORM";
+                VK_FORMAT_R8G8B8_USCALED: "VK_FORMAT_R8G8B8_USCALED";
+                VK_FORMAT_R8G8B8_SSCALED: "VK_FORMAT_R8G8B8_SSCALED";
+                VK_FORMAT_R8G8B8_UINT: "VK_FORMAT_R8G8B8_UINT";
+                VK_FORMAT_R8G8B8_SINT: "VK_FORMAT_R8G8B8_SINT";
+                VK_FORMAT_R8G8B8_SRGB: "VK_FORMAT_R8G8B8_SRGB";
+                VK_FORMAT_B8G8R8_UNORM: "VK_FORMAT_B8G8R8_UNORM";
+                VK_FORMAT_B8G8R8_SNORM: "VK_FORMAT_B8G8R8_SNORM";
+                VK_FORMAT_B8G8R8_USCALED: "VK_FORMAT_B8G8R8_USCALED";
+                VK_FORMAT_B8G8R8_SSCALED: "VK_FORMAT_B8G8R8_SSCALED";
+                VK_FORMAT_B8G8R8_UINT: "VK_FORMAT_B8G8R8_UINT";
+                VK_FORMAT_B8G8R8_SINT: "VK_FORMAT_B8G8R8_SINT";
+                VK_FORMAT_B8G8R8_SRGB: "VK_FORMAT_B8G8R8_SRGB";
+                VK_FORMAT_R8G8B8A8_UNORM: "VK_FORMAT_R8G8B8A8_UNORM";
+                VK_FORMAT_R8G8B8A8_SNORM: "VK_FORMAT_R8G8B8A8_SNORM";
+                VK_FORMAT_R8G8B8A8_USCALED: "VK_FORMAT_R8G8B8A8_USCALED";
+                VK_FORMAT_R8G8B8A8_SSCALED: "VK_FORMAT_R8G8B8A8_SSCALED";
+                VK_FORMAT_R8G8B8A8_UINT: "VK_FORMAT_R8G8B8A8_UINT";
+                VK_FORMAT_R8G8B8A8_SINT: "VK_FORMAT_R8G8B8A8_SINT";
+                VK_FORMAT_R8G8B8A8_SRGB: "VK_FORMAT_R8G8B8A8_SRGB";
+                VK_FORMAT_B8G8R8A8_UNORM: "VK_FORMAT_B8G8R8A8_UNORM";
+                VK_FORMAT_B8G8R8A8_SNORM: "VK_FORMAT_B8G8R8A8_SNORM";
+                VK_FORMAT_B8G8R8A8_USCALED: "VK_FORMAT_B8G8R8A8_USCALED";
+                VK_FORMAT_B8G8R8A8_SSCALED: "VK_FORMAT_B8G8R8A8_SSCALED";
+                VK_FORMAT_B8G8R8A8_UINT: "VK_FORMAT_B8G8R8A8_UINT";
+                VK_FORMAT_B8G8R8A8_SINT: "VK_FORMAT_B8G8R8A8_SINT";
+                VK_FORMAT_B8G8R8A8_SRGB: "VK_FORMAT_B8G8R8A8_SRGB";
+                VK_FORMAT_A8B8G8R8_UNORM_PACK32: "VK_FORMAT_A8B8G8R8_UNORM_PACK32";
+                VK_FORMAT_A8B8G8R8_SNORM_PACK32: "VK_FORMAT_A8B8G8R8_SNORM_PACK32";
+                VK_FORMAT_A8B8G8R8_USCALED_PACK32: "VK_FORMAT_A8B8G8R8_USCALED_PACK32";
+                VK_FORMAT_A8B8G8R8_SSCALED_PACK32: "VK_FORMAT_A8B8G8R8_SSCALED_PACK32";
+                VK_FORMAT_A8B8G8R8_UINT_PACK32: "VK_FORMAT_A8B8G8R8_UINT_PACK32";
+                VK_FORMAT_A8B8G8R8_SINT_PACK32: "VK_FORMAT_A8B8G8R8_SINT_PACK32";
+                VK_FORMAT_A8B8G8R8_SRGB_PACK32: "VK_FORMAT_A8B8G8R8_SRGB_PACK32";
+                VK_FORMAT_A2R10G10B10_UNORM_PACK32: "VK_FORMAT_A2R10G10B10_UNORM_PACK32";
+                VK_FORMAT_A2R10G10B10_SNORM_PACK32: "VK_FORMAT_A2R10G10B10_SNORM_PACK32";
+                VK_FORMAT_A2R10G10B10_USCALED_PACK32: "VK_FORMAT_A2R10G10B10_USCALED_PACK32";
+                VK_FORMAT_A2R10G10B10_SSCALED_PACK32: "VK_FORMAT_A2R10G10B10_SSCALED_PACK32";
+                VK_FORMAT_A2R10G10B10_UINT_PACK32: "VK_FORMAT_A2R10G10B10_UINT_PACK32";
+                VK_FORMAT_A2R10G10B10_SINT_PACK32: "VK_FORMAT_A2R10G10B10_SINT_PACK32";
+                VK_FORMAT_A2B10G10R10_UNORM_PACK32: "VK_FORMAT_A2B10G10R10_UNORM_PACK32";
+                VK_FORMAT_A2B10G10R10_SNORM_PACK32: "VK_FORMAT_A2B10G10R10_SNORM_PACK32";
+                VK_FORMAT_A2B10G10R10_USCALED_PACK32: "VK_FORMAT_A2B10G10R10_USCALED_PACK32";
+                VK_FORMAT_A2B10G10R10_SSCALED_PACK32: "VK_FORMAT_A2B10G10R10_SSCALED_PACK32";
+                VK_FORMAT_A2B10G10R10_UINT_PACK32: "VK_FORMAT_A2B10G10R10_UINT_PACK32";
+                VK_FORMAT_A2B10G10R10_SINT_PACK32: "VK_FORMAT_A2B10G10R10_SINT_PACK32";
+                VK_FORMAT_R16_UNORM: "VK_FORMAT_R16_UNORM";
+                VK_FORMAT_R16_SNORM: "VK_FORMAT_R16_SNORM";
+                VK_FORMAT_R16_USCALED: "VK_FORMAT_R16_USCALED";
+                VK_FORMAT_R16_SSCALED: "VK_FORMAT_R16_SSCALED";
+                VK_FORMAT_R16_UINT: "VK_FORMAT_R16_UINT";
+                VK_FORMAT_R16_SINT: "VK_FORMAT_R16_SINT";
+                VK_FORMAT_R16_SFLOAT: "VK_FORMAT_R16_SFLOAT";
+                VK_FORMAT_R16G16_UNORM: "VK_FORMAT_R16G16_UNORM";
+                VK_FORMAT_R16G16_SNORM: "VK_FORMAT_R16G16_SNORM";
+                VK_FORMAT_R16G16_USCALED: "VK_FORMAT_R16G16_USCALED";
+                VK_FORMAT_R16G16_SSCALED: "VK_FORMAT_R16G16_SSCALED";
+                VK_FORMAT_R16G16_UINT: "VK_FORMAT_R16G16_UINT";
+                VK_FORMAT_R16G16_SINT: "VK_FORMAT_R16G16_SINT";
+                VK_FORMAT_R16G16_SFLOAT: "VK_FORMAT_R16G16_SFLOAT";
+                VK_FORMAT_R16G16B16_UNORM: "VK_FORMAT_R16G16B16_UNORM";
+                VK_FORMAT_R16G16B16_SNORM: "VK_FORMAT_R16G16B16_SNORM";
+                VK_FORMAT_R16G16B16_USCALED: "VK_FORMAT_R16G16B16_USCALED";
+                VK_FORMAT_R16G16B16_SSCALED: "VK_FORMAT_R16G16B16_SSCALED";
+                VK_FORMAT_R16G16B16_UINT: "VK_FORMAT_R16G16B16_UINT";
+                VK_FORMAT_R16G16B16_SINT: "VK_FORMAT_R16G16B16_SINT";
+                VK_FORMAT_R16G16B16_SFLOAT: "VK_FORMAT_R16G16B16_SFLOAT";
+                VK_FORMAT_R16G16B16A16_UNORM: "VK_FORMAT_R16G16B16A16_UNORM";
+                VK_FORMAT_R16G16B16A16_SNORM: "VK_FORMAT_R16G16B16A16_SNORM";
+                VK_FORMAT_R16G16B16A16_USCALED: "VK_FORMAT_R16G16B16A16_USCALED";
+                VK_FORMAT_R16G16B16A16_SSCALED: "VK_FORMAT_R16G16B16A16_SSCALED";
+                VK_FORMAT_R16G16B16A16_UINT: "VK_FORMAT_R16G16B16A16_UINT";
+                VK_FORMAT_R16G16B16A16_SINT: "VK_FORMAT_R16G16B16A16_SINT";
+                VK_FORMAT_R16G16B16A16_SFLOAT: "VK_FORMAT_R16G16B16A16_SFLOAT";
+                VK_FORMAT_R32_UINT: "VK_FORMAT_R32_UINT";
+                VK_FORMAT_R32_SINT: "VK_FORMAT_R32_SINT";
+                VK_FORMAT_R32_SFLOAT: "VK_FORMAT_R32_SFLOAT";
+                VK_FORMAT_R32G32_UINT: "VK_FORMAT_R32G32_UINT";
+                VK_FORMAT_R32G32_SINT: "VK_FORMAT_R32G32_SINT";
+                VK_FORMAT_R32G32_SFLOAT: "VK_FORMAT_R32G32_SFLOAT";
+                VK_FORMAT_R32G32B32_UINT: "VK_FORMAT_R32G32B32_UINT";
+                VK_FORMAT_R32G32B32_SINT: "VK_FORMAT_R32G32B32_SINT";
+                VK_FORMAT_R32G32B32_SFLOAT: "VK_FORMAT_R32G32B32_SFLOAT";
+                VK_FORMAT_R32G32B32A32_UINT: "VK_FORMAT_R32G32B32A32_UINT";
+                VK_FORMAT_R32G32B32A32_SINT: "VK_FORMAT_R32G32B32A32_SINT";
+                VK_FORMAT_R32G32B32A32_SFLOAT: "VK_FORMAT_R32G32B32A32_SFLOAT";
+                VK_FORMAT_R64_UINT: "VK_FORMAT_R64_UINT";
+                VK_FORMAT_R64_SINT: "VK_FORMAT_R64_SINT";
+                VK_FORMAT_R64_SFLOAT: "VK_FORMAT_R64_SFLOAT";
+                VK_FORMAT_R64G64_UINT: "VK_FORMAT_R64G64_UINT";
+                VK_FORMAT_R64G64_SINT: "VK_FORMAT_R64G64_SINT";
+                VK_FORMAT_R64G64_SFLOAT: "VK_FORMAT_R64G64_SFLOAT";
+                VK_FORMAT_R64G64B64_UINT: "VK_FORMAT_R64G64B64_UINT";
+                VK_FORMAT_R64G64B64_SINT: "VK_FORMAT_R64G64B64_SINT";
+                VK_FORMAT_R64G64B64_SFLOAT: "VK_FORMAT_R64G64B64_SFLOAT";
+                VK_FORMAT_R64G64B64A64_UINT: "VK_FORMAT_R64G64B64A64_UINT";
+                VK_FORMAT_R64G64B64A64_SINT: "VK_FORMAT_R64G64B64A64_SINT";
+                VK_FORMAT_R64G64B64A64_SFLOAT: "VK_FORMAT_R64G64B64A64_SFLOAT";
+                VK_FORMAT_B10G11R11_UFLOAT_PACK32: "VK_FORMAT_B10G11R11_UFLOAT_PACK32";
+                VK_FORMAT_E5B9G9R9_UFLOAT_PACK32: "VK_FORMAT_E5B9G9R9_UFLOAT_PACK32";
+                VK_FORMAT_D16_UNORM: "VK_FORMAT_D16_UNORM";
+                VK_FORMAT_X8_D24_UNORM_PACK32: "VK_FORMAT_X8_D24_UNORM_PACK32";
+                VK_FORMAT_D32_SFLOAT: "VK_FORMAT_D32_SFLOAT";
+                VK_FORMAT_S8_UINT: "VK_FORMAT_S8_UINT";
+                VK_FORMAT_D16_UNORM_S8_UINT: "VK_FORMAT_D16_UNORM_S8_UINT";
+                VK_FORMAT_D24_UNORM_S8_UINT: "VK_FORMAT_D24_UNORM_S8_UINT";
+                VK_FORMAT_D32_SFLOAT_S8_UINT: "VK_FORMAT_D32_SFLOAT_S8_UINT";
+                VK_FORMAT_BC1_RGB_UNORM_BLOCK: "VK_FORMAT_BC1_RGB_UNORM_BLOCK";
+                VK_FORMAT_BC1_RGB_SRGB_BLOCK: "VK_FORMAT_BC1_RGB_SRGB_BLOCK";
+                VK_FORMAT_BC1_RGBA_UNORM_BLOCK: "VK_FORMAT_BC1_RGBA_UNORM_BLOCK";
+                VK_FORMAT_BC1_RGBA_SRGB_BLOCK: "VK_FORMAT_BC1_RGBA_SRGB_BLOCK";
+                VK_FORMAT_BC2_UNORM_BLOCK: "VK_FORMAT_BC2_UNORM_BLOCK";
+                VK_FORMAT_BC2_SRGB_BLOCK: "VK_FORMAT_BC2_SRGB_BLOCK";
+                VK_FORMAT_BC3_UNORM_BLOCK: "VK_FORMAT_BC3_UNORM_BLOCK";
+                VK_FORMAT_BC3_SRGB_BLOCK: "VK_FORMAT_BC3_SRGB_BLOCK";
+                VK_FORMAT_BC4_UNORM_BLOCK: "VK_FORMAT_BC4_UNORM_BLOCK";
+                VK_FORMAT_BC4_SNORM_BLOCK: "VK_FORMAT_BC4_SNORM_BLOCK";
+                VK_FORMAT_BC5_UNORM_BLOCK: "VK_FORMAT_BC5_UNORM_BLOCK";
+                VK_FORMAT_BC5_SNORM_BLOCK: "VK_FORMAT_BC5_SNORM_BLOCK";
+                VK_FORMAT_BC6H_UFLOAT_BLOCK: "VK_FORMAT_BC6H_UFLOAT_BLOCK";
+                VK_FORMAT_BC6H_SFLOAT_BLOCK: "VK_FORMAT_BC6H_SFLOAT_BLOCK";
+                VK_FORMAT_BC7_UNORM_BLOCK: "VK_FORMAT_BC7_UNORM_BLOCK";
+                VK_FORMAT_BC7_SRGB_BLOCK: "VK_FORMAT_BC7_SRGB_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK: "VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK: "VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK: "VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK: "VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK: "VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK: "VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK";
+                VK_FORMAT_EAC_R11_UNORM_BLOCK: "VK_FORMAT_EAC_R11_UNORM_BLOCK";
+                VK_FORMAT_EAC_R11_SNORM_BLOCK: "VK_FORMAT_EAC_R11_SNORM_BLOCK";
+                VK_FORMAT_EAC_R11G11_UNORM_BLOCK: "VK_FORMAT_EAC_R11G11_UNORM_BLOCK";
+                VK_FORMAT_EAC_R11G11_SNORM_BLOCK: "VK_FORMAT_EAC_R11G11_SNORM_BLOCK";
+                VK_FORMAT_ASTC_4x4_UNORM_BLOCK: "VK_FORMAT_ASTC_4x4_UNORM_BLOCK";
+                VK_FORMAT_ASTC_4x4_SRGB_BLOCK: "VK_FORMAT_ASTC_4x4_SRGB_BLOCK";
+                VK_FORMAT_ASTC_5x4_UNORM_BLOCK: "VK_FORMAT_ASTC_5x4_UNORM_BLOCK";
+                VK_FORMAT_ASTC_5x4_SRGB_BLOCK: "VK_FORMAT_ASTC_5x4_SRGB_BLOCK";
+                VK_FORMAT_ASTC_5x5_UNORM_BLOCK: "VK_FORMAT_ASTC_5x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_5x5_SRGB_BLOCK: "VK_FORMAT_ASTC_5x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_6x5_UNORM_BLOCK: "VK_FORMAT_ASTC_6x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_6x5_SRGB_BLOCK: "VK_FORMAT_ASTC_6x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_6x6_UNORM_BLOCK: "VK_FORMAT_ASTC_6x6_UNORM_BLOCK";
+                VK_FORMAT_ASTC_6x6_SRGB_BLOCK: "VK_FORMAT_ASTC_6x6_SRGB_BLOCK";
+                VK_FORMAT_ASTC_8x5_UNORM_BLOCK: "VK_FORMAT_ASTC_8x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_8x5_SRGB_BLOCK: "VK_FORMAT_ASTC_8x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_8x6_UNORM_BLOCK: "VK_FORMAT_ASTC_8x6_UNORM_BLOCK";
+                VK_FORMAT_ASTC_8x6_SRGB_BLOCK: "VK_FORMAT_ASTC_8x6_SRGB_BLOCK";
+                VK_FORMAT_ASTC_8x8_UNORM_BLOCK: "VK_FORMAT_ASTC_8x8_UNORM_BLOCK";
+                VK_FORMAT_ASTC_8x8_SRGB_BLOCK: "VK_FORMAT_ASTC_8x8_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x5_UNORM_BLOCK: "VK_FORMAT_ASTC_10x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x5_SRGB_BLOCK: "VK_FORMAT_ASTC_10x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x6_UNORM_BLOCK: "VK_FORMAT_ASTC_10x6_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x6_SRGB_BLOCK: "VK_FORMAT_ASTC_10x6_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x8_UNORM_BLOCK: "VK_FORMAT_ASTC_10x8_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x8_SRGB_BLOCK: "VK_FORMAT_ASTC_10x8_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x10_UNORM_BLOCK: "VK_FORMAT_ASTC_10x10_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x10_SRGB_BLOCK: "VK_FORMAT_ASTC_10x10_SRGB_BLOCK";
+                VK_FORMAT_ASTC_12x10_UNORM_BLOCK: "VK_FORMAT_ASTC_12x10_UNORM_BLOCK";
+                VK_FORMAT_ASTC_12x10_SRGB_BLOCK: "VK_FORMAT_ASTC_12x10_SRGB_BLOCK";
+                VK_FORMAT_ASTC_12x12_UNORM_BLOCK: "VK_FORMAT_ASTC_12x12_UNORM_BLOCK";
+                VK_FORMAT_ASTC_12x12_SRGB_BLOCK: "VK_FORMAT_ASTC_12x12_SRGB_BLOCK";
+                VK_FORMAT_G8B8G8R8_422_UNORM: "VK_FORMAT_G8B8G8R8_422_UNORM";
+                VK_FORMAT_B8G8R8G8_422_UNORM: "VK_FORMAT_B8G8R8G8_422_UNORM";
+                VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM: "VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM";
+                VK_FORMAT_G8_B8R8_2PLANE_420_UNORM: "VK_FORMAT_G8_B8R8_2PLANE_420_UNORM";
+                VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM: "VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM";
+                VK_FORMAT_G8_B8R8_2PLANE_422_UNORM: "VK_FORMAT_G8_B8R8_2PLANE_422_UNORM";
+                VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM: "VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM";
+                VK_FORMAT_R10X6_UNORM_PACK16: "VK_FORMAT_R10X6_UNORM_PACK16";
+                VK_FORMAT_R10X6G10X6_UNORM_2PACK16: "VK_FORMAT_R10X6G10X6_UNORM_2PACK16";
+                VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16: "VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16";
+                VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16: "VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16";
+                VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16: "VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16";
+                VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16";
+                VK_FORMAT_R12X4_UNORM_PACK16: "VK_FORMAT_R12X4_UNORM_PACK16";
+                VK_FORMAT_R12X4G12X4_UNORM_2PACK16: "VK_FORMAT_R12X4G12X4_UNORM_2PACK16";
+                VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16: "VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16";
+                VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16: "VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16";
+                VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16: "VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16";
+                VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16";
+                VK_FORMAT_G16B16G16R16_422_UNORM: "VK_FORMAT_G16B16G16R16_422_UNORM";
+                VK_FORMAT_B16G16R16G16_422_UNORM: "VK_FORMAT_B16G16R16G16_422_UNORM";
+                VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM: "VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM";
+                VK_FORMAT_G16_B16R16_2PLANE_420_UNORM: "VK_FORMAT_G16_B16R16_2PLANE_420_UNORM";
+                VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM: "VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM";
+                VK_FORMAT_G16_B16R16_2PLANE_422_UNORM: "VK_FORMAT_G16_B16R16_2PLANE_422_UNORM";
+                VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM: "VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM";
+                VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK: "VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK: "VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK: "VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK: "VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK: "VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK: "VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK: "VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_3x3x3_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_3x3x3_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_3x3x3_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_3x3x3_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_3x3x3_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_3x3x3_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x3x3_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_4x3x3_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x3x3_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_4x3x3_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x3x3_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x3x3_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x3_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x3_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x3_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x3_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x3_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x3_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x4_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x4_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x4_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x4_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4x4_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_5x4x4_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4x4_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_5x4x4_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x4x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x4_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x4_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x4_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x4_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x5_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x5_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x5_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x5_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5x5_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_6x5x5_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5x5_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_6x5x5_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x5x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x5_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x5_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x5_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x5_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x6_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x6_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x6_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x6_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT: "VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT";
+                VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT: "VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT";
+                VK_FORMAT_A8_UNORM_KHR: "VK_FORMAT_A8_UNORM_KHR";
+                VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR: "VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR";
+                VK_FORMAT_A4R4G4B4_UNORM_PACK16: "VK_FORMAT_A4R4G4B4_UNORM_PACK16";
+                VK_FORMAT_A4B4G4R4_UNORM_PACK16: "VK_FORMAT_A4B4G4R4_UNORM_PACK16";
+            }>;
+            typeSize: z.ZodNumber;
+            pixelWidth: z.ZodNumber;
+            pixelHeight: z.ZodNumber;
+            pixelDepth: z.ZodNumber;
+            layerCount: z.ZodNumber;
+            faceCount: z.ZodNumber;
+            levelCount: z.ZodNumber;
+            supercompressionScheme: z.ZodEnum<{
+                KTX_SS_NONE: "KTX_SS_NONE";
+                KTX_SS_BASIS_LZ: "KTX_SS_BASIS_LZ";
+                KTX_SS_ZSTD: "KTX_SS_ZSTD";
+                KTX_SS_ZLIB: "KTX_SS_ZLIB";
+            }>;
+        }, {}, {}>;
+        index: z.ZodObject<{
+            dataFormatDescriptor: z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+            }, {}, {}>;
+            keyValueData: z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+            }, {}, {}>;
+            supercompressionGlobalData: z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+            }, {}, {}>;
+            levels: z.ZodArray<z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+                uncompressedByteLength: z.ZodNumber;
+            }, {}, {}>>;
+        }, {}, {}>;
+        dataFormatDescriptor: z.ZodObject<{
+            totalSize: z.ZodNumber;
+            blocks: z.ZodArray<z.ZodObject<{
+                descriptorType: z.ZodEnum<{
+                    KHR_DF_KHR_DESCRIPTORTYPE_BASICFORMAT: "KHR_DF_KHR_DESCRIPTORTYPE_BASICFORMAT";
+                    KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_PLANES: "KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_PLANES";
+                    KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_DIMENSIONS: "KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_DIMENSIONS";
+                }>;
+                vendorId: z.ZodEnum<{
+                    KHR_DF_VENDORID_KHRONOS: "KHR_DF_VENDORID_KHRONOS";
+                }>;
+                descriptorBlockSize: z.ZodNumber;
+                versionNumber: z.ZodEnum<{
+                    KHR_DF_VERSIONNUMBER_1_1: "KHR_DF_VERSIONNUMBER_1_1";
+                    KHR_DF_VERSIONNUMBER_1_2: "KHR_DF_VERSIONNUMBER_1_2";
+                    KHR_DF_VERSIONNUMBER_1_3: "KHR_DF_VERSIONNUMBER_1_3";
+                }>;
+                flags: z.ZodArray<z.ZodEnum<{
+                    KHR_DF_FLAG_ALPHA_PREMULTIPLIED: "KHR_DF_FLAG_ALPHA_PREMULTIPLIED";
+                    KHR_DF_FLAG_ALPHA_STRAIGHT: "KHR_DF_FLAG_ALPHA_STRAIGHT";
+                }>>;
+                transferFunction: z.ZodEnum<{
+                    KHR_DF_TRANSFER_UNSPECIFIED: "KHR_DF_TRANSFER_UNSPECIFIED";
+                    KHR_DF_TRANSFER_LINEAR: "KHR_DF_TRANSFER_LINEAR";
+                    KHR_DF_TRANSFER_SRGB: "KHR_DF_TRANSFER_SRGB";
+                    KHR_DF_TRANSFER_ITU: "KHR_DF_TRANSFER_ITU";
+                    KHR_DF_TRANSFER_NTSC: "KHR_DF_TRANSFER_NTSC";
+                    KHR_DF_TRANSFER_SLOG: "KHR_DF_TRANSFER_SLOG";
+                    KHR_DF_TRANSFER_SLOG2: "KHR_DF_TRANSFER_SLOG2";
+                    KHR_DF_TRANSFER_BT1886: "KHR_DF_TRANSFER_BT1886";
+                    KHR_DF_TRANSFER_HLG_OETF: "KHR_DF_TRANSFER_HLG_OETF";
+                    KHR_DF_TRANSFER_HLG_EOTF: "KHR_DF_TRANSFER_HLG_EOTF";
+                    KHR_DF_TRANSFER_PQ_EOTF: "KHR_DF_TRANSFER_PQ_EOTF";
+                    KHR_DF_TRANSFER_PQ_OETF: "KHR_DF_TRANSFER_PQ_OETF";
+                    KHR_DF_TRANSFER_DCIP3: "KHR_DF_TRANSFER_DCIP3";
+                    KHR_DF_TRANSFER_PAL_OETF: "KHR_DF_TRANSFER_PAL_OETF";
+                    KHR_DF_TRANSFER_PAL625_EOTF: "KHR_DF_TRANSFER_PAL625_EOTF";
+                    KHR_DF_TRANSFER_ST240: "KHR_DF_TRANSFER_ST240";
+                    KHR_DF_TRANSFER_ACESCC: "KHR_DF_TRANSFER_ACESCC";
+                    KHR_DF_TRANSFER_ACESCCT: "KHR_DF_TRANSFER_ACESCCT";
+                    KHR_DF_TRANSFER_ADOBERGB: "KHR_DF_TRANSFER_ADOBERGB";
+                }>;
+                colorPrimaries: z.ZodEnum<{
+                    KHR_DF_PRIMARIES_UNSPECIFIED: "KHR_DF_PRIMARIES_UNSPECIFIED";
+                    KHR_DF_PRIMARIES_BT709: "KHR_DF_PRIMARIES_BT709";
+                    KHR_DF_PRIMARIES_BT601_EBU: "KHR_DF_PRIMARIES_BT601_EBU";
+                    KHR_DF_PRIMARIES_BT601_SMPTE: "KHR_DF_PRIMARIES_BT601_SMPTE";
+                    KHR_DF_PRIMARIES_BT2020: "KHR_DF_PRIMARIES_BT2020";
+                    KHR_DF_PRIMARIES_CIEXYZ: "KHR_DF_PRIMARIES_CIEXYZ";
+                    KHR_DF_PRIMARIES_ACES: "KHR_DF_PRIMARIES_ACES";
+                    KHR_DF_PRIMARIES_ACESCC: "KHR_DF_PRIMARIES_ACESCC";
+                    KHR_DF_PRIMARIES_NTSC1953: "KHR_DF_PRIMARIES_NTSC1953";
+                    KHR_DF_PRIMARIES_PAL525: "KHR_DF_PRIMARIES_PAL525";
+                    KHR_DF_PRIMARIES_DISPLAYP3: "KHR_DF_PRIMARIES_DISPLAYP3";
+                    KHR_DF_PRIMARIES_ADOBERGB: "KHR_DF_PRIMARIES_ADOBERGB";
+                }>;
+                colorModel: z.ZodEnum<{
+                    KHR_DF_MODEL_UNSPECIFIED: "KHR_DF_MODEL_UNSPECIFIED";
+                    KHR_DF_MODEL_RGBSDA: "KHR_DF_MODEL_RGBSDA";
+                    KHR_DF_MODEL_YUVSDA: "KHR_DF_MODEL_YUVSDA";
+                    KHR_DF_MODEL_YIQSDA: "KHR_DF_MODEL_YIQSDA";
+                    KHR_DF_MODEL_LABSDA: "KHR_DF_MODEL_LABSDA";
+                    KHR_DF_MODEL_CMYKA: "KHR_DF_MODEL_CMYKA";
+                    KHR_DF_MODEL_XYZW: "KHR_DF_MODEL_XYZW";
+                    KHR_DF_MODEL_HSVA_ANG: "KHR_DF_MODEL_HSVA_ANG";
+                    KHR_DF_MODEL_HSLA_ANG: "KHR_DF_MODEL_HSLA_ANG";
+                    KHR_DF_MODEL_HSVA_HEX: "KHR_DF_MODEL_HSVA_HEX";
+                    KHR_DF_MODEL_HSLA_HEX: "KHR_DF_MODEL_HSLA_HEX";
+                    KHR_DF_MODEL_YCGCOA: "KHR_DF_MODEL_YCGCOA";
+                    KHR_DF_MODEL_YCCBCCRC: "KHR_DF_MODEL_YCCBCCRC";
+                    KHR_DF_MODEL_ICTCP: "KHR_DF_MODEL_ICTCP";
+                    KHR_DF_MODEL_CIEXYZ: "KHR_DF_MODEL_CIEXYZ";
+                    KHR_DF_MODEL_CIEXYY: "KHR_DF_MODEL_CIEXYY";
+                    KHR_DF_MODEL_BC1A: "KHR_DF_MODEL_BC1A";
+                    KHR_DF_MODEL_BC2: "KHR_DF_MODEL_BC2";
+                    KHR_DF_MODEL_BC3: "KHR_DF_MODEL_BC3";
+                    KHR_DF_MODEL_BC4: "KHR_DF_MODEL_BC4";
+                    KHR_DF_MODEL_BC5: "KHR_DF_MODEL_BC5";
+                    KHR_DF_MODEL_BC6H: "KHR_DF_MODEL_BC6H";
+                    KHR_DF_MODEL_BC7: "KHR_DF_MODEL_BC7";
+                    KHR_DF_MODEL_ETC1: "KHR_DF_MODEL_ETC1";
+                    KHR_DF_MODEL_ETC2: "KHR_DF_MODEL_ETC2";
+                    KHR_DF_MODEL_ASTC: "KHR_DF_MODEL_ASTC";
+                    KHR_DF_MODEL_ETC1S: "KHR_DF_MODEL_ETC1S";
+                    KHR_DF_MODEL_PVRTC: "KHR_DF_MODEL_PVRTC";
+                    KHR_DF_MODEL_PVRTC2: "KHR_DF_MODEL_PVRTC2";
+                    KHR_DF_MODEL_UASTC: "KHR_DF_MODEL_UASTC";
+                }>;
+                texelBlockDimension: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+                bytesPlane: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+                samples: z.ZodArray<z.ZodObject<{
+                    qualifiers: z.ZodArray<z.ZodEnum<{
+                        KHR_DF_SAMPLE_DATATYPE_LINEAR: "KHR_DF_SAMPLE_DATATYPE_LINEAR";
+                        KHR_DF_SAMPLE_DATATYPE_EXPONENT: "KHR_DF_SAMPLE_DATATYPE_EXPONENT";
+                        KHR_DF_SAMPLE_DATATYPE_SIGNED: "KHR_DF_SAMPLE_DATATYPE_SIGNED";
+                        KHR_DF_SAMPLE_DATATYPE_FLOAT: "KHR_DF_SAMPLE_DATATYPE_FLOAT";
+                    }>>;
+                    channelType: z.ZodEnum<{
+                        KHR_DF_CHANNEL_RGBSDA_RED: "KHR_DF_CHANNEL_RGBSDA_RED";
+                        KHR_DF_CHANNEL_RGBSDA_GREEN: "KHR_DF_CHANNEL_RGBSDA_GREEN";
+                        KHR_DF_CHANNEL_RGBSDA_BLUE: "KHR_DF_CHANNEL_RGBSDA_BLUE";
+                        KHR_DF_CHANNEL_RGBSDA_STENCIL: "KHR_DF_CHANNEL_RGBSDA_STENCIL";
+                        KHR_DF_CHANNEL_RGBSDA_DEPTH: "KHR_DF_CHANNEL_RGBSDA_DEPTH";
+                        KHR_DF_CHANNEL_RGBSDA_ALPHA: "KHR_DF_CHANNEL_RGBSDA_ALPHA";
+                        KHR_DF_CHANNEL_YUVSDA_Y: "KHR_DF_CHANNEL_YUVSDA_Y";
+                        KHR_DF_CHANNEL_YUVSDA_U: "KHR_DF_CHANNEL_YUVSDA_U";
+                        KHR_DF_CHANNEL_YUVSDA_V: "KHR_DF_CHANNEL_YUVSDA_V";
+                        KHR_DF_CHANNEL_YUVSDA_STENCIL: "KHR_DF_CHANNEL_YUVSDA_STENCIL";
+                        KHR_DF_CHANNEL_YUVSDA_DEPTH: "KHR_DF_CHANNEL_YUVSDA_DEPTH";
+                        KHR_DF_CHANNEL_YUVSDA_ALPHA: "KHR_DF_CHANNEL_YUVSDA_ALPHA";
+                        KHR_DF_CHANNEL_YIQSDA_Y: "KHR_DF_CHANNEL_YIQSDA_Y";
+                        KHR_DF_CHANNEL_YIQSDA_I: "KHR_DF_CHANNEL_YIQSDA_I";
+                        KHR_DF_CHANNEL_YIQSDA_Q: "KHR_DF_CHANNEL_YIQSDA_Q";
+                        KHR_DF_CHANNEL_YIQSDA_STENCIL: "KHR_DF_CHANNEL_YIQSDA_STENCIL";
+                        KHR_DF_CHANNEL_YIQSDA_DEPTH: "KHR_DF_CHANNEL_YIQSDA_DEPTH";
+                        KHR_DF_CHANNEL_YIQSDA_ALPHA: "KHR_DF_CHANNEL_YIQSDA_ALPHA";
+                        KHR_DF_CHANNEL_LABSDA_L: "KHR_DF_CHANNEL_LABSDA_L";
+                        KHR_DF_CHANNEL_LABSDA_A: "KHR_DF_CHANNEL_LABSDA_A";
+                        KHR_DF_CHANNEL_LABSDA_B: "KHR_DF_CHANNEL_LABSDA_B";
+                        KHR_DF_CHANNEL_LABSDA_STENCIL: "KHR_DF_CHANNEL_LABSDA_STENCIL";
+                        KHR_DF_CHANNEL_LABSDA_DEPTH: "KHR_DF_CHANNEL_LABSDA_DEPTH";
+                        KHR_DF_CHANNEL_LABSDA_ALPHA: "KHR_DF_CHANNEL_LABSDA_ALPHA";
+                        KHR_DF_CHANNEL_CMYKSDA_CYAN: "KHR_DF_CHANNEL_CMYKSDA_CYAN";
+                        KHR_DF_CHANNEL_CMYKSDA_MAGENTA: "KHR_DF_CHANNEL_CMYKSDA_MAGENTA";
+                        KHR_DF_CHANNEL_CMYKSDA_YELLOW: "KHR_DF_CHANNEL_CMYKSDA_YELLOW";
+                        KHR_DF_CHANNEL_CMYKSDA_BLACK: "KHR_DF_CHANNEL_CMYKSDA_BLACK";
+                        KHR_DF_CHANNEL_CMYKSDA_ALPHA: "KHR_DF_CHANNEL_CMYKSDA_ALPHA";
+                        KHR_DF_CHANNEL_XYZW_X: "KHR_DF_CHANNEL_XYZW_X";
+                        KHR_DF_CHANNEL_XYZW_Y: "KHR_DF_CHANNEL_XYZW_Y";
+                        KHR_DF_CHANNEL_XYZW_Z: "KHR_DF_CHANNEL_XYZW_Z";
+                        KHR_DF_CHANNEL_XYZW_W: "KHR_DF_CHANNEL_XYZW_W";
+                        KHR_DF_CHANNEL_HSVA_ANG_VALUE: "KHR_DF_CHANNEL_HSVA_ANG_VALUE";
+                        KHR_DF_CHANNEL_HSVA_ANG_SATURATION: "KHR_DF_CHANNEL_HSVA_ANG_SATURATION";
+                        KHR_DF_CHANNEL_HSVA_ANG_HUE: "KHR_DF_CHANNEL_HSVA_ANG_HUE";
+                        KHR_DF_CHANNEL_HSVA_ANG_ALPHA: "KHR_DF_CHANNEL_HSVA_ANG_ALPHA";
+                        KHR_DF_CHANNEL_HSLA_ANG_LIGHTNESS: "KHR_DF_CHANNEL_HSLA_ANG_LIGHTNESS";
+                        KHR_DF_CHANNEL_HSLA_ANG_SATURATION: "KHR_DF_CHANNEL_HSLA_ANG_SATURATION";
+                        KHR_DF_CHANNEL_HSLA_ANG_HUE: "KHR_DF_CHANNEL_HSLA_ANG_HUE";
+                        KHR_DF_CHANNEL_HSLA_ANG_ALPHA: "KHR_DF_CHANNEL_HSLA_ANG_ALPHA";
+                        KHR_DF_CHANNEL_HSVA_HEX_VALUE: "KHR_DF_CHANNEL_HSVA_HEX_VALUE";
+                        KHR_DF_CHANNEL_HSVA_HEX_SATURATION: "KHR_DF_CHANNEL_HSVA_HEX_SATURATION";
+                        KHR_DF_CHANNEL_HSVA_HEX_HUE: "KHR_DF_CHANNEL_HSVA_HEX_HUE";
+                        KHR_DF_CHANNEL_HSVA_HEX_ALPHA: "KHR_DF_CHANNEL_HSVA_HEX_ALPHA";
+                        KHR_DF_CHANNEL_HSLA_HEX_LIGHTNESS: "KHR_DF_CHANNEL_HSLA_HEX_LIGHTNESS";
+                        KHR_DF_CHANNEL_HSLA_HEX_SATURATION: "KHR_DF_CHANNEL_HSLA_HEX_SATURATION";
+                        KHR_DF_CHANNEL_HSLA_HEX_HUE: "KHR_DF_CHANNEL_HSLA_HEX_HUE";
+                        KHR_DF_CHANNEL_HSLA_HEX_ALPHA: "KHR_DF_CHANNEL_HSLA_HEX_ALPHA";
+                        KHR_DF_CHANNEL_YCGCOA_Y: "KHR_DF_CHANNEL_YCGCOA_Y";
+                        KHR_DF_CHANNEL_YCGCOA_CG: "KHR_DF_CHANNEL_YCGCOA_CG";
+                        KHR_DF_CHANNEL_YCGCOA_CO: "KHR_DF_CHANNEL_YCGCOA_CO";
+                        KHR_DF_CHANNEL_YCGCOA_ALPHA: "KHR_DF_CHANNEL_YCGCOA_ALPHA";
+                        KHR_DF_CHANNEL_CIEXYZ_X: "KHR_DF_CHANNEL_CIEXYZ_X";
+                        KHR_DF_CHANNEL_CIEXYZ_Y: "KHR_DF_CHANNEL_CIEXYZ_Y";
+                        KHR_DF_CHANNEL_CIEXYZ_Z: "KHR_DF_CHANNEL_CIEXYZ_Z";
+                        KHR_DF_CHANNEL_CIEXYY_X: "KHR_DF_CHANNEL_CIEXYY_X";
+                        KHR_DF_CHANNEL_CIEXYY_YCHROMA: "KHR_DF_CHANNEL_CIEXYY_YCHROMA";
+                        KHR_DF_CHANNEL_CIEXYY_YLUMA: "KHR_DF_CHANNEL_CIEXYY_YLUMA";
+                        KHR_DF_CHANNEL_BC1A_COLOR: "KHR_DF_CHANNEL_BC1A_COLOR";
+                        KHR_DF_CHANNEL_BC1A_ALPHA: "KHR_DF_CHANNEL_BC1A_ALPHA";
+                        KHR_DF_CHANNEL_BC2_COLOR: "KHR_DF_CHANNEL_BC2_COLOR";
+                        KHR_DF_CHANNEL_BC2_ALPHA: "KHR_DF_CHANNEL_BC2_ALPHA";
+                        KHR_DF_CHANNEL_BC3_COLOR: "KHR_DF_CHANNEL_BC3_COLOR";
+                        KHR_DF_CHANNEL_BC3_ALPHA: "KHR_DF_CHANNEL_BC3_ALPHA";
+                        KHR_DF_CHANNEL_BC4_DATA: "KHR_DF_CHANNEL_BC4_DATA";
+                        KHR_DF_CHANNEL_BC5_RED: "KHR_DF_CHANNEL_BC5_RED";
+                        KHR_DF_CHANNEL_BC5_GREEN: "KHR_DF_CHANNEL_BC5_GREEN";
+                        KHR_DF_CHANNEL_BC6H_COLOR: "KHR_DF_CHANNEL_BC6H_COLOR";
+                        KHR_DF_CHANNEL_BC7_COLOR: "KHR_DF_CHANNEL_BC7_COLOR";
+                        KHR_DF_CHANNEL_ETC1_COLOR: "KHR_DF_CHANNEL_ETC1_COLOR";
+                        KHR_DF_CHANNEL_ETC2_RED: "KHR_DF_CHANNEL_ETC2_RED";
+                        KHR_DF_CHANNEL_ETC2_GREEN: "KHR_DF_CHANNEL_ETC2_GREEN";
+                        KHR_DF_CHANNEL_ETC2_COLOR: "KHR_DF_CHANNEL_ETC2_COLOR";
+                        KHR_DF_CHANNEL_ETC2_ALPHA: "KHR_DF_CHANNEL_ETC2_ALPHA";
+                        KHR_DF_CHANNEL_ASTC_DATA: "KHR_DF_CHANNEL_ASTC_DATA";
+                        KHR_DF_CHANNEL_ETC1S_RGB: "KHR_DF_CHANNEL_ETC1S_RGB";
+                        KHR_DF_CHANNEL_ETC1S_RRR: "KHR_DF_CHANNEL_ETC1S_RRR";
+                        KHR_DF_CHANNEL_ETC1S_GGG: "KHR_DF_CHANNEL_ETC1S_GGG";
+                        KHR_DF_CHANNEL_ETC1S_AAA: "KHR_DF_CHANNEL_ETC1S_AAA";
+                        KHR_DF_CHANNEL_PVRTC_COLOR: "KHR_DF_CHANNEL_PVRTC_COLOR";
+                        KHR_DF_CHANNEL_PVRTC2_COLOR: "KHR_DF_CHANNEL_PVRTC2_COLOR";
+                        KHR_DF_CHANNEL_UASTC_RGB: "KHR_DF_CHANNEL_UASTC_RGB";
+                        KHR_DF_CHANNEL_UASTC_RGBA: "KHR_DF_CHANNEL_UASTC_RGBA";
+                        KHR_DF_CHANNEL_UASTC_RRR: "KHR_DF_CHANNEL_UASTC_RRR";
+                        KHR_DF_CHANNEL_UASTC_RRRG: "KHR_DF_CHANNEL_UASTC_RRRG";
+                        KHR_DF_CHANNEL_UASTC_RG: "KHR_DF_CHANNEL_UASTC_RG";
+                        KHR_DF_CHANNEL_UNSPECIFIED_0: "KHR_DF_CHANNEL_UNSPECIFIED_0";
+                        KHR_DF_CHANNEL_UNSPECIFIED_1: "KHR_DF_CHANNEL_UNSPECIFIED_1";
+                        KHR_DF_CHANNEL_UNSPECIFIED_2: "KHR_DF_CHANNEL_UNSPECIFIED_2";
+                        KHR_DF_CHANNEL_UNSPECIFIED_3: "KHR_DF_CHANNEL_UNSPECIFIED_3";
+                        KHR_DF_CHANNEL_UNSPECIFIED_4: "KHR_DF_CHANNEL_UNSPECIFIED_4";
+                        KHR_DF_CHANNEL_UNSPECIFIED_5: "KHR_DF_CHANNEL_UNSPECIFIED_5";
+                        KHR_DF_CHANNEL_UNSPECIFIED_6: "KHR_DF_CHANNEL_UNSPECIFIED_6";
+                        KHR_DF_CHANNEL_UNSPECIFIED_7: "KHR_DF_CHANNEL_UNSPECIFIED_7";
+                        KHR_DF_CHANNEL_UNSPECIFIED_8: "KHR_DF_CHANNEL_UNSPECIFIED_8";
+                        KHR_DF_CHANNEL_UNSPECIFIED_9: "KHR_DF_CHANNEL_UNSPECIFIED_9";
+                        KHR_DF_CHANNEL_UNSPECIFIED_10: "KHR_DF_CHANNEL_UNSPECIFIED_10";
+                        KHR_DF_CHANNEL_UNSPECIFIED_11: "KHR_DF_CHANNEL_UNSPECIFIED_11";
+                        KHR_DF_CHANNEL_UNSPECIFIED_12: "KHR_DF_CHANNEL_UNSPECIFIED_12";
+                        KHR_DF_CHANNEL_UNSPECIFIED_13: "KHR_DF_CHANNEL_UNSPECIFIED_13";
+                        KHR_DF_CHANNEL_UNSPECIFIED_14: "KHR_DF_CHANNEL_UNSPECIFIED_14";
+                        KHR_DF_CHANNEL_UNSPECIFIED_15: "KHR_DF_CHANNEL_UNSPECIFIED_15";
+                    }>;
+                    bitLength: z.ZodNumber;
+                    bitOffset: z.ZodNumber;
+                    samplePosition: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+                    sampleLower: z.ZodNumber;
+                    sampleUpper: z.ZodNumber;
+                }, {}, {}>>;
+            }, {}, {}>>;
+        }, {}, {}>;
+        keyValueData: z.ZodObject<{
+            KTXorientation: z.ZodString;
+            KTXwriter: z.ZodString;
+            KTXwriterScParams: z.ZodString;
+        }, {}, {}>;
+    }, {}, {}>>;
+    hint: z.ZodOptional<z.ZodObject<{
+        type: z.ZodLiteral<"hint">;
+        poster: z.ZodArray<z.ZodObject<{
+            quality: z.ZodEnum<{
+                medium: "medium";
+                high: "high";
+                sample: "sample";
+            }>;
+            width: z.ZodNumber;
+            height: z.ZodNumber;
+        }, {}, {}>>;
+    }, {}, {}>>;
+    timings: z.ZodObject<{
+        file_http_duration: z.ZodNumber;
+        file_ck_duration: z.ZodNumber;
+        texture_ktxinfo_duration: z.ZodNumber;
+    }, {}, {}>;
+}, {}, {}>;
+export type TextureMetadata = z.infer<typeof TextureMetadata>;
 export declare const VideoMetadata: z.ZodObject<{
     file: z.ZodObject<{
         s3_filename: z.ZodString;
@@ -659,7 +1241,7 @@ export declare const VideoMetadata: z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"video">;
     ffprobe: z.ZodObject<{
@@ -721,9 +1303,9 @@ export declare const VideoMetadata: z.ZodObject<{
                 clean_effects: z.ZodOptional<z.ZodNumber>;
                 attached_pic: z.ZodOptional<z.ZodNumber>;
                 timed_thumbnails: z.ZodOptional<z.ZodNumber>;
-            }, {}>>;
+            }, {}, {}>>;
             rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>;
-        }, {}>>;
+        }, {}, {}>>;
         format: z.ZodObject<{
             filename: z.ZodOptional<z.ZodString>;
             nb_streams: z.ZodOptional<z.ZodNumber>;
@@ -736,8 +1318,8 @@ export declare const VideoMetadata: z.ZodObject<{
             bit_rate: z.ZodOptional<z.ZodNumber>;
             probe_score: z.ZodOptional<z.ZodNumber>;
             tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>>;
-        }, {}>;
-    }, {}>;
+        }, {}, {}>;
+    }, {}, {}>;
     codecs: z.ZodOptional<z.ZodArray<z.ZodString>>;
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
@@ -749,14 +1331,14 @@ export declare const VideoMetadata: z.ZodObject<{
             }>;
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>;
-    }, {}>>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
         video_ffprobe_duration: z.ZodNumber;
-    }, {}>;
-}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type VideoMetadata = z.infer<typeof VideoMetadata>;
 export declare const RejectedMetadata: z.ZodObject<{
     file: z.ZodObject<{
@@ -770,15 +1352,15 @@ export declare const RejectedMetadata: z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"rejected">;
     error_text: z.ZodString;
-}, {}>;
+}, {}, {}>;
 export type RejectedMetadata = z.infer<typeof RejectedMetadata>;
 export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
     file: z.ZodObject<{
@@ -792,11 +1374,11 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"file">;
     hint: z.ZodOptional<z.ZodObject<{
@@ -809,9 +1391,9 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             }>;
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>;
-    }, {}>>;
-}, {}>, z.ZodObject<{
+        }, {}, {}>>;
+    }, {}, {}>>;
+}, {}, {}>, z.ZodObject<{
     file: z.ZodObject<{
         s3_filename: z.ZodString;
         content_type: z.ZodString;
@@ -823,7 +1405,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"image">;
     sharp: z.ZodObject<{
@@ -881,18 +1463,18 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             r: z.ZodNumber;
             g: z.ZodNumber;
             b: z.ZodNumber;
-        }, {}>, z.ZodNumber]>>;
+        }, {}, {}>, z.ZodNumber]>>;
         levels: z.ZodOptional<z.ZodArray<z.ZodObject<{
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>>;
+        }, {}, {}>>>;
         subifds: z.ZodOptional<z.ZodNumber>;
         resolutionUnit: z.ZodOptional<z.ZodEnum<{
             inch: "inch";
             cm: "cm";
         }>>;
         formatMagick: z.ZodOptional<z.ZodString>;
-    }, {}>;
+    }, {}, {}>;
     exif: z.ZodOptional<z.ZodObject<{
         Image: z.ZodOptional<z.ZodObject<{
             ProcessingSoftware: z.ZodOptional<z.ZodString>;
@@ -1116,7 +1698,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             ForwardMatrix3: z.ZodOptional<z.ZodNumber>;
             MaskSubArea: z.ZodOptional<z.ZodNumber>;
             ReductionMatrix3: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
+        }, {}, {}>>;
         Photo: z.ZodOptional<z.ZodObject<{
             ExposureTime: z.ZodOptional<z.ZodNumber>;
             FNumber: z.ZodOptional<z.ZodNumber>;
@@ -1188,13 +1770,13 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             CompositeImage: z.ZodOptional<z.ZodNumber>;
             SourceImageNumberOfCompositeImage: z.ZodOptional<z.ZodNumber>;
             Gamma: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
+        }, {}, {}>>;
         Iop: z.ZodOptional<z.ZodObject<{
             InteroperabilityIndex: z.ZodOptional<z.ZodString>;
             RelatedImageFileFormat: z.ZodOptional<z.ZodString>;
             RelatedImageWidth: z.ZodOptional<z.ZodNumber>;
             RelatedImageLength: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
+        }, {}, {}>>;
         GPSInfo: z.ZodOptional<z.ZodObject<{
             GPSVersionID: z.ZodOptional<z.ZodArray<z.ZodNumber>>;
             GPSLatitudeRef: z.ZodOptional<z.ZodString>;
@@ -1226,8 +1808,8 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             GPSDateStamp: z.ZodOptional<z.ZodString>;
             GPSDifferential: z.ZodOptional<z.ZodNumber>;
             GPSHPositioningError: z.ZodOptional<z.ZodNumber>;
-        }, {}>>;
-    }, {}>>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     icc: z.ZodOptional<z.ZodObject<{
         version: z.ZodEnum<{
             "2.0": "2.0";
@@ -1272,7 +1854,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         }>>;
         viewingConditionsDescription: z.ZodOptional<z.ZodString>;
         whitepoint: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber], null>>;
-    }, {}>>;
+    }, {}, {}>>;
     iptc: z.ZodOptional<z.ZodObject<{
         title: z.ZodOptional<z.ZodString>;
         caption: z.ZodOptional<z.ZodString>;
@@ -1285,7 +1867,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         headline: z.ZodOptional<z.ZodString>;
         copyright: z.ZodOptional<z.ZodString>;
         category: z.ZodOptional<z.ZodString>;
-    }, {}>>;
+    }, {}, {}>>;
     xmp: z.ZodOptional<z.ZodObject<{
         keywords: z.ZodOptional<z.ZodArray<z.ZodString>>;
         title: z.ZodOptional<z.ZodString>;
@@ -1295,7 +1877,7 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         creator: z.ZodOptional<z.ZodString>;
         attribution: z.ZodOptional<z.ZodString>;
         terms: z.ZodOptional<z.ZodString>;
-    }, {}>>;
+    }, {}, {}>>;
     ffprobe: z.ZodObject<{
         streams: z.ZodArray<z.ZodObject<{
             index: z.ZodNumber;
@@ -1355,9 +1937,9 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
                 clean_effects: z.ZodOptional<z.ZodNumber>;
                 attached_pic: z.ZodOptional<z.ZodNumber>;
                 timed_thumbnails: z.ZodOptional<z.ZodNumber>;
-            }, {}>>;
+            }, {}, {}>>;
             rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>;
-        }, {}>>;
+        }, {}, {}>>;
         format: z.ZodObject<{
             filename: z.ZodOptional<z.ZodString>;
             nb_streams: z.ZodOptional<z.ZodNumber>;
@@ -1370,8 +1952,8 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             bit_rate: z.ZodOptional<z.ZodNumber>;
             probe_score: z.ZodOptional<z.ZodNumber>;
             tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>>;
-        }, {}>;
-    }, {}>;
+        }, {}, {}>;
+    }, {}, {}>;
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
         poster: z.ZodArray<z.ZodObject<{
@@ -1382,15 +1964,15 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             }>;
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>;
-    }, {}>>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
         image_sharp_duration: z.ZodNumber;
         image_ffprobe_duration: z.ZodNumber;
-    }, {}>;
-}, {}>, z.ZodObject<{
+    }, {}, {}>;
+}, {}, {}>, z.ZodObject<{
     file: z.ZodObject<{
         s3_filename: z.ZodString;
         content_type: z.ZodString;
@@ -1402,7 +1984,587 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
+    tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
+    type: z.ZodLiteral<"texture">;
+    ktx: z.ZodOptional<z.ZodObject<{
+        $schema: z.ZodOptional<z.ZodString>;
+        valid: z.ZodBoolean;
+        messages: z.ZodArray<z.ZodString>;
+        header: z.ZodObject<{
+            identifier: z.ZodString;
+            vkFormat: z.ZodEnum<{
+                VK_FORMAT_UNDEFINED: "VK_FORMAT_UNDEFINED";
+                VK_FORMAT_R4G4_UNORM_PACK8: "VK_FORMAT_R4G4_UNORM_PACK8";
+                VK_FORMAT_R4G4B4A4_UNORM_PACK16: "VK_FORMAT_R4G4B4A4_UNORM_PACK16";
+                VK_FORMAT_B4G4R4A4_UNORM_PACK16: "VK_FORMAT_B4G4R4A4_UNORM_PACK16";
+                VK_FORMAT_R5G6B5_UNORM_PACK16: "VK_FORMAT_R5G6B5_UNORM_PACK16";
+                VK_FORMAT_B5G6R5_UNORM_PACK16: "VK_FORMAT_B5G6R5_UNORM_PACK16";
+                VK_FORMAT_R5G5B5A1_UNORM_PACK16: "VK_FORMAT_R5G5B5A1_UNORM_PACK16";
+                VK_FORMAT_B5G5R5A1_UNORM_PACK16: "VK_FORMAT_B5G5R5A1_UNORM_PACK16";
+                VK_FORMAT_A1R5G5B5_UNORM_PACK16: "VK_FORMAT_A1R5G5B5_UNORM_PACK16";
+                VK_FORMAT_R8_UNORM: "VK_FORMAT_R8_UNORM";
+                VK_FORMAT_R8_SNORM: "VK_FORMAT_R8_SNORM";
+                VK_FORMAT_R8_USCALED: "VK_FORMAT_R8_USCALED";
+                VK_FORMAT_R8_SSCALED: "VK_FORMAT_R8_SSCALED";
+                VK_FORMAT_R8_UINT: "VK_FORMAT_R8_UINT";
+                VK_FORMAT_R8_SINT: "VK_FORMAT_R8_SINT";
+                VK_FORMAT_R8_SRGB: "VK_FORMAT_R8_SRGB";
+                VK_FORMAT_R8G8_UNORM: "VK_FORMAT_R8G8_UNORM";
+                VK_FORMAT_R8G8_SNORM: "VK_FORMAT_R8G8_SNORM";
+                VK_FORMAT_R8G8_USCALED: "VK_FORMAT_R8G8_USCALED";
+                VK_FORMAT_R8G8_SSCALED: "VK_FORMAT_R8G8_SSCALED";
+                VK_FORMAT_R8G8_UINT: "VK_FORMAT_R8G8_UINT";
+                VK_FORMAT_R8G8_SINT: "VK_FORMAT_R8G8_SINT";
+                VK_FORMAT_R8G8_SRGB: "VK_FORMAT_R8G8_SRGB";
+                VK_FORMAT_R8G8B8_UNORM: "VK_FORMAT_R8G8B8_UNORM";
+                VK_FORMAT_R8G8B8_SNORM: "VK_FORMAT_R8G8B8_SNORM";
+                VK_FORMAT_R8G8B8_USCALED: "VK_FORMAT_R8G8B8_USCALED";
+                VK_FORMAT_R8G8B8_SSCALED: "VK_FORMAT_R8G8B8_SSCALED";
+                VK_FORMAT_R8G8B8_UINT: "VK_FORMAT_R8G8B8_UINT";
+                VK_FORMAT_R8G8B8_SINT: "VK_FORMAT_R8G8B8_SINT";
+                VK_FORMAT_R8G8B8_SRGB: "VK_FORMAT_R8G8B8_SRGB";
+                VK_FORMAT_B8G8R8_UNORM: "VK_FORMAT_B8G8R8_UNORM";
+                VK_FORMAT_B8G8R8_SNORM: "VK_FORMAT_B8G8R8_SNORM";
+                VK_FORMAT_B8G8R8_USCALED: "VK_FORMAT_B8G8R8_USCALED";
+                VK_FORMAT_B8G8R8_SSCALED: "VK_FORMAT_B8G8R8_SSCALED";
+                VK_FORMAT_B8G8R8_UINT: "VK_FORMAT_B8G8R8_UINT";
+                VK_FORMAT_B8G8R8_SINT: "VK_FORMAT_B8G8R8_SINT";
+                VK_FORMAT_B8G8R8_SRGB: "VK_FORMAT_B8G8R8_SRGB";
+                VK_FORMAT_R8G8B8A8_UNORM: "VK_FORMAT_R8G8B8A8_UNORM";
+                VK_FORMAT_R8G8B8A8_SNORM: "VK_FORMAT_R8G8B8A8_SNORM";
+                VK_FORMAT_R8G8B8A8_USCALED: "VK_FORMAT_R8G8B8A8_USCALED";
+                VK_FORMAT_R8G8B8A8_SSCALED: "VK_FORMAT_R8G8B8A8_SSCALED";
+                VK_FORMAT_R8G8B8A8_UINT: "VK_FORMAT_R8G8B8A8_UINT";
+                VK_FORMAT_R8G8B8A8_SINT: "VK_FORMAT_R8G8B8A8_SINT";
+                VK_FORMAT_R8G8B8A8_SRGB: "VK_FORMAT_R8G8B8A8_SRGB";
+                VK_FORMAT_B8G8R8A8_UNORM: "VK_FORMAT_B8G8R8A8_UNORM";
+                VK_FORMAT_B8G8R8A8_SNORM: "VK_FORMAT_B8G8R8A8_SNORM";
+                VK_FORMAT_B8G8R8A8_USCALED: "VK_FORMAT_B8G8R8A8_USCALED";
+                VK_FORMAT_B8G8R8A8_SSCALED: "VK_FORMAT_B8G8R8A8_SSCALED";
+                VK_FORMAT_B8G8R8A8_UINT: "VK_FORMAT_B8G8R8A8_UINT";
+                VK_FORMAT_B8G8R8A8_SINT: "VK_FORMAT_B8G8R8A8_SINT";
+                VK_FORMAT_B8G8R8A8_SRGB: "VK_FORMAT_B8G8R8A8_SRGB";
+                VK_FORMAT_A8B8G8R8_UNORM_PACK32: "VK_FORMAT_A8B8G8R8_UNORM_PACK32";
+                VK_FORMAT_A8B8G8R8_SNORM_PACK32: "VK_FORMAT_A8B8G8R8_SNORM_PACK32";
+                VK_FORMAT_A8B8G8R8_USCALED_PACK32: "VK_FORMAT_A8B8G8R8_USCALED_PACK32";
+                VK_FORMAT_A8B8G8R8_SSCALED_PACK32: "VK_FORMAT_A8B8G8R8_SSCALED_PACK32";
+                VK_FORMAT_A8B8G8R8_UINT_PACK32: "VK_FORMAT_A8B8G8R8_UINT_PACK32";
+                VK_FORMAT_A8B8G8R8_SINT_PACK32: "VK_FORMAT_A8B8G8R8_SINT_PACK32";
+                VK_FORMAT_A8B8G8R8_SRGB_PACK32: "VK_FORMAT_A8B8G8R8_SRGB_PACK32";
+                VK_FORMAT_A2R10G10B10_UNORM_PACK32: "VK_FORMAT_A2R10G10B10_UNORM_PACK32";
+                VK_FORMAT_A2R10G10B10_SNORM_PACK32: "VK_FORMAT_A2R10G10B10_SNORM_PACK32";
+                VK_FORMAT_A2R10G10B10_USCALED_PACK32: "VK_FORMAT_A2R10G10B10_USCALED_PACK32";
+                VK_FORMAT_A2R10G10B10_SSCALED_PACK32: "VK_FORMAT_A2R10G10B10_SSCALED_PACK32";
+                VK_FORMAT_A2R10G10B10_UINT_PACK32: "VK_FORMAT_A2R10G10B10_UINT_PACK32";
+                VK_FORMAT_A2R10G10B10_SINT_PACK32: "VK_FORMAT_A2R10G10B10_SINT_PACK32";
+                VK_FORMAT_A2B10G10R10_UNORM_PACK32: "VK_FORMAT_A2B10G10R10_UNORM_PACK32";
+                VK_FORMAT_A2B10G10R10_SNORM_PACK32: "VK_FORMAT_A2B10G10R10_SNORM_PACK32";
+                VK_FORMAT_A2B10G10R10_USCALED_PACK32: "VK_FORMAT_A2B10G10R10_USCALED_PACK32";
+                VK_FORMAT_A2B10G10R10_SSCALED_PACK32: "VK_FORMAT_A2B10G10R10_SSCALED_PACK32";
+                VK_FORMAT_A2B10G10R10_UINT_PACK32: "VK_FORMAT_A2B10G10R10_UINT_PACK32";
+                VK_FORMAT_A2B10G10R10_SINT_PACK32: "VK_FORMAT_A2B10G10R10_SINT_PACK32";
+                VK_FORMAT_R16_UNORM: "VK_FORMAT_R16_UNORM";
+                VK_FORMAT_R16_SNORM: "VK_FORMAT_R16_SNORM";
+                VK_FORMAT_R16_USCALED: "VK_FORMAT_R16_USCALED";
+                VK_FORMAT_R16_SSCALED: "VK_FORMAT_R16_SSCALED";
+                VK_FORMAT_R16_UINT: "VK_FORMAT_R16_UINT";
+                VK_FORMAT_R16_SINT: "VK_FORMAT_R16_SINT";
+                VK_FORMAT_R16_SFLOAT: "VK_FORMAT_R16_SFLOAT";
+                VK_FORMAT_R16G16_UNORM: "VK_FORMAT_R16G16_UNORM";
+                VK_FORMAT_R16G16_SNORM: "VK_FORMAT_R16G16_SNORM";
+                VK_FORMAT_R16G16_USCALED: "VK_FORMAT_R16G16_USCALED";
+                VK_FORMAT_R16G16_SSCALED: "VK_FORMAT_R16G16_SSCALED";
+                VK_FORMAT_R16G16_UINT: "VK_FORMAT_R16G16_UINT";
+                VK_FORMAT_R16G16_SINT: "VK_FORMAT_R16G16_SINT";
+                VK_FORMAT_R16G16_SFLOAT: "VK_FORMAT_R16G16_SFLOAT";
+                VK_FORMAT_R16G16B16_UNORM: "VK_FORMAT_R16G16B16_UNORM";
+                VK_FORMAT_R16G16B16_SNORM: "VK_FORMAT_R16G16B16_SNORM";
+                VK_FORMAT_R16G16B16_USCALED: "VK_FORMAT_R16G16B16_USCALED";
+                VK_FORMAT_R16G16B16_SSCALED: "VK_FORMAT_R16G16B16_SSCALED";
+                VK_FORMAT_R16G16B16_UINT: "VK_FORMAT_R16G16B16_UINT";
+                VK_FORMAT_R16G16B16_SINT: "VK_FORMAT_R16G16B16_SINT";
+                VK_FORMAT_R16G16B16_SFLOAT: "VK_FORMAT_R16G16B16_SFLOAT";
+                VK_FORMAT_R16G16B16A16_UNORM: "VK_FORMAT_R16G16B16A16_UNORM";
+                VK_FORMAT_R16G16B16A16_SNORM: "VK_FORMAT_R16G16B16A16_SNORM";
+                VK_FORMAT_R16G16B16A16_USCALED: "VK_FORMAT_R16G16B16A16_USCALED";
+                VK_FORMAT_R16G16B16A16_SSCALED: "VK_FORMAT_R16G16B16A16_SSCALED";
+                VK_FORMAT_R16G16B16A16_UINT: "VK_FORMAT_R16G16B16A16_UINT";
+                VK_FORMAT_R16G16B16A16_SINT: "VK_FORMAT_R16G16B16A16_SINT";
+                VK_FORMAT_R16G16B16A16_SFLOAT: "VK_FORMAT_R16G16B16A16_SFLOAT";
+                VK_FORMAT_R32_UINT: "VK_FORMAT_R32_UINT";
+                VK_FORMAT_R32_SINT: "VK_FORMAT_R32_SINT";
+                VK_FORMAT_R32_SFLOAT: "VK_FORMAT_R32_SFLOAT";
+                VK_FORMAT_R32G32_UINT: "VK_FORMAT_R32G32_UINT";
+                VK_FORMAT_R32G32_SINT: "VK_FORMAT_R32G32_SINT";
+                VK_FORMAT_R32G32_SFLOAT: "VK_FORMAT_R32G32_SFLOAT";
+                VK_FORMAT_R32G32B32_UINT: "VK_FORMAT_R32G32B32_UINT";
+                VK_FORMAT_R32G32B32_SINT: "VK_FORMAT_R32G32B32_SINT";
+                VK_FORMAT_R32G32B32_SFLOAT: "VK_FORMAT_R32G32B32_SFLOAT";
+                VK_FORMAT_R32G32B32A32_UINT: "VK_FORMAT_R32G32B32A32_UINT";
+                VK_FORMAT_R32G32B32A32_SINT: "VK_FORMAT_R32G32B32A32_SINT";
+                VK_FORMAT_R32G32B32A32_SFLOAT: "VK_FORMAT_R32G32B32A32_SFLOAT";
+                VK_FORMAT_R64_UINT: "VK_FORMAT_R64_UINT";
+                VK_FORMAT_R64_SINT: "VK_FORMAT_R64_SINT";
+                VK_FORMAT_R64_SFLOAT: "VK_FORMAT_R64_SFLOAT";
+                VK_FORMAT_R64G64_UINT: "VK_FORMAT_R64G64_UINT";
+                VK_FORMAT_R64G64_SINT: "VK_FORMAT_R64G64_SINT";
+                VK_FORMAT_R64G64_SFLOAT: "VK_FORMAT_R64G64_SFLOAT";
+                VK_FORMAT_R64G64B64_UINT: "VK_FORMAT_R64G64B64_UINT";
+                VK_FORMAT_R64G64B64_SINT: "VK_FORMAT_R64G64B64_SINT";
+                VK_FORMAT_R64G64B64_SFLOAT: "VK_FORMAT_R64G64B64_SFLOAT";
+                VK_FORMAT_R64G64B64A64_UINT: "VK_FORMAT_R64G64B64A64_UINT";
+                VK_FORMAT_R64G64B64A64_SINT: "VK_FORMAT_R64G64B64A64_SINT";
+                VK_FORMAT_R64G64B64A64_SFLOAT: "VK_FORMAT_R64G64B64A64_SFLOAT";
+                VK_FORMAT_B10G11R11_UFLOAT_PACK32: "VK_FORMAT_B10G11R11_UFLOAT_PACK32";
+                VK_FORMAT_E5B9G9R9_UFLOAT_PACK32: "VK_FORMAT_E5B9G9R9_UFLOAT_PACK32";
+                VK_FORMAT_D16_UNORM: "VK_FORMAT_D16_UNORM";
+                VK_FORMAT_X8_D24_UNORM_PACK32: "VK_FORMAT_X8_D24_UNORM_PACK32";
+                VK_FORMAT_D32_SFLOAT: "VK_FORMAT_D32_SFLOAT";
+                VK_FORMAT_S8_UINT: "VK_FORMAT_S8_UINT";
+                VK_FORMAT_D16_UNORM_S8_UINT: "VK_FORMAT_D16_UNORM_S8_UINT";
+                VK_FORMAT_D24_UNORM_S8_UINT: "VK_FORMAT_D24_UNORM_S8_UINT";
+                VK_FORMAT_D32_SFLOAT_S8_UINT: "VK_FORMAT_D32_SFLOAT_S8_UINT";
+                VK_FORMAT_BC1_RGB_UNORM_BLOCK: "VK_FORMAT_BC1_RGB_UNORM_BLOCK";
+                VK_FORMAT_BC1_RGB_SRGB_BLOCK: "VK_FORMAT_BC1_RGB_SRGB_BLOCK";
+                VK_FORMAT_BC1_RGBA_UNORM_BLOCK: "VK_FORMAT_BC1_RGBA_UNORM_BLOCK";
+                VK_FORMAT_BC1_RGBA_SRGB_BLOCK: "VK_FORMAT_BC1_RGBA_SRGB_BLOCK";
+                VK_FORMAT_BC2_UNORM_BLOCK: "VK_FORMAT_BC2_UNORM_BLOCK";
+                VK_FORMAT_BC2_SRGB_BLOCK: "VK_FORMAT_BC2_SRGB_BLOCK";
+                VK_FORMAT_BC3_UNORM_BLOCK: "VK_FORMAT_BC3_UNORM_BLOCK";
+                VK_FORMAT_BC3_SRGB_BLOCK: "VK_FORMAT_BC3_SRGB_BLOCK";
+                VK_FORMAT_BC4_UNORM_BLOCK: "VK_FORMAT_BC4_UNORM_BLOCK";
+                VK_FORMAT_BC4_SNORM_BLOCK: "VK_FORMAT_BC4_SNORM_BLOCK";
+                VK_FORMAT_BC5_UNORM_BLOCK: "VK_FORMAT_BC5_UNORM_BLOCK";
+                VK_FORMAT_BC5_SNORM_BLOCK: "VK_FORMAT_BC5_SNORM_BLOCK";
+                VK_FORMAT_BC6H_UFLOAT_BLOCK: "VK_FORMAT_BC6H_UFLOAT_BLOCK";
+                VK_FORMAT_BC6H_SFLOAT_BLOCK: "VK_FORMAT_BC6H_SFLOAT_BLOCK";
+                VK_FORMAT_BC7_UNORM_BLOCK: "VK_FORMAT_BC7_UNORM_BLOCK";
+                VK_FORMAT_BC7_SRGB_BLOCK: "VK_FORMAT_BC7_SRGB_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK: "VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK: "VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK: "VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK: "VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK: "VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK";
+                VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK: "VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK";
+                VK_FORMAT_EAC_R11_UNORM_BLOCK: "VK_FORMAT_EAC_R11_UNORM_BLOCK";
+                VK_FORMAT_EAC_R11_SNORM_BLOCK: "VK_FORMAT_EAC_R11_SNORM_BLOCK";
+                VK_FORMAT_EAC_R11G11_UNORM_BLOCK: "VK_FORMAT_EAC_R11G11_UNORM_BLOCK";
+                VK_FORMAT_EAC_R11G11_SNORM_BLOCK: "VK_FORMAT_EAC_R11G11_SNORM_BLOCK";
+                VK_FORMAT_ASTC_4x4_UNORM_BLOCK: "VK_FORMAT_ASTC_4x4_UNORM_BLOCK";
+                VK_FORMAT_ASTC_4x4_SRGB_BLOCK: "VK_FORMAT_ASTC_4x4_SRGB_BLOCK";
+                VK_FORMAT_ASTC_5x4_UNORM_BLOCK: "VK_FORMAT_ASTC_5x4_UNORM_BLOCK";
+                VK_FORMAT_ASTC_5x4_SRGB_BLOCK: "VK_FORMAT_ASTC_5x4_SRGB_BLOCK";
+                VK_FORMAT_ASTC_5x5_UNORM_BLOCK: "VK_FORMAT_ASTC_5x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_5x5_SRGB_BLOCK: "VK_FORMAT_ASTC_5x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_6x5_UNORM_BLOCK: "VK_FORMAT_ASTC_6x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_6x5_SRGB_BLOCK: "VK_FORMAT_ASTC_6x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_6x6_UNORM_BLOCK: "VK_FORMAT_ASTC_6x6_UNORM_BLOCK";
+                VK_FORMAT_ASTC_6x6_SRGB_BLOCK: "VK_FORMAT_ASTC_6x6_SRGB_BLOCK";
+                VK_FORMAT_ASTC_8x5_UNORM_BLOCK: "VK_FORMAT_ASTC_8x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_8x5_SRGB_BLOCK: "VK_FORMAT_ASTC_8x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_8x6_UNORM_BLOCK: "VK_FORMAT_ASTC_8x6_UNORM_BLOCK";
+                VK_FORMAT_ASTC_8x6_SRGB_BLOCK: "VK_FORMAT_ASTC_8x6_SRGB_BLOCK";
+                VK_FORMAT_ASTC_8x8_UNORM_BLOCK: "VK_FORMAT_ASTC_8x8_UNORM_BLOCK";
+                VK_FORMAT_ASTC_8x8_SRGB_BLOCK: "VK_FORMAT_ASTC_8x8_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x5_UNORM_BLOCK: "VK_FORMAT_ASTC_10x5_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x5_SRGB_BLOCK: "VK_FORMAT_ASTC_10x5_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x6_UNORM_BLOCK: "VK_FORMAT_ASTC_10x6_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x6_SRGB_BLOCK: "VK_FORMAT_ASTC_10x6_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x8_UNORM_BLOCK: "VK_FORMAT_ASTC_10x8_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x8_SRGB_BLOCK: "VK_FORMAT_ASTC_10x8_SRGB_BLOCK";
+                VK_FORMAT_ASTC_10x10_UNORM_BLOCK: "VK_FORMAT_ASTC_10x10_UNORM_BLOCK";
+                VK_FORMAT_ASTC_10x10_SRGB_BLOCK: "VK_FORMAT_ASTC_10x10_SRGB_BLOCK";
+                VK_FORMAT_ASTC_12x10_UNORM_BLOCK: "VK_FORMAT_ASTC_12x10_UNORM_BLOCK";
+                VK_FORMAT_ASTC_12x10_SRGB_BLOCK: "VK_FORMAT_ASTC_12x10_SRGB_BLOCK";
+                VK_FORMAT_ASTC_12x12_UNORM_BLOCK: "VK_FORMAT_ASTC_12x12_UNORM_BLOCK";
+                VK_FORMAT_ASTC_12x12_SRGB_BLOCK: "VK_FORMAT_ASTC_12x12_SRGB_BLOCK";
+                VK_FORMAT_G8B8G8R8_422_UNORM: "VK_FORMAT_G8B8G8R8_422_UNORM";
+                VK_FORMAT_B8G8R8G8_422_UNORM: "VK_FORMAT_B8G8R8G8_422_UNORM";
+                VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM: "VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM";
+                VK_FORMAT_G8_B8R8_2PLANE_420_UNORM: "VK_FORMAT_G8_B8R8_2PLANE_420_UNORM";
+                VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM: "VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM";
+                VK_FORMAT_G8_B8R8_2PLANE_422_UNORM: "VK_FORMAT_G8_B8R8_2PLANE_422_UNORM";
+                VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM: "VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM";
+                VK_FORMAT_R10X6_UNORM_PACK16: "VK_FORMAT_R10X6_UNORM_PACK16";
+                VK_FORMAT_R10X6G10X6_UNORM_2PACK16: "VK_FORMAT_R10X6G10X6_UNORM_2PACK16";
+                VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16: "VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16";
+                VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16: "VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16";
+                VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16: "VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16";
+                VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16: "VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16";
+                VK_FORMAT_R12X4_UNORM_PACK16: "VK_FORMAT_R12X4_UNORM_PACK16";
+                VK_FORMAT_R12X4G12X4_UNORM_2PACK16: "VK_FORMAT_R12X4G12X4_UNORM_2PACK16";
+                VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16: "VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16";
+                VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16: "VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16";
+                VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16: "VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16";
+                VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16";
+                VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16: "VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16";
+                VK_FORMAT_G16B16G16R16_422_UNORM: "VK_FORMAT_G16B16G16R16_422_UNORM";
+                VK_FORMAT_B16G16R16G16_422_UNORM: "VK_FORMAT_B16G16R16G16_422_UNORM";
+                VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM: "VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM";
+                VK_FORMAT_G16_B16R16_2PLANE_420_UNORM: "VK_FORMAT_G16_B16R16_2PLANE_420_UNORM";
+                VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM: "VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM";
+                VK_FORMAT_G16_B16R16_2PLANE_422_UNORM: "VK_FORMAT_G16_B16R16_2PLANE_422_UNORM";
+                VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM: "VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM";
+                VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG: "VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG";
+                VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG: "VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG";
+                VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK: "VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK: "VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK: "VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK: "VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK: "VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK: "VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK: "VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK: "VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK";
+                VK_FORMAT_ASTC_3x3x3_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_3x3x3_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_3x3x3_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_3x3x3_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_3x3x3_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_3x3x3_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x3x3_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_4x3x3_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x3x3_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_4x3x3_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x3x3_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x3x3_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x3_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x3_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x3_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x3_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x3_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x3_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x4_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x4_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x4_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x4_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_4x4x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_4x4x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4x4_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_5x4x4_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4x4_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_5x4x4_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x4x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x4x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x4_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x4_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x4_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x4_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x4_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x4_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x5_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x5_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x5_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x5_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_5x5x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_5x5x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5x5_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_6x5x5_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5x5_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_6x5x5_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x5x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x5x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x5_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x5_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x5_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x5_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x5_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x5_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x6_UNORM_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x6_UNORM_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x6_SRGB_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x6_SRGB_BLOCK_EXT";
+                VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT: "VK_FORMAT_ASTC_6x6x6_SFLOAT_BLOCK_EXT";
+                VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT: "VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT";
+                VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT: "VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT";
+                VK_FORMAT_A8_UNORM_KHR: "VK_FORMAT_A8_UNORM_KHR";
+                VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR: "VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR";
+                VK_FORMAT_A4R4G4B4_UNORM_PACK16: "VK_FORMAT_A4R4G4B4_UNORM_PACK16";
+                VK_FORMAT_A4B4G4R4_UNORM_PACK16: "VK_FORMAT_A4B4G4R4_UNORM_PACK16";
+            }>;
+            typeSize: z.ZodNumber;
+            pixelWidth: z.ZodNumber;
+            pixelHeight: z.ZodNumber;
+            pixelDepth: z.ZodNumber;
+            layerCount: z.ZodNumber;
+            faceCount: z.ZodNumber;
+            levelCount: z.ZodNumber;
+            supercompressionScheme: z.ZodEnum<{
+                KTX_SS_NONE: "KTX_SS_NONE";
+                KTX_SS_BASIS_LZ: "KTX_SS_BASIS_LZ";
+                KTX_SS_ZSTD: "KTX_SS_ZSTD";
+                KTX_SS_ZLIB: "KTX_SS_ZLIB";
+            }>;
+        }, {}, {}>;
+        index: z.ZodObject<{
+            dataFormatDescriptor: z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+            }, {}, {}>;
+            keyValueData: z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+            }, {}, {}>;
+            supercompressionGlobalData: z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+            }, {}, {}>;
+            levels: z.ZodArray<z.ZodObject<{
+                byteOffset: z.ZodNumber;
+                byteLength: z.ZodNumber;
+                uncompressedByteLength: z.ZodNumber;
+            }, {}, {}>>;
+        }, {}, {}>;
+        dataFormatDescriptor: z.ZodObject<{
+            totalSize: z.ZodNumber;
+            blocks: z.ZodArray<z.ZodObject<{
+                descriptorType: z.ZodEnum<{
+                    KHR_DF_KHR_DESCRIPTORTYPE_BASICFORMAT: "KHR_DF_KHR_DESCRIPTORTYPE_BASICFORMAT";
+                    KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_PLANES: "KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_PLANES";
+                    KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_DIMENSIONS: "KHR_DF_KHR_DESCRIPTORTYPE_ADDITIONAL_DIMENSIONS";
+                }>;
+                vendorId: z.ZodEnum<{
+                    KHR_DF_VENDORID_KHRONOS: "KHR_DF_VENDORID_KHRONOS";
+                }>;
+                descriptorBlockSize: z.ZodNumber;
+                versionNumber: z.ZodEnum<{
+                    KHR_DF_VERSIONNUMBER_1_1: "KHR_DF_VERSIONNUMBER_1_1";
+                    KHR_DF_VERSIONNUMBER_1_2: "KHR_DF_VERSIONNUMBER_1_2";
+                    KHR_DF_VERSIONNUMBER_1_3: "KHR_DF_VERSIONNUMBER_1_3";
+                }>;
+                flags: z.ZodArray<z.ZodEnum<{
+                    KHR_DF_FLAG_ALPHA_PREMULTIPLIED: "KHR_DF_FLAG_ALPHA_PREMULTIPLIED";
+                    KHR_DF_FLAG_ALPHA_STRAIGHT: "KHR_DF_FLAG_ALPHA_STRAIGHT";
+                }>>;
+                transferFunction: z.ZodEnum<{
+                    KHR_DF_TRANSFER_UNSPECIFIED: "KHR_DF_TRANSFER_UNSPECIFIED";
+                    KHR_DF_TRANSFER_LINEAR: "KHR_DF_TRANSFER_LINEAR";
+                    KHR_DF_TRANSFER_SRGB: "KHR_DF_TRANSFER_SRGB";
+                    KHR_DF_TRANSFER_ITU: "KHR_DF_TRANSFER_ITU";
+                    KHR_DF_TRANSFER_NTSC: "KHR_DF_TRANSFER_NTSC";
+                    KHR_DF_TRANSFER_SLOG: "KHR_DF_TRANSFER_SLOG";
+                    KHR_DF_TRANSFER_SLOG2: "KHR_DF_TRANSFER_SLOG2";
+                    KHR_DF_TRANSFER_BT1886: "KHR_DF_TRANSFER_BT1886";
+                    KHR_DF_TRANSFER_HLG_OETF: "KHR_DF_TRANSFER_HLG_OETF";
+                    KHR_DF_TRANSFER_HLG_EOTF: "KHR_DF_TRANSFER_HLG_EOTF";
+                    KHR_DF_TRANSFER_PQ_EOTF: "KHR_DF_TRANSFER_PQ_EOTF";
+                    KHR_DF_TRANSFER_PQ_OETF: "KHR_DF_TRANSFER_PQ_OETF";
+                    KHR_DF_TRANSFER_DCIP3: "KHR_DF_TRANSFER_DCIP3";
+                    KHR_DF_TRANSFER_PAL_OETF: "KHR_DF_TRANSFER_PAL_OETF";
+                    KHR_DF_TRANSFER_PAL625_EOTF: "KHR_DF_TRANSFER_PAL625_EOTF";
+                    KHR_DF_TRANSFER_ST240: "KHR_DF_TRANSFER_ST240";
+                    KHR_DF_TRANSFER_ACESCC: "KHR_DF_TRANSFER_ACESCC";
+                    KHR_DF_TRANSFER_ACESCCT: "KHR_DF_TRANSFER_ACESCCT";
+                    KHR_DF_TRANSFER_ADOBERGB: "KHR_DF_TRANSFER_ADOBERGB";
+                }>;
+                colorPrimaries: z.ZodEnum<{
+                    KHR_DF_PRIMARIES_UNSPECIFIED: "KHR_DF_PRIMARIES_UNSPECIFIED";
+                    KHR_DF_PRIMARIES_BT709: "KHR_DF_PRIMARIES_BT709";
+                    KHR_DF_PRIMARIES_BT601_EBU: "KHR_DF_PRIMARIES_BT601_EBU";
+                    KHR_DF_PRIMARIES_BT601_SMPTE: "KHR_DF_PRIMARIES_BT601_SMPTE";
+                    KHR_DF_PRIMARIES_BT2020: "KHR_DF_PRIMARIES_BT2020";
+                    KHR_DF_PRIMARIES_CIEXYZ: "KHR_DF_PRIMARIES_CIEXYZ";
+                    KHR_DF_PRIMARIES_ACES: "KHR_DF_PRIMARIES_ACES";
+                    KHR_DF_PRIMARIES_ACESCC: "KHR_DF_PRIMARIES_ACESCC";
+                    KHR_DF_PRIMARIES_NTSC1953: "KHR_DF_PRIMARIES_NTSC1953";
+                    KHR_DF_PRIMARIES_PAL525: "KHR_DF_PRIMARIES_PAL525";
+                    KHR_DF_PRIMARIES_DISPLAYP3: "KHR_DF_PRIMARIES_DISPLAYP3";
+                    KHR_DF_PRIMARIES_ADOBERGB: "KHR_DF_PRIMARIES_ADOBERGB";
+                }>;
+                colorModel: z.ZodEnum<{
+                    KHR_DF_MODEL_UNSPECIFIED: "KHR_DF_MODEL_UNSPECIFIED";
+                    KHR_DF_MODEL_RGBSDA: "KHR_DF_MODEL_RGBSDA";
+                    KHR_DF_MODEL_YUVSDA: "KHR_DF_MODEL_YUVSDA";
+                    KHR_DF_MODEL_YIQSDA: "KHR_DF_MODEL_YIQSDA";
+                    KHR_DF_MODEL_LABSDA: "KHR_DF_MODEL_LABSDA";
+                    KHR_DF_MODEL_CMYKA: "KHR_DF_MODEL_CMYKA";
+                    KHR_DF_MODEL_XYZW: "KHR_DF_MODEL_XYZW";
+                    KHR_DF_MODEL_HSVA_ANG: "KHR_DF_MODEL_HSVA_ANG";
+                    KHR_DF_MODEL_HSLA_ANG: "KHR_DF_MODEL_HSLA_ANG";
+                    KHR_DF_MODEL_HSVA_HEX: "KHR_DF_MODEL_HSVA_HEX";
+                    KHR_DF_MODEL_HSLA_HEX: "KHR_DF_MODEL_HSLA_HEX";
+                    KHR_DF_MODEL_YCGCOA: "KHR_DF_MODEL_YCGCOA";
+                    KHR_DF_MODEL_YCCBCCRC: "KHR_DF_MODEL_YCCBCCRC";
+                    KHR_DF_MODEL_ICTCP: "KHR_DF_MODEL_ICTCP";
+                    KHR_DF_MODEL_CIEXYZ: "KHR_DF_MODEL_CIEXYZ";
+                    KHR_DF_MODEL_CIEXYY: "KHR_DF_MODEL_CIEXYY";
+                    KHR_DF_MODEL_BC1A: "KHR_DF_MODEL_BC1A";
+                    KHR_DF_MODEL_BC2: "KHR_DF_MODEL_BC2";
+                    KHR_DF_MODEL_BC3: "KHR_DF_MODEL_BC3";
+                    KHR_DF_MODEL_BC4: "KHR_DF_MODEL_BC4";
+                    KHR_DF_MODEL_BC5: "KHR_DF_MODEL_BC5";
+                    KHR_DF_MODEL_BC6H: "KHR_DF_MODEL_BC6H";
+                    KHR_DF_MODEL_BC7: "KHR_DF_MODEL_BC7";
+                    KHR_DF_MODEL_ETC1: "KHR_DF_MODEL_ETC1";
+                    KHR_DF_MODEL_ETC2: "KHR_DF_MODEL_ETC2";
+                    KHR_DF_MODEL_ASTC: "KHR_DF_MODEL_ASTC";
+                    KHR_DF_MODEL_ETC1S: "KHR_DF_MODEL_ETC1S";
+                    KHR_DF_MODEL_PVRTC: "KHR_DF_MODEL_PVRTC";
+                    KHR_DF_MODEL_PVRTC2: "KHR_DF_MODEL_PVRTC2";
+                    KHR_DF_MODEL_UASTC: "KHR_DF_MODEL_UASTC";
+                }>;
+                texelBlockDimension: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+                bytesPlane: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+                samples: z.ZodArray<z.ZodObject<{
+                    qualifiers: z.ZodArray<z.ZodEnum<{
+                        KHR_DF_SAMPLE_DATATYPE_LINEAR: "KHR_DF_SAMPLE_DATATYPE_LINEAR";
+                        KHR_DF_SAMPLE_DATATYPE_EXPONENT: "KHR_DF_SAMPLE_DATATYPE_EXPONENT";
+                        KHR_DF_SAMPLE_DATATYPE_SIGNED: "KHR_DF_SAMPLE_DATATYPE_SIGNED";
+                        KHR_DF_SAMPLE_DATATYPE_FLOAT: "KHR_DF_SAMPLE_DATATYPE_FLOAT";
+                    }>>;
+                    channelType: z.ZodEnum<{
+                        KHR_DF_CHANNEL_RGBSDA_RED: "KHR_DF_CHANNEL_RGBSDA_RED";
+                        KHR_DF_CHANNEL_RGBSDA_GREEN: "KHR_DF_CHANNEL_RGBSDA_GREEN";
+                        KHR_DF_CHANNEL_RGBSDA_BLUE: "KHR_DF_CHANNEL_RGBSDA_BLUE";
+                        KHR_DF_CHANNEL_RGBSDA_STENCIL: "KHR_DF_CHANNEL_RGBSDA_STENCIL";
+                        KHR_DF_CHANNEL_RGBSDA_DEPTH: "KHR_DF_CHANNEL_RGBSDA_DEPTH";
+                        KHR_DF_CHANNEL_RGBSDA_ALPHA: "KHR_DF_CHANNEL_RGBSDA_ALPHA";
+                        KHR_DF_CHANNEL_YUVSDA_Y: "KHR_DF_CHANNEL_YUVSDA_Y";
+                        KHR_DF_CHANNEL_YUVSDA_U: "KHR_DF_CHANNEL_YUVSDA_U";
+                        KHR_DF_CHANNEL_YUVSDA_V: "KHR_DF_CHANNEL_YUVSDA_V";
+                        KHR_DF_CHANNEL_YUVSDA_STENCIL: "KHR_DF_CHANNEL_YUVSDA_STENCIL";
+                        KHR_DF_CHANNEL_YUVSDA_DEPTH: "KHR_DF_CHANNEL_YUVSDA_DEPTH";
+                        KHR_DF_CHANNEL_YUVSDA_ALPHA: "KHR_DF_CHANNEL_YUVSDA_ALPHA";
+                        KHR_DF_CHANNEL_YIQSDA_Y: "KHR_DF_CHANNEL_YIQSDA_Y";
+                        KHR_DF_CHANNEL_YIQSDA_I: "KHR_DF_CHANNEL_YIQSDA_I";
+                        KHR_DF_CHANNEL_YIQSDA_Q: "KHR_DF_CHANNEL_YIQSDA_Q";
+                        KHR_DF_CHANNEL_YIQSDA_STENCIL: "KHR_DF_CHANNEL_YIQSDA_STENCIL";
+                        KHR_DF_CHANNEL_YIQSDA_DEPTH: "KHR_DF_CHANNEL_YIQSDA_DEPTH";
+                        KHR_DF_CHANNEL_YIQSDA_ALPHA: "KHR_DF_CHANNEL_YIQSDA_ALPHA";
+                        KHR_DF_CHANNEL_LABSDA_L: "KHR_DF_CHANNEL_LABSDA_L";
+                        KHR_DF_CHANNEL_LABSDA_A: "KHR_DF_CHANNEL_LABSDA_A";
+                        KHR_DF_CHANNEL_LABSDA_B: "KHR_DF_CHANNEL_LABSDA_B";
+                        KHR_DF_CHANNEL_LABSDA_STENCIL: "KHR_DF_CHANNEL_LABSDA_STENCIL";
+                        KHR_DF_CHANNEL_LABSDA_DEPTH: "KHR_DF_CHANNEL_LABSDA_DEPTH";
+                        KHR_DF_CHANNEL_LABSDA_ALPHA: "KHR_DF_CHANNEL_LABSDA_ALPHA";
+                        KHR_DF_CHANNEL_CMYKSDA_CYAN: "KHR_DF_CHANNEL_CMYKSDA_CYAN";
+                        KHR_DF_CHANNEL_CMYKSDA_MAGENTA: "KHR_DF_CHANNEL_CMYKSDA_MAGENTA";
+                        KHR_DF_CHANNEL_CMYKSDA_YELLOW: "KHR_DF_CHANNEL_CMYKSDA_YELLOW";
+                        KHR_DF_CHANNEL_CMYKSDA_BLACK: "KHR_DF_CHANNEL_CMYKSDA_BLACK";
+                        KHR_DF_CHANNEL_CMYKSDA_ALPHA: "KHR_DF_CHANNEL_CMYKSDA_ALPHA";
+                        KHR_DF_CHANNEL_XYZW_X: "KHR_DF_CHANNEL_XYZW_X";
+                        KHR_DF_CHANNEL_XYZW_Y: "KHR_DF_CHANNEL_XYZW_Y";
+                        KHR_DF_CHANNEL_XYZW_Z: "KHR_DF_CHANNEL_XYZW_Z";
+                        KHR_DF_CHANNEL_XYZW_W: "KHR_DF_CHANNEL_XYZW_W";
+                        KHR_DF_CHANNEL_HSVA_ANG_VALUE: "KHR_DF_CHANNEL_HSVA_ANG_VALUE";
+                        KHR_DF_CHANNEL_HSVA_ANG_SATURATION: "KHR_DF_CHANNEL_HSVA_ANG_SATURATION";
+                        KHR_DF_CHANNEL_HSVA_ANG_HUE: "KHR_DF_CHANNEL_HSVA_ANG_HUE";
+                        KHR_DF_CHANNEL_HSVA_ANG_ALPHA: "KHR_DF_CHANNEL_HSVA_ANG_ALPHA";
+                        KHR_DF_CHANNEL_HSLA_ANG_LIGHTNESS: "KHR_DF_CHANNEL_HSLA_ANG_LIGHTNESS";
+                        KHR_DF_CHANNEL_HSLA_ANG_SATURATION: "KHR_DF_CHANNEL_HSLA_ANG_SATURATION";
+                        KHR_DF_CHANNEL_HSLA_ANG_HUE: "KHR_DF_CHANNEL_HSLA_ANG_HUE";
+                        KHR_DF_CHANNEL_HSLA_ANG_ALPHA: "KHR_DF_CHANNEL_HSLA_ANG_ALPHA";
+                        KHR_DF_CHANNEL_HSVA_HEX_VALUE: "KHR_DF_CHANNEL_HSVA_HEX_VALUE";
+                        KHR_DF_CHANNEL_HSVA_HEX_SATURATION: "KHR_DF_CHANNEL_HSVA_HEX_SATURATION";
+                        KHR_DF_CHANNEL_HSVA_HEX_HUE: "KHR_DF_CHANNEL_HSVA_HEX_HUE";
+                        KHR_DF_CHANNEL_HSVA_HEX_ALPHA: "KHR_DF_CHANNEL_HSVA_HEX_ALPHA";
+                        KHR_DF_CHANNEL_HSLA_HEX_LIGHTNESS: "KHR_DF_CHANNEL_HSLA_HEX_LIGHTNESS";
+                        KHR_DF_CHANNEL_HSLA_HEX_SATURATION: "KHR_DF_CHANNEL_HSLA_HEX_SATURATION";
+                        KHR_DF_CHANNEL_HSLA_HEX_HUE: "KHR_DF_CHANNEL_HSLA_HEX_HUE";
+                        KHR_DF_CHANNEL_HSLA_HEX_ALPHA: "KHR_DF_CHANNEL_HSLA_HEX_ALPHA";
+                        KHR_DF_CHANNEL_YCGCOA_Y: "KHR_DF_CHANNEL_YCGCOA_Y";
+                        KHR_DF_CHANNEL_YCGCOA_CG: "KHR_DF_CHANNEL_YCGCOA_CG";
+                        KHR_DF_CHANNEL_YCGCOA_CO: "KHR_DF_CHANNEL_YCGCOA_CO";
+                        KHR_DF_CHANNEL_YCGCOA_ALPHA: "KHR_DF_CHANNEL_YCGCOA_ALPHA";
+                        KHR_DF_CHANNEL_CIEXYZ_X: "KHR_DF_CHANNEL_CIEXYZ_X";
+                        KHR_DF_CHANNEL_CIEXYZ_Y: "KHR_DF_CHANNEL_CIEXYZ_Y";
+                        KHR_DF_CHANNEL_CIEXYZ_Z: "KHR_DF_CHANNEL_CIEXYZ_Z";
+                        KHR_DF_CHANNEL_CIEXYY_X: "KHR_DF_CHANNEL_CIEXYY_X";
+                        KHR_DF_CHANNEL_CIEXYY_YCHROMA: "KHR_DF_CHANNEL_CIEXYY_YCHROMA";
+                        KHR_DF_CHANNEL_CIEXYY_YLUMA: "KHR_DF_CHANNEL_CIEXYY_YLUMA";
+                        KHR_DF_CHANNEL_BC1A_COLOR: "KHR_DF_CHANNEL_BC1A_COLOR";
+                        KHR_DF_CHANNEL_BC1A_ALPHA: "KHR_DF_CHANNEL_BC1A_ALPHA";
+                        KHR_DF_CHANNEL_BC2_COLOR: "KHR_DF_CHANNEL_BC2_COLOR";
+                        KHR_DF_CHANNEL_BC2_ALPHA: "KHR_DF_CHANNEL_BC2_ALPHA";
+                        KHR_DF_CHANNEL_BC3_COLOR: "KHR_DF_CHANNEL_BC3_COLOR";
+                        KHR_DF_CHANNEL_BC3_ALPHA: "KHR_DF_CHANNEL_BC3_ALPHA";
+                        KHR_DF_CHANNEL_BC4_DATA: "KHR_DF_CHANNEL_BC4_DATA";
+                        KHR_DF_CHANNEL_BC5_RED: "KHR_DF_CHANNEL_BC5_RED";
+                        KHR_DF_CHANNEL_BC5_GREEN: "KHR_DF_CHANNEL_BC5_GREEN";
+                        KHR_DF_CHANNEL_BC6H_COLOR: "KHR_DF_CHANNEL_BC6H_COLOR";
+                        KHR_DF_CHANNEL_BC7_COLOR: "KHR_DF_CHANNEL_BC7_COLOR";
+                        KHR_DF_CHANNEL_ETC1_COLOR: "KHR_DF_CHANNEL_ETC1_COLOR";
+                        KHR_DF_CHANNEL_ETC2_RED: "KHR_DF_CHANNEL_ETC2_RED";
+                        KHR_DF_CHANNEL_ETC2_GREEN: "KHR_DF_CHANNEL_ETC2_GREEN";
+                        KHR_DF_CHANNEL_ETC2_COLOR: "KHR_DF_CHANNEL_ETC2_COLOR";
+                        KHR_DF_CHANNEL_ETC2_ALPHA: "KHR_DF_CHANNEL_ETC2_ALPHA";
+                        KHR_DF_CHANNEL_ASTC_DATA: "KHR_DF_CHANNEL_ASTC_DATA";
+                        KHR_DF_CHANNEL_ETC1S_RGB: "KHR_DF_CHANNEL_ETC1S_RGB";
+                        KHR_DF_CHANNEL_ETC1S_RRR: "KHR_DF_CHANNEL_ETC1S_RRR";
+                        KHR_DF_CHANNEL_ETC1S_GGG: "KHR_DF_CHANNEL_ETC1S_GGG";
+                        KHR_DF_CHANNEL_ETC1S_AAA: "KHR_DF_CHANNEL_ETC1S_AAA";
+                        KHR_DF_CHANNEL_PVRTC_COLOR: "KHR_DF_CHANNEL_PVRTC_COLOR";
+                        KHR_DF_CHANNEL_PVRTC2_COLOR: "KHR_DF_CHANNEL_PVRTC2_COLOR";
+                        KHR_DF_CHANNEL_UASTC_RGB: "KHR_DF_CHANNEL_UASTC_RGB";
+                        KHR_DF_CHANNEL_UASTC_RGBA: "KHR_DF_CHANNEL_UASTC_RGBA";
+                        KHR_DF_CHANNEL_UASTC_RRR: "KHR_DF_CHANNEL_UASTC_RRR";
+                        KHR_DF_CHANNEL_UASTC_RRRG: "KHR_DF_CHANNEL_UASTC_RRRG";
+                        KHR_DF_CHANNEL_UASTC_RG: "KHR_DF_CHANNEL_UASTC_RG";
+                        KHR_DF_CHANNEL_UNSPECIFIED_0: "KHR_DF_CHANNEL_UNSPECIFIED_0";
+                        KHR_DF_CHANNEL_UNSPECIFIED_1: "KHR_DF_CHANNEL_UNSPECIFIED_1";
+                        KHR_DF_CHANNEL_UNSPECIFIED_2: "KHR_DF_CHANNEL_UNSPECIFIED_2";
+                        KHR_DF_CHANNEL_UNSPECIFIED_3: "KHR_DF_CHANNEL_UNSPECIFIED_3";
+                        KHR_DF_CHANNEL_UNSPECIFIED_4: "KHR_DF_CHANNEL_UNSPECIFIED_4";
+                        KHR_DF_CHANNEL_UNSPECIFIED_5: "KHR_DF_CHANNEL_UNSPECIFIED_5";
+                        KHR_DF_CHANNEL_UNSPECIFIED_6: "KHR_DF_CHANNEL_UNSPECIFIED_6";
+                        KHR_DF_CHANNEL_UNSPECIFIED_7: "KHR_DF_CHANNEL_UNSPECIFIED_7";
+                        KHR_DF_CHANNEL_UNSPECIFIED_8: "KHR_DF_CHANNEL_UNSPECIFIED_8";
+                        KHR_DF_CHANNEL_UNSPECIFIED_9: "KHR_DF_CHANNEL_UNSPECIFIED_9";
+                        KHR_DF_CHANNEL_UNSPECIFIED_10: "KHR_DF_CHANNEL_UNSPECIFIED_10";
+                        KHR_DF_CHANNEL_UNSPECIFIED_11: "KHR_DF_CHANNEL_UNSPECIFIED_11";
+                        KHR_DF_CHANNEL_UNSPECIFIED_12: "KHR_DF_CHANNEL_UNSPECIFIED_12";
+                        KHR_DF_CHANNEL_UNSPECIFIED_13: "KHR_DF_CHANNEL_UNSPECIFIED_13";
+                        KHR_DF_CHANNEL_UNSPECIFIED_14: "KHR_DF_CHANNEL_UNSPECIFIED_14";
+                        KHR_DF_CHANNEL_UNSPECIFIED_15: "KHR_DF_CHANNEL_UNSPECIFIED_15";
+                    }>;
+                    bitLength: z.ZodNumber;
+                    bitOffset: z.ZodNumber;
+                    samplePosition: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+                    sampleLower: z.ZodNumber;
+                    sampleUpper: z.ZodNumber;
+                }, {}, {}>>;
+            }, {}, {}>>;
+        }, {}, {}>;
+        keyValueData: z.ZodObject<{
+            KTXorientation: z.ZodString;
+            KTXwriter: z.ZodString;
+            KTXwriterScParams: z.ZodString;
+        }, {}, {}>;
+    }, {}, {}>>;
+    hint: z.ZodOptional<z.ZodObject<{
+        type: z.ZodLiteral<"hint">;
+        poster: z.ZodArray<z.ZodObject<{
+            quality: z.ZodEnum<{
+                medium: "medium";
+                high: "high";
+                sample: "sample";
+            }>;
+            width: z.ZodNumber;
+            height: z.ZodNumber;
+        }, {}, {}>>;
+    }, {}, {}>>;
+    timings: z.ZodObject<{
+        file_http_duration: z.ZodNumber;
+        file_ck_duration: z.ZodNumber;
+        texture_ktxinfo_duration: z.ZodNumber;
+    }, {}, {}>;
+}, {}, {}>, z.ZodObject<{
+    file: z.ZodObject<{
+        s3_filename: z.ZodString;
+        content_type: z.ZodString;
+        size: z.ZodNumber;
+        mtime: z.ZodString;
+        md5: z.ZodString;
+        sha256: z.ZodString;
+        s3_uri: z.ZodString;
+        s3_version_id: z.ZodString;
+        s3_etag: z.ZodString;
+        s3_parts: z.ZodArray<z.ZodNumber>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"video">;
     ffprobe: z.ZodObject<{
@@ -1464,9 +2626,9 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
                 clean_effects: z.ZodOptional<z.ZodNumber>;
                 attached_pic: z.ZodOptional<z.ZodNumber>;
                 timed_thumbnails: z.ZodOptional<z.ZodNumber>;
-            }, {}>>;
+            }, {}, {}>>;
             rotation: z.ZodOptional<z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>;
-        }, {}>>;
+        }, {}, {}>>;
         format: z.ZodObject<{
             filename: z.ZodOptional<z.ZodString>;
             nb_streams: z.ZodOptional<z.ZodNumber>;
@@ -1479,8 +2641,8 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             bit_rate: z.ZodOptional<z.ZodNumber>;
             probe_score: z.ZodOptional<z.ZodNumber>;
             tags: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>>;
-        }, {}>;
-    }, {}>;
+        }, {}, {}>;
+    }, {}, {}>;
     codecs: z.ZodOptional<z.ZodArray<z.ZodString>>;
     hint: z.ZodOptional<z.ZodObject<{
         type: z.ZodLiteral<"hint">;
@@ -1492,14 +2654,14 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             }>;
             width: z.ZodNumber;
             height: z.ZodNumber;
-        }, {}>>;
-    }, {}>>;
+        }, {}, {}>>;
+    }, {}, {}>>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
         video_ffprobe_duration: z.ZodNumber;
-    }, {}>;
-}, {}>, z.ZodObject<{
+    }, {}, {}>;
+}, {}, {}>, z.ZodObject<{
     file: z.ZodObject<{
         s3_filename: z.ZodString;
         content_type: z.ZodString;
@@ -1511,15 +2673,15 @@ export declare const Metadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     timings: z.ZodObject<{
         file_http_duration: z.ZodNumber;
         file_ck_duration: z.ZodNumber;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"rejected">;
     error_text: z.ZodString;
-}, {}>]>;
+}, {}, {}>]>;
 export type Metadata = z.infer<typeof Metadata>;
 export declare const MetadataMetadata: z.ZodObject<{
     file: z.ZodObject<{
@@ -1533,13 +2695,13 @@ export declare const MetadataMetadata: z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"metadata">;
     timings: z.ZodObject<{
         metadata_http_duration: z.ZodNumber;
-    }, {}>;
-}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type MetadataMetadata = z.infer<typeof MetadataMetadata>;
 export declare const PosterMetadata: z.ZodObject<{
     type: z.ZodLiteral<"poster">;
@@ -1555,7 +2717,7 @@ export declare const PosterMetadata: z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"poster-image">;
         quality: z.ZodEnum<{
@@ -1573,9 +2735,9 @@ export declare const PosterMetadata: z.ZodObject<{
             poster_sharp_duration: z.ZodOptional<z.ZodNumber>;
             poster_ck_duration: z.ZodNumber;
             poster_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>>;
-}, {}>;
+        }, {}, {}>;
+    }, {}, {}>>;
+}, {}, {}>;
 export type PosterMetadata = z.infer<typeof PosterMetadata>;
 export declare const AnimatedPosterMetadata: z.ZodObject<{
     type: z.ZodLiteral<"animated-poster">;
@@ -1591,7 +2753,7 @@ export declare const AnimatedPosterMetadata: z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"animated-poster-image">;
         width: z.ZodNumber;
@@ -1600,9 +2762,9 @@ export declare const AnimatedPosterMetadata: z.ZodObject<{
             animated_poster_ffmpeg_duration: z.ZodNumber;
             animated_poster_ck_duration: z.ZodNumber;
             animated_poster_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>;
-}, {}>;
+        }, {}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type AnimatedPosterMetadata = z.infer<typeof AnimatedPosterMetadata>;
 export declare const PosterSeriesMetadata: z.ZodObject<{
     type: z.ZodLiteral<"poster-series">;
@@ -1618,7 +2780,7 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
@@ -1636,9 +2798,9 @@ export declare const PosterSeriesMetadata: z.ZodObject<{
             poster_series_sharp_duration: z.ZodOptional<z.ZodNumber>;
             poster_series_ck_duration: z.ZodNumber;
             poster_series_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>>;
-}, {}>;
+        }, {}, {}>;
+    }, {}, {}>>;
+}, {}, {}>;
 export type PosterSeriesMetadata = z.infer<typeof PosterSeriesMetadata>;
 export declare const TileSeriesMetadata: z.ZodObject<{
     type: z.ZodLiteral<"tile-series">;
@@ -1654,7 +2816,7 @@ export declare const TileSeriesMetadata: z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"tile-series-image">;
         index: z.ZodNumber;
@@ -1669,15 +2831,15 @@ export declare const TileSeriesMetadata: z.ZodObject<{
         timings: z.ZodObject<{
             tile_series_ck_duration: z.ZodNumber;
             tile_series_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>>;
+        }, {}, {}>;
+    }, {}, {}>>;
     timings: z.ZodObject<{
         tile_series_ffprobe_duration: z.ZodNumber;
         tile_series_ffmpeg_duration: z.ZodNumber;
         tile_series_avifenc_duration: z.ZodOptional<z.ZodNumber>;
         tile_series_sharp_duration: z.ZodOptional<z.ZodNumber>;
-    }, {}>;
-}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type TileSeriesMetadata = z.infer<typeof TileSeriesMetadata>;
 export declare const TileSeriesMetadataMetadata: z.ZodObject<{
     file: z.ZodObject<{
@@ -1691,13 +2853,13 @@ export declare const TileSeriesMetadataMetadata: z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"tile-series-metadata">;
     timings: z.ZodObject<{
         metadata_http_duration: z.ZodNumber;
-    }, {}>;
-}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type TileSeriesMetadataMetadata = z.infer<typeof TileSeriesMetadataMetadata>;
 export declare const PrevueMetadata: z.ZodObject<{
     type: z.ZodLiteral<"prevue">;
@@ -1713,7 +2875,7 @@ export declare const PrevueMetadata: z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"prevue-video">;
         width: z.ZodNumber;
@@ -1722,9 +2884,9 @@ export declare const PrevueMetadata: z.ZodObject<{
             prevue_ffmpeg_duration: z.ZodNumber;
             prevue_ck_duration: z.ZodNumber;
             prevue_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>;
-}, {}>;
+        }, {}, {}>;
+    }, {}, {}>;
+}, {}, {}>;
 export type PrevueMetadata = z.infer<typeof PrevueMetadata>;
 export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
     type: z.ZodLiteral<"poster">;
@@ -1740,7 +2902,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"poster-image">;
         quality: z.ZodEnum<{
@@ -1758,9 +2920,9 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             poster_sharp_duration: z.ZodOptional<z.ZodNumber>;
             poster_ck_duration: z.ZodNumber;
             poster_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>>;
-}, {}>, z.ZodObject<{
+        }, {}, {}>;
+    }, {}, {}>>;
+}, {}, {}>, z.ZodObject<{
     type: z.ZodLiteral<"animated-poster">;
     poster: z.ZodObject<{
         file: z.ZodObject<{
@@ -1774,7 +2936,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"animated-poster-image">;
         width: z.ZodNumber;
@@ -1783,9 +2945,9 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             animated_poster_ffmpeg_duration: z.ZodNumber;
             animated_poster_ck_duration: z.ZodNumber;
             animated_poster_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>;
-}, {}>, z.ZodObject<{
+        }, {}, {}>;
+    }, {}, {}>;
+}, {}, {}>, z.ZodObject<{
     type: z.ZodLiteral<"poster-series">;
     series: z.ZodArray<z.ZodObject<{
         file: z.ZodObject<{
@@ -1799,7 +2961,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
@@ -1817,9 +2979,9 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             poster_series_sharp_duration: z.ZodOptional<z.ZodNumber>;
             poster_series_ck_duration: z.ZodNumber;
             poster_series_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>>;
-}, {}>, z.ZodObject<{
+        }, {}, {}>;
+    }, {}, {}>>;
+}, {}, {}>, z.ZodObject<{
     file: z.ZodObject<{
         s3_filename: z.ZodString;
         content_type: z.ZodString;
@@ -1831,13 +2993,13 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"tile-series-metadata">;
     timings: z.ZodObject<{
         metadata_http_duration: z.ZodNumber;
-    }, {}>;
-}, {}>, z.ZodObject<{
+    }, {}, {}>;
+}, {}, {}>, z.ZodObject<{
     type: z.ZodLiteral<"prevue">;
     prevue: z.ZodObject<{
         file: z.ZodObject<{
@@ -1851,7 +3013,7 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"prevue-video">;
         width: z.ZodNumber;
@@ -1860,9 +3022,9 @@ export declare const PreviewMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             prevue_ffmpeg_duration: z.ZodNumber;
             prevue_ck_duration: z.ZodNumber;
             prevue_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>;
-}, {}>]>;
+        }, {}, {}>;
+    }, {}, {}>;
+}, {}, {}>]>;
 export type PreviewMetadata = z.infer<typeof PreviewMetadata>;
 export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
     file: z.ZodObject<{
@@ -1876,13 +3038,13 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"metadata">;
     timings: z.ZodObject<{
         metadata_http_duration: z.ZodNumber;
-    }, {}>;
-}, {}>, z.ZodDiscriminatedUnion<[z.ZodObject<{
+    }, {}, {}>;
+}, {}, {}>, z.ZodDiscriminatedUnion<[z.ZodObject<{
     type: z.ZodLiteral<"poster">;
     poster: z.ZodArray<z.ZodObject<{
         file: z.ZodObject<{
@@ -1896,7 +3058,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"poster-image">;
         quality: z.ZodEnum<{
@@ -1914,9 +3076,9 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             poster_sharp_duration: z.ZodOptional<z.ZodNumber>;
             poster_ck_duration: z.ZodNumber;
             poster_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>>;
-}, {}>, z.ZodObject<{
+        }, {}, {}>;
+    }, {}, {}>>;
+}, {}, {}>, z.ZodObject<{
     type: z.ZodLiteral<"animated-poster">;
     poster: z.ZodObject<{
         file: z.ZodObject<{
@@ -1930,7 +3092,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"animated-poster-image">;
         width: z.ZodNumber;
@@ -1939,9 +3101,9 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             animated_poster_ffmpeg_duration: z.ZodNumber;
             animated_poster_ck_duration: z.ZodNumber;
             animated_poster_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>;
-}, {}>, z.ZodObject<{
+        }, {}, {}>;
+    }, {}, {}>;
+}, {}, {}>, z.ZodObject<{
     type: z.ZodLiteral<"poster-series">;
     series: z.ZodArray<z.ZodObject<{
         file: z.ZodObject<{
@@ -1955,7 +3117,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"poster-series-image">;
         index: z.ZodNumber;
@@ -1973,9 +3135,9 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             poster_series_sharp_duration: z.ZodOptional<z.ZodNumber>;
             poster_series_ck_duration: z.ZodNumber;
             poster_series_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>>;
-}, {}>, z.ZodObject<{
+        }, {}, {}>;
+    }, {}, {}>>;
+}, {}, {}>, z.ZodObject<{
     file: z.ZodObject<{
         s3_filename: z.ZodString;
         content_type: z.ZodString;
@@ -1987,13 +3149,13 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
         s3_version_id: z.ZodString;
         s3_etag: z.ZodString;
         s3_parts: z.ZodArray<z.ZodNumber>;
-    }, {}>;
+    }, {}, {}>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     type: z.ZodLiteral<"tile-series-metadata">;
     timings: z.ZodObject<{
         metadata_http_duration: z.ZodNumber;
-    }, {}>;
-}, {}>, z.ZodObject<{
+    }, {}, {}>;
+}, {}, {}>, z.ZodObject<{
     type: z.ZodLiteral<"prevue">;
     prevue: z.ZodObject<{
         file: z.ZodObject<{
@@ -2007,7 +3169,7 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             s3_version_id: z.ZodString;
             s3_etag: z.ZodString;
             s3_parts: z.ZodArray<z.ZodNumber>;
-        }, {}>;
+        }, {}, {}>;
         tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
         type: z.ZodLiteral<"prevue-video">;
         width: z.ZodNumber;
@@ -2016,8 +3178,8 @@ export declare const AllMetadata: z.ZodDiscriminatedUnion<[z.ZodObject<{
             prevue_ffmpeg_duration: z.ZodNumber;
             prevue_ck_duration: z.ZodNumber;
             prevue_http_duration: z.ZodNumber;
-        }, {}>;
-    }, {}>;
-}, {}>]>]>;
+        }, {}, {}>;
+    }, {}, {}>;
+}, {}, {}>]>]>;
 export type AllMetadata = z.infer<typeof AllMetadata>;
 //# sourceMappingURL=metadata.schema.d.ts.map

@@ -1,4 +1,4 @@
-# @dsbunny/metadata
+# @dsbunny/metadata-schema
 REF: https://zod.dev/
 
 ZOD metadata for media stored in the DSBunny DAM.  Metadata is aggregated from multiple libraries for both images and videos, in addition to basic file metadata for all assets.
@@ -9,3 +9,15 @@ ZOD metadata for media stored in the DSBunny DAM.  Metadata is aggregated from m
 * [iptc-reader](https://github.com/oaleynik/iptc-reader) for International Press Telecommunications Council (IPTC) photo metadata,
 * [sharp](https://sharp.pixelplumbing.com/) for `libvps` derived image metadata,
 * [xmp-reader](https://github.com/shkuznetsov/xmp-reader) for XMP/RDF metadata tags from JPEG files.
+
+## Dependency Installation
+With NodeJS package manager of choice.
+```
+pnpm i
+```
+
+## Building
+With NodeJS build system of choice.
+```
+turbo build
+```

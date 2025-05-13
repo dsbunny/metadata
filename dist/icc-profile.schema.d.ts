@@ -43,6 +43,6 @@ export declare const IccProfile: z.ZodObject<{
     }>>;
     viewingConditionsDescription: z.ZodOptional<z.ZodString>;
     whitepoint: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber], null>>;
-}, {}>;
+}, {}, {}>;
 export type IccProfile = z.infer<typeof IccProfile>;
 //# sourceMappingURL=icc-profile.schema.d.ts.map
