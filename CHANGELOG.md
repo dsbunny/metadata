@@ -3,6 +3,8 @@
 - Add new metadata type `texture`, for GPU textures that are not supported by _Sharp_ or _FFmpeg_.
 - Rename to `@dsbunny/metadata-schema` for consistency among schemas.
 - New dependency `@dsbunny/ktx-schema` for KTX CLI output.
+- Remove `BaseMetadata` from exports and degrade to vanilla object.
+- Degrade `AllMetadata` to `union` due to outstanding ZODv4 support.
 
 ## v8.0.17
 - Bump to `zod@4.0.0-beta`.

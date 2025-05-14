@@ -11,12 +11,12 @@ import { AnimatedPosterTimings, FileTimings, ImageTimings, MetadataTimings, Post
 import { FileStatAndChecksums } from './file.schema.js';
 // #region Metadata
 // Base metadata for all files.
-export const BaseMetadata = z.object({
+const BaseMetadata = {
     type: z.literal('base'),
     file: FileStatAndChecksums,
     timings: FileTimings,
     tags: z.array(z.string().max(64)).max(100).optional(),
-});
+};
 export const HintData = z.object({
     type: z.literal('hint'),
     poster: z.array(z.object({
@@ -26,11 +26,13 @@ export const HintData = z.object({
     })),
 })
     .describe('Hint data for assets.');
-export const FileMetadata = BaseMetadata.extend({
+export const FileMetadata = z.object({
+    ...BaseMetadata,
     type: z.literal('file'),
     hint: HintData.optional(),
 });
-export const ImageMetadata = BaseMetadata.extend({
+export const ImageMetadata = z.object({
+    ...BaseMetadata,
     type: z.literal('image'),
     sharp: SharpMetadata,
     exif: ExifMetadata.optional(),
@@ -42,14 +44,16 @@ export const ImageMetadata = BaseMetadata.extend({
     timings: ImageTimings,
 })
     .describe('Metadata for an image file.');
-export const TextureMetadata = BaseMetadata.extend({
+export const TextureMetadata = z.object({
+    ...BaseMetadata,
     type: z.literal('texture'),
     ktx: KTXInfoSchema.optional(),
     hint: HintData.optional(),
     timings: TextureTimings,
 })
     .describe('Metadata for a texture file.');
-export const VideoMetadata = BaseMetadata.extend({
+export const VideoMetadata = z.object({
+    ...BaseMetadata,
     type: z.literal('video'),
     ffprobe: FfprobeData
         .describe('Metadata from the ffprobe tool.'),
@@ -61,7 +65,8 @@ export const VideoMetadata = BaseMetadata.extend({
     .describe('Metadata for a video file.');
 // Media types that are not supported, primarily due to technical limitations.
 // Media can be rejected due to check rules.
-export const RejectedMetadata = BaseMetadata.extend({
+export const RejectedMetadata = z.object({
+    ...BaseMetadata,
     type: z.literal('rejected'),
     error_text: z.string(),
 })
@@ -76,7 +81,8 @@ export const Metadata = z.discriminatedUnion([
 ])
     .describe('Union of all metadata types.');
 // Encapsulation of metadata in a S3 object.
-export const MetadataMetadata = BaseMetadata.extend({
+export const MetadataMetadata = z.object({
+    ...BaseMetadata,
     type: z.literal('metadata'),
     timings: MetadataTimings,
 })
@@ -85,7 +91,8 @@ export const MetadataMetadata = BaseMetadata.extend({
 // #region Preview
 export const PosterMetadata = z.object({
     type: z.literal('poster'),
-    poster: z.array(BaseMetadata.extend({
+    poster: z.array(z.object({
+        ...BaseMetadata,
         type: z.literal('poster-image'),
         quality: z.enum(['medium', 'high', 'sample']),
         width: z.number().int().positive(),
@@ -97,7 +104,8 @@ export const PosterMetadata = z.object({
     .describe('Metadata for an image poster.');
 export const AnimatedPosterMetadata = z.object({
     type: z.literal('animated-poster'),
-    poster: BaseMetadata.extend({
+    poster: z.object({
+        ...BaseMetadata,
         type: z.literal('animated-poster-image'),
         width: z.number().int().positive(),
         height: z.number().int().positive(),
@@ -107,7 +115,8 @@ export const AnimatedPosterMetadata = z.object({
     .describe('Metadata for an animated poster.');
 export const PosterSeriesMetadata = z.object({
     type: z.literal('poster-series'),
-    series: z.array(BaseMetadata.extend({
+    series: z.array(z.object({
+        ...BaseMetadata,
         type: z.literal('poster-series-image'),
         index: z.number().int().min(1).max(3),
         quality: z.enum(['medium', 'high', 'sample']),
@@ -120,7 +129,8 @@ export const PosterSeriesMetadata = z.object({
     .describe('Metadata for an image poster series.');
 export const TileSeriesMetadata = z.object({
     type: z.literal('tile-series'),
-    series: z.array(BaseMetadata.extend({
+    series: z.array(z.object({
+        ...BaseMetadata,
         type: z.literal('tile-series-image'),
         index: z.number().int().min(1).max(9999),
         count: z.number().int().min(1).max(9),
@@ -134,14 +144,16 @@ export const TileSeriesMetadata = z.object({
     timings: TileSeriesTimings,
 })
     .describe('Metadata for an image tile series.');
-export const TileSeriesMetadataMetadata = BaseMetadata.extend({
+export const TileSeriesMetadataMetadata = z.object({
+    ...BaseMetadata,
     type: z.literal('tile-series-metadata'),
     timings: MetadataTimings,
 })
     .describe('Metadata for an image tile series metadata.');
 export const PrevueMetadata = z.object({
     type: z.literal('prevue'),
-    prevue: BaseMetadata.extend({
+    prevue: z.object({
+        ...BaseMetadata,
         type: z.literal('prevue-video'),
         width: z.number().int().positive(),
         height: z.number().int().positive(),
@@ -158,7 +170,8 @@ export const PreviewMetadata = z.discriminatedUnion([
     PrevueMetadata,
 ])
     .describe('Union of all preview metadata types.');
-export const AllMetadata = z.discriminatedUnion([
+z;
+export const AllMetadata = z.union([
     MetadataMetadata,
     PreviewMetadata,
 ])
