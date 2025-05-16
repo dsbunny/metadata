@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 export declare const FileStatAndChecksums: z.ZodObject<{
     s3_filename: z.ZodString;
     content_type: z.ZodString;

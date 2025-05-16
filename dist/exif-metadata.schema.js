@@ -1,6 +1,6 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 // Derived from Exif.Metadata in exif.d.ts.
-import { z } from 'zod';
+import { z } from 'zod/v4';
 const ImageTags = z.object({
     ProcessingSoftware: z.string()
         .describe('The name and version of the software used to post-process the picture.'),

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const FileTimings: z.ZodObject<{
     file_http_duration: z.ZodNumber;
     file_ck_duration: z.ZodNumber;

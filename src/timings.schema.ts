@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 // Internal performance timings
 
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 // #region Base
 export const FileTimings = z.object({

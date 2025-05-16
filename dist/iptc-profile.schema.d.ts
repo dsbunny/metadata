@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const IptcProfile: z.ZodObject<{
     title: z.ZodOptional<z.ZodString>;
     caption: z.ZodOptional<z.ZodString>;

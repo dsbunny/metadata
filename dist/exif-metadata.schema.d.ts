@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const ExifMetadata: z.ZodObject<{
     Image: z.ZodOptional<z.ZodObject<{
         ProcessingSoftware: z.ZodOptional<z.ZodString>;

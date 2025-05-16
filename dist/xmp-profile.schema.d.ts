@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const XmpProfile: z.ZodObject<{
     keywords: z.ZodOptional<z.ZodArray<z.ZodString>>;
     title: z.ZodOptional<z.ZodString>;

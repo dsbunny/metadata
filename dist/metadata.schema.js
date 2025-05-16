@@ -1,5 +1,5 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
-import { z } from 'zod';
+import { z } from 'zod/v4';
 import { KTXInfoSchema } from '@dsbunny/ktx-schema';
 import { SharpMetadata } from './sharp-metadata.schema.js';
 import { ExifMetadata } from './exif-metadata.schema.js';

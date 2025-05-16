@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const FormatEnum: z.ZodEnum<{
     input: "input";
     avif: "avif";

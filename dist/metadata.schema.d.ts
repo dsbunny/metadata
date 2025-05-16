@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const HintData: z.ZodObject<{
     type: z.ZodLiteral<"hint">;
     poster: z.ZodArray<z.ZodObject<{

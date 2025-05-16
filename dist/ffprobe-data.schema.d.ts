@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const FfprobeStreamDisposition: z.ZodObject<{
     default: z.ZodOptional<z.ZodNumber>;
     dub: z.ZodOptional<z.ZodNumber>;

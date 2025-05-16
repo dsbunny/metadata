@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 export declare const IccProfile: z.ZodObject<{
     version: z.ZodEnum<{
         "2.0": "2.0";

@@ -1,7 +1,7 @@
 // vim: tabstop=8 softtabstop=0 noexpandtab shiftwidth=8 nosmarttab
 // File metadata
 
-import { z } from "zod";
+import { z } from "zod/v4";
 import { S3URI } from "./uri.schema.js";
 
 export const FileStatAndChecksums = z.object({
